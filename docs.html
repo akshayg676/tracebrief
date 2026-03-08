@@ -10,7 +10,7 @@
     <title>TraceBrief — Documentation</title>
     <meta
       name="description"
-      content="TraceBrief documentation. Everything you need to capture, structure, and send evidence packs. Guides for QA, developers, PMs, and everyone else."
+      content="TraceBrief documentation. Everything you need to capture, document, and export evidence packs. Guides for QA, developers, PMs, support teams, and anyone else reporting issues clearly."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -858,6 +858,31 @@
 
       /* ── RESPONSIVE ── */
       @media (max-width: 900px) {
+        nav {
+          height: auto;
+        }
+        .nav-inner {
+          padding: 10px 16px;
+          flex-wrap: wrap;
+          row-gap: 10px;
+        }
+        .n-sep,
+        .n-spacer {
+          display: none;
+        }
+        .n-search {
+          display: flex;
+          order: 3;
+          width: 100%;
+          max-width: none;
+          flex: 1 0 100%;
+        }
+        .n-search-kbd {
+          display: none;
+        }
+        .n-right {
+          margin-left: auto;
+        }
         .docs-layout {
           grid-template-columns: 1fr;
         }
@@ -866,13 +891,10 @@
           height: auto;
           border-right: none;
           border-bottom: 1px solid var(--b0);
-          padding: 16px 0;
+          padding: 16px 0 10px;
         }
         .sb-section {
-          margin-bottom: 0;
-        }
-        .docs-sidebar .sb-section:not(:first-child) {
-          display: none;
+          margin-bottom: 14px;
         }
         .docs-content {
           padding: 28px 24px 60px;
@@ -894,12 +916,6 @@
         }
         .f-right {
           text-align: center;
-        }
-        nav .n-search {
-          display: none;
-        }
-        .nav-inner {
-          padding: 0 16px;
         }
       }
     </style>
@@ -924,12 +940,7 @@
         <div class="n-spacer"></div>
         <div class="n-right">
           <a href="index.html" class="n-back">← Back to site</a>
-          <button
-            class="n-install"
-            onclick="window.open('https://chrome.google.com/webstore', '_blank')"
-          >
-            Install Free →
-          </button>
+          <a href="index.html#cta" class="n-install">Install Free →</a>
         </div>
       </div>
     </nav>
@@ -940,7 +951,7 @@
       <aside class="docs-sidebar">
         <div class="sb-section">
           <div class="sb-section-label">Get Started</div>
-          <div class="sb-link active" onclick="showDoc('quickstart')" id="sb-quickstart">
+          <div class="sb-link" onclick="showDoc('quickstart')" id="sb-quickstart">
             <span class="sb-link-icon">⚡</span> Quick Start
             <span class="sb-badge">Start here</span>
           </div>
@@ -981,7 +992,7 @@
             <span class="sb-link-icon">🔍</span> Context Tab
           </div>
           <div class="sb-link" onclick="showDoc('packs')" id="sb-packs">
-            <span class="sb-link-icon">📦</span> Evidence Packs
+            <span class="sb-link-icon">📦</span> Evidence & History
           </div>
         </div>
 
@@ -990,7 +1001,7 @@
         <div class="sb-section">
           <div class="sb-section-label">Output & Export</div>
           <div class="sb-link" onclick="showDoc('export')" id="sb-export">
-            <span class="sb-link-icon">⚡</span> Copy & Paste Output
+            <span class="sb-link-icon">⚡</span> Copy & Export Output
           </div>
           <div class="sb-link" onclick="showDoc('formats')" id="sb-formats">
             <span class="sb-link-icon">📄</span> Export Formats
@@ -1027,8 +1038,8 @@
             <div class="doc-section-tag">Overview</div>
             <h2 class="doc-h2">Documentation<br /><span>pick where to start.</span></h2>
             <p class="doc-intro">
-              All guides in one place. If this is your first time, start with Quick Start. If you
-              know what you need, jump straight to the section.
+              All guides in one place. Start with Quick Start if this is your first time, or jump
+              straight to the section that matches what you are trying to do.
             </p>
           </div>
 
@@ -1080,10 +1091,10 @@
             <div class="doc-cards" style="margin-top: 14px">
               <div class="doc-card" onclick="showDoc('capture')">
                 <div class="dc-icon">📸</div>
-                <div class="dc-title">Screenshots & Full-Page Capture</div>
+                <div class="dc-title">Screenshots, Selected Area & Full-Page Capture</div>
                 <div class="dc-desc">
-                  Standard capture, full-page scrolling for tall pages, and how to handle restricted
-                  pages where capture doesn't work.
+                  Visible capture, selected area crop, and full-page scrolling for tall pages — plus
+                  what to do on restricted pages.
                 </div>
                 <div class="dc-link">Read guide →</div>
               </div>
@@ -1109,7 +1120,7 @@
           </div>
 
           <div class="rv d3" style="margin-top: 12px">
-            <div class="doc-section-tag">Structuring & Sending</div>
+            <div class="doc-section-tag">Structuring Reports</div>
             <div class="doc-cards" style="margin-top: 14px">
               <div class="doc-card" onclick="showDoc('steps')">
                 <div class="dc-icon">📋</div>
@@ -1123,7 +1134,7 @@
               <div class="doc-card" onclick="showDoc('export')">
                 <span class="dc-badge badge-new">Primary</span>
                 <div class="dc-icon">⚡</div>
-                <div class="dc-title">Copy & Paste Output</div>
+                <div class="dc-title">Copy & Export Output</div>
                 <div class="dc-desc">
                   The fastest workflow: capture in the panel, paste into Jira, Slack, email, or
                   anywhere else. Five copy formats explained.
@@ -1201,8 +1212,9 @@
             <div class="article-tag">Get Started</div>
             <h2 class="article-h">Quick Start Guide</h2>
             <p class="article-sub">
-              Zero to your first evidence pack in under 5 minutes. This works whether you're a QA
-              engineer, a PM, or someone trying to prove to Netflix that their app is broken.
+              Zero to your first evidence pack in under 5 minutes. This works whether you are
+              debugging a product issue, documenting a broken flow, or simply trying to capture what
+              happened clearly the first time.
             </p>
           </div>
           <div class="article-body">
@@ -1247,9 +1259,9 @@
                 <div class="a-step-body">
                   <div class="a-step-title">Copy and paste — or export</div>
                   <div class="a-step-desc">
-                    On the <strong>Export tab</strong>, choose your format and hit Copy. Switch to
-                    your Jira ticket, email, or Slack message and paste. Or hit Export for a
-                    downloadable file.
+                    On the <strong>Export tab</strong>, choose whether you want copied output or a
+                    file export. Copy when you want to paste into a ticket or chat. Export when you
+                    need a ZIP, CSV, or HTML file.
                   </div>
                 </div>
               </div>
@@ -1285,11 +1297,11 @@
           <button class="back-to-index" onclick="showIndex()">← All docs</button>
           <div class="article-header">
             <div class="article-tag">Capturing Evidence</div>
-            <h2 class="article-h">Screenshots & Full-Page Capture</h2>
+            <h2 class="article-h">Screenshots, Selected Area & Full-Page Capture</h2>
             <p class="article-sub">
-              Capture any page state instantly. Full-page scrolling stitches tall dashboards
-              automatically. No file management needed — everything goes straight into your evidence
-              pack.
+              Use the screenshot mode that fits the problem: visible viewport, selected area crop,
+              or full-page stitch for tall pages. Everything lands in your evidence list
+              automatically.
             </p>
           </div>
           <div class="article-body">
@@ -1299,6 +1311,19 @@
               anywhere. The screenshot captures the current visible viewport and appears in your
               Evidence list immediately.
             </p>
+            <h3>Selected area capture</h3>
+            <p>
+              When you only need one part of the page, choose <strong>Selected area</strong> from
+              the screenshot menu, then drag to crop the exact region you want. Press
+              <strong>Esc</strong> to cancel if you miss it the first time.
+            </p>
+            <div class="tip-box tip-green">
+              <span class="tip-icon">✓</span>
+              <div>
+                Selected area is the fastest way to skip extra annotation work when only one field,
+                card, or button matters.
+              </div>
+            </div>
             <h3>Full-page capture</h3>
             <p>
               For dashboards, long forms, or any page that scrolls — click
@@ -1356,7 +1381,7 @@
           <button class="back-to-index" onclick="showIndex()">← All docs</button>
           <div class="article-header">
             <div class="article-tag">Output & Export</div>
-            <h2 class="article-h">Copy & Paste Output</h2>
+            <h2 class="article-h">Copy & Export Output</h2>
             <p class="article-sub">
               The primary workflow. The side panel stays open while you work — capture in your app,
               paste into your ticket. No file downloads, no tab management, no friction.
@@ -1522,7 +1547,8 @@
             <h3>What gets exported</h3>
             <p>
               Your steps are included in every output format — plain text, Markdown, CSV, HTML,
-              JSON, and all file exports. They travel with your evidence, wherever you send it.
+              JSON, and all file exports. They stay attached to your evidence wherever you copy or
+              export it.
             </p>
           </div>
           <div class="article-nav">
@@ -1536,7 +1562,7 @@
             <div class="a-nav-btn next" onclick="showDoc('export')">
               <div>
                 <div class="a-nav-label">Next</div>
-                <div class="a-nav-title">Copy & Paste Output</div>
+                <div class="a-nav-title">Copy & Export Output</div>
               </div>
               <div class="a-nav-arrow">→</div>
             </div>
@@ -1550,8 +1576,8 @@
             <div class="article-tag">Reference</div>
             <h2 class="article-h">Privacy & Security</h2>
             <p class="article-sub">
-              Local-first by design. Your data stays on your machine until you choose to send it.
-              Here's exactly what that means, technically.
+              Local-first by design. Your data stays on your machine until you choose to export it
+              or paste it somewhere else. Here's exactly what that means, technically.
             </p>
           </div>
           <div class="article-body">
@@ -1733,6 +1759,7 @@
           </div>
         </div>
 
+        <!-- Additional guides -->
         <div id="view-install" class="doc-article">
           <button class="back-to-index" onclick="showIndex()">← All docs</button>
           <div class="article-header">
@@ -1946,7 +1973,7 @@
             <h2 class="article-h">Permissions Explained</h2>
             <p class="article-sub">
               TraceBrief is built on least-privilege. We request only what's needed, and nothing
-              leaves your machine unless you send it.
+              leaves your machine unless you export it or paste it somewhere else.
             </p>
           </div>
           <div class="article-body">
@@ -2324,14 +2351,20 @@
           <button class="back-to-index" onclick="showIndex()">← All docs</button>
           <div class="article-header">
             <div class="article-tag">Structuring Reports</div>
-            <h2 class="article-h">Evidence Packs</h2>
+            <h2 class="article-h">Evidence & History</h2>
             <p class="article-sub">
-              An Evidence Pack is the complete, shareable record of what happened — screenshots or
-              recordings, reproduction steps, context, all in one place.
+              The evidence section is where captures stay organized. Rename items, remove noise,
+              select what matters, and reopen older packs later from History.
             </p>
           </div>
           <div class="article-body">
-            <h3>What's in a pack</h3>
+            <h3>What this section does</h3>
+            <p>
+              Your evidence list is the working area for everything you captured in the current
+              pack. It is where you review assets, clean up duplicates, and decide what should be
+              included before export.
+            </p>
+            <h3>What stays in a pack</h3>
             <p>An Evidence Pack bundles together:</p>
             <div class="article-steps">
               <div class="a-step">
@@ -2379,16 +2412,23 @@
             </p>
             <h3>History</h3>
             <p>
-              Past packs are saved in the History tab. Useful when a bug resurfaces in a future
-              sprint and you need to pull up the original evidence without reproducing from scratch.
+              Past packs are saved in the History tab. Open them when a bug resurfaces later and you
+              need the original evidence without reproducing everything from scratch.
             </p>
+            <div class="tip-box tip-yellow">
+              <span class="tip-icon">💡</span>
+              <div>
+                Rename packs and evidence items early. History is much more useful when it says what
+                happened instead of "Screenshot 4".
+              </div>
+            </div>
           </div>
           <div class="article-nav">
             <div></div>
             <div class="a-nav-btn next" onclick="showDoc('export')">
               <div>
                 <div class="a-nav-label">Next</div>
-                <div class="a-nav-title">Copy & Paste Output</div>
+                <div class="a-nav-title">Copy & Export Output</div>
               </div>
               <div class="a-nav-arrow">→</div>
             </div>
@@ -2461,7 +2501,7 @@
               <div class="a-nav-arrow">←</div>
               <div>
                 <div class="a-nav-label">Previous</div>
-                <div class="a-nav-title">Copy & Paste Output</div>
+                <div class="a-nav-title">Copy & Export Output</div>
               </div>
             </div>
             <div class="a-nav-btn next" onclick="showDoc('destinations')">
@@ -2479,16 +2519,16 @@
             <div class="article-tag">Output & Export</div>
             <h2 class="article-h">Jira, GitHub & More</h2>
             <p class="article-sub">
-              TraceBrief outputs to open formats so it works with anything. Here's exactly how to
-              get your evidence pack into the tools your team uses.
+              TraceBrief uses open formats, so you can move the output into the tools your team
+              already use without building your workflow around an integration.
             </p>
           </div>
           <div class="article-body">
             <h3>Jira</h3>
             <p>
-              <strong>Best approach:</strong> paste <em>Markdown</em> directly into the description
-              field (Jira supports Markdown). Attach the ZIP as a file attachment for the
-              screenshots. Or paste <em>CSV</em> if you just want the steps in a text block.
+              <strong>Best approach:</strong> paste the format that reads best in your Jira setup —
+              usually <em>Plain Text</em> or <em>Markdown</em> for the description, plus a ZIP
+              attachment if you want the full evidence pack.
             </p>
             <h3>GitHub Issues</h3>
             <p>
@@ -2504,9 +2544,9 @@
             </p>
             <h3>Slack</h3>
             <p>
-              <strong>Best approach:</strong> paste <em>Plain Text</em> or <em>Markdown</em> into
-              the message. Attach the ZIP or individual screenshots as file attachments. Slack
-              renders Markdown formatting in messages.
+              <strong>Best approach:</strong> paste <em>Plain Text</em> for the most predictable
+              result, or use <em>Markdown</em> if your workspace formatting supports it the way you
+              want. Attach the ZIP or individual screenshots when needed.
             </p>
             <h3>Email</h3>
             <p>
@@ -2523,8 +2563,8 @@
             <div class="tip-box tip-green">
               <span class="tip-icon">✓</span>
               <div>
-                TraceBrief doesn't do fragile API integrations. Copy → paste → done. It works with
-                anything that accepts text or file attachments — which is everything.
+                TraceBrief avoids fragile API integrations. Copy or export the format you need, then
+                drop it into the tool your team already uses.
               </div>
             </div>
           </div>
@@ -2718,9 +2758,14 @@
         <div class="f-links">
           <a href="index.html">← Back to site</a>
           <a href="index.html#faq">FAQ</a>
-          <a href="#">Chrome Store</a>
-          <a href="https://github.com/akshayg676" target="_blank" rel="noopener noreferrer"
-            >GitHub</a
+          <a href="index.html#cta">Install</a>
+          <a
+            href="#"
+            onclick="
+              showIndex();
+              return false;
+            "
+            >All docs</a
           >
         </div>
         <div class="f-right">Documentation · v1.0<br />Chrome MV3 Extension</div>
@@ -2770,38 +2815,53 @@
       }
 
       // default view
-      showDoc('quickstart');
+      showIndex();
 
       // search filter
       function filterDocs(query) {
-        if (!query) {
-          showDoc(currentDoc || 'quickstart');
+        const q = query.trim().toLowerCase();
+        if (!q) {
+          showIndex();
           return;
         }
-        const q = query.toLowerCase();
+
         const docs = {
-          quickstart: 'quick start install first pack',
-          install: 'install chrome load unpacked developer mode',
-          panel: 'side panel tabs open',
-          permissions: 'permissions storage tabs capture',
-          capture: 'screenshot full page capture',
-          recording: 'recording screen record video',
-          annotate: 'annotate annotation arrow label',
-          steps: 'steps expected actual reproduce',
-          context: 'context url browser os timestamp',
-          packs: 'packs evidence history',
-          export: 'copy paste output format markdown',
-          formats: 'zip csv html export file',
-          destinations: 'jira github linear slack email',
-          privacy: 'privacy security local sandboxed',
-          troubleshoot: 'troubleshoot bug fix error stuck',
-          bestpractices: 'best practices tips',
-          glossary: 'glossary terms definitions',
+          quickstart: 'quick start first pack getting started evidence report',
+          install: 'install chrome web store load unpacked developer mode pin toolbar',
+          panel: 'side panel tabs open navigation layout section',
+          permissions:
+            'permissions storage active tab tabs sidepanel side panel host access security',
+          capture: 'screenshot visible selected area crop full page capture',
+          recording: 'recording screen record video audio mic system tabcapture',
+          annotate: 'annotate annotation editor arrow label highlight tall screenshot',
+          steps: 'steps expected actual reproduce step logger report',
+          context: 'context url browser os timestamp viewport environment',
+          packs: 'evidence list history packs rename delete preview select saved',
+          export: 'copy export output plain text markdown html json paste',
+          formats: 'zip csv html gallery export file attachment',
+          destinations: 'jira github linear slack email notion confluence',
+          privacy: 'privacy security local first sandboxed export safe',
+          troubleshoot: 'troubleshoot troubleshooting bug fix error capture stuck failed',
+          bestpractices: 'best practices tips naming signal report',
+          glossary: 'glossary terms definitions evidence item pack',
         };
+
+        const tokens = q.split(/\s+/).filter(Boolean);
         let best = null;
+        let bestScore = 0;
+
         Object.entries(docs).forEach(([id, keywords]) => {
-          if (keywords.includes(q) || id.includes(q)) best = id;
+          const haystack = `${id} ${keywords}`;
+          let score = 0;
+          tokens.forEach((token) => {
+            if (haystack.includes(token)) score += token.length;
+          });
+          if (score > bestScore) {
+            bestScore = score;
+            best = id;
+          }
         });
+
         if (best) showDoc(best);
       }
 
