@@ -18,9 +18,13 @@
       href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap"
       rel="stylesheet"
       media="print"
-      onload="this.media='all'"
+      onload="this.media = 'all'"
     />
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/></noscript>
+    <noscript
+      ><link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet"
+    /></noscript>
     <style>
       /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    TOKENS
@@ -51,9 +55,9 @@
 
         --r: 8px;
         --rl: 12px;
-        --font-body: "Geist", system-ui, sans-serif;
-        --font-head: "Syne", sans-serif;
-        --font-mono: "JetBrains Mono", monospace;
+        --font-body: 'Geist', system-ui, sans-serif;
+        --font-head: 'Syne', sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
         --page-max: 1280px;
       }
 
@@ -79,7 +83,10 @@
         overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+        font-feature-settings:
+          'kern' 1,
+          'liga' 1,
+          'calt' 1;
         text-rendering: optimizeLegibility;
       }
       a {
@@ -112,7 +119,7 @@
 
       /* noise */
       body::before {
-        content: "";
+        content: '';
         position: fixed;
         inset: 0;
         z-index: 0;
@@ -279,7 +286,7 @@
 
       /* crt */
       body::after {
-        content: "";
+        content: '';
         position: fixed;
         top: 0;
         left: 0;
@@ -287,12 +294,7 @@
         height: 2px;
         z-index: 9998;
         pointer-events: none;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(0, 229, 188, 0.055),
-          transparent
-        );
+        background: linear-gradient(90deg, transparent, rgba(0, 229, 188, 0.055), transparent);
         animation: scanline 8s linear infinite;
       }
 
@@ -311,19 +313,13 @@
         align-items: center;
       }
       nav::after {
-        content: "";
+        content: '';
         position: absolute;
         bottom: 0;
         left: 0;
         right: 0;
         height: 1px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          var(--red),
-          var(--teal),
-          transparent
-        );
+        background: linear-gradient(90deg, transparent, var(--red), var(--teal), transparent);
         opacity: 0.45;
       }
       .n-logo {
@@ -446,21 +442,9 @@
         inset: 0;
         pointer-events: none;
         background:
-          radial-gradient(
-            ellipse 70% 55% at 50% 45%,
-            rgba(26, 108, 255, 0.08) 0%,
-            transparent 60%
-          ),
-          radial-gradient(
-            ellipse 40% 35% at 20% 75%,
-            rgba(255, 34, 71, 0.07) 0%,
-            transparent 55%
-          ),
-          radial-gradient(
-            ellipse 40% 35% at 80% 25%,
-            rgba(0, 229, 188, 0.06) 0%,
-            transparent 55%
-          );
+          radial-gradient(ellipse 70% 55% at 50% 45%, rgba(26, 108, 255, 0.08) 0%, transparent 60%),
+          radial-gradient(ellipse 40% 35% at 20% 75%, rgba(255, 34, 71, 0.07) 0%, transparent 55%),
+          radial-gradient(ellipse 40% 35% at 80% 25%, rgba(0, 229, 188, 0.06) 0%, transparent 55%);
         animation: ambient 7s ease-in-out infinite;
       }
       /* vertical tickers */
@@ -544,7 +528,9 @@
         position: relative;
       }
       .h1-l1 {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         color: var(--t1);
       }
       .h1-l2 {
@@ -790,7 +776,7 @@
       }
       .ticker-wrap::before,
       .ticker-wrap::after {
-        content: "";
+        content: '';
         position: absolute;
         top: 0;
         bottom: 0;
@@ -865,7 +851,7 @@
         gap: 8px;
       }
       .sec-tag::before {
-        content: "//";
+        content: '//';
         opacity: 0.5;
       }
       .sec-h2 {
@@ -902,8 +888,12 @@
       /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    WHO IT'S FOR — indexed list
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-      .who-sec { background: var(--bg2); }
-      .who-sec .sec { background: var(--bg2); }
+      .who-sec {
+        background: var(--bg2);
+      }
+      .who-sec .sec {
+        background: var(--bg2);
+      }
 
       .who-list {
         display: flex;
@@ -922,18 +912,27 @@
         position: relative;
         cursor: default;
       }
-      .who-item:last-child { border-bottom: none; }
-      .who-item:hover { background: rgba(255,255,255,0.025); }
+      .who-item:last-child {
+        border-bottom: none;
+      }
+      .who-item:hover {
+        background: rgba(255, 255, 255, 0.025);
+      }
       .who-item::after {
         content: '';
         position: absolute;
-        left: 0; top: 0; bottom: 0; width: 2px;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
         background: var(--teal);
         transform: scaleY(0);
         transform-origin: center;
-        transition: transform 0.22s cubic-bezier(.4,0,.2,1);
+        transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
       }
-      .who-item:hover::after { transform: scaleY(1); }
+      .who-item:hover::after {
+        transform: scaleY(1);
+      }
 
       .who-num {
         display: flex;
@@ -956,25 +955,36 @@
         border-right: 1px solid var(--b0);
       }
       .who-icon-box {
-        width: 32px; height: 32px;
+        width: 32px;
+        height: 32px;
         border-radius: 8px;
         border: 1px solid var(--b0);
         background: var(--surface);
-        display: flex; align-items: center; justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         flex-shrink: 0;
-        transition: background 0.2s, border-color 0.2s;
+        transition:
+          background 0.2s,
+          border-color 0.2s;
       }
       .who-icon-box svg {
-        width: 15px; height: 15px;
-        fill: none; stroke: var(--t3);
-        stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
+        width: 15px;
+        height: 15px;
+        fill: none;
+        stroke: var(--t3);
+        stroke-width: 1.7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
         transition: stroke 0.2s;
       }
       .who-item:hover .who-icon-box {
-        background: rgba(0,229,188,0.07);
-        border-color: rgba(0,229,188,0.25);
+        background: rgba(0, 229, 188, 0.07);
+        border-color: rgba(0, 229, 188, 0.25);
       }
-      .who-item:hover .who-icon-box svg { stroke: var(--teal); }
+      .who-item:hover .who-icon-box svg {
+        stroke: var(--teal);
+      }
       .who-role {
         font-family: var(--font-head);
         font-weight: 700;
@@ -998,7 +1008,9 @@
         line-height: 1.6;
         transition: color 0.2s;
       }
-      .who-item:hover .who-quote-col { color: rgba(0,229,188,0.55); }
+      .who-item:hover .who-quote-col {
+        color: rgba(0, 229, 188, 0.55);
+      }
 
       /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    PROBLEM
@@ -1018,7 +1030,7 @@
         transition: background 0.3s;
       }
       .prob-card::before {
-        content: "";
+        content: '';
         position: absolute;
         top: 0;
         left: 0;
@@ -1100,7 +1112,7 @@
         transform: translateY(-4px);
       }
       .how-card:not(:last-child)::after {
-        content: "→";
+        content: '→';
         position: absolute;
         top: 30px;
         right: -11px;
@@ -1252,7 +1264,8 @@
         gap: 10px;
       }
       /* layout: row1: wide(4) + tall(2), row2: small(2)+small(2)+wide(2) */
-      .bc { /* bento cell */
+      .bc {
+        /* bento cell */
         background: var(--bg2);
         border: 1px solid var(--b0);
         border-radius: 14px;
@@ -1262,59 +1275,93 @@
         gap: 14px;
         position: relative;
         overflow: hidden;
-        transition: border-color 0.22s, transform 0.22s;
+        transition:
+          border-color 0.22s,
+          transform 0.22s;
       }
       .bc:hover {
-        border-color: rgba(0,229,188,0.2);
+        border-color: rgba(0, 229, 188, 0.2);
         transform: translateY(-2px);
       }
-      .bc::before { /* top edge glow on hover */
+      .bc::before {
+        /* top edge glow on hover */
         content: '';
         position: absolute;
-        top: 0; left: 10%; right: 10%; height: 1px;
+        top: 0;
+        left: 10%;
+        right: 10%;
+        height: 1px;
         background: linear-gradient(90deg, transparent, var(--teal), transparent);
         opacity: 0;
         transition: opacity 0.3s;
       }
-      .bc:hover::before { opacity: 0.5; }
-      .bc::after { /* ambient on hover */
+      .bc:hover::before {
+        opacity: 0.5;
+      }
+      .bc::after {
+        /* ambient on hover */
         content: '';
         position: absolute;
         inset: 0;
-        background: radial-gradient(circle at 25% 25%, rgba(0,229,188,0.04), transparent 55%);
+        background: radial-gradient(circle at 25% 25%, rgba(0, 229, 188, 0.04), transparent 55%);
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.35s;
       }
-      .bc:hover::after { opacity: 1; }
+      .bc:hover::after {
+        opacity: 1;
+      }
 
       /* span helpers */
-      .bc-c2 { grid-column: span 2; }
-      .bc-c3 { grid-column: span 3; }
-      .bc-c4 { grid-column: span 4; }
+      .bc-c2 {
+        grid-column: span 2;
+      }
+      .bc-c3 {
+        grid-column: span 3;
+      }
+      .bc-c4 {
+        grid-column: span 4;
+      }
 
       /* Icon */
       .bc-icon {
-        width: 38px; height: 38px;
+        width: 38px;
+        height: 38px;
         border-radius: 9px;
         border: 1px solid var(--b0);
         background: var(--bg3);
-        display: flex; align-items: center; justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         flex-shrink: 0;
-        transition: background 0.2s, border-color 0.2s;
+        transition:
+          background 0.2s,
+          border-color 0.2s;
       }
       .bc-icon svg {
-        width: 17px; height: 17px;
+        width: 17px;
+        height: 17px;
         fill: none;
         stroke-width: 1.75;
         stroke-linecap: round;
         stroke-linejoin: round;
       }
-      .ic-teal svg  { stroke: var(--teal); }
-      .ic-red  svg  { stroke: var(--red);  }
-      .ic-amber svg { stroke: var(--yellow); }
-      .ic-blue svg  { stroke: #6ea8fe; }
-      .bc:hover .bc-icon { background: rgba(0,229,188,0.07); border-color: rgba(0,229,188,0.22); }
+      .ic-teal svg {
+        stroke: var(--teal);
+      }
+      .ic-red svg {
+        stroke: var(--red);
+      }
+      .ic-amber svg {
+        stroke: var(--yellow);
+      }
+      .ic-blue svg {
+        stroke: #6ea8fe;
+      }
+      .bc:hover .bc-icon {
+        background: rgba(0, 229, 188, 0.07);
+        border-color: rgba(0, 229, 188, 0.22);
+      }
 
       /* Text */
       .bc-title {
@@ -1332,7 +1379,9 @@
         flex: 1;
       }
       .bc-pill {
-        display: inline-flex; align-items: center; gap: 5px;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
         margin-top: auto;
         font-family: var(--font-mono);
         font-size: 0.58rem;
@@ -1344,9 +1393,14 @@
         border-radius: 5px;
         background: var(--surface);
         width: fit-content;
-        transition: color 0.2s, border-color 0.2s;
+        transition:
+          color 0.2s,
+          border-color 0.2s;
       }
-      .bc:hover .bc-pill { color: var(--teal); border-color: rgba(0,229,188,0.18); }
+      .bc:hover .bc-pill {
+        color: var(--teal);
+        border-color: rgba(0, 229, 188, 0.18);
+      }
 
       /* Wide cell gets a horizontal layout */
       .bc-wide {
@@ -1354,28 +1408,48 @@
         align-items: flex-start;
         gap: 22px;
       }
-      .bc-wide .bc-body { flex: 1; display: flex; flex-direction: column; gap: 14px; }
+      .bc-wide .bc-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
       .bc-art {
-        width: 80px; height: 80px; flex-shrink: 0;
+        width: 80px;
+        height: 80px;
+        flex-shrink: 0;
         border-radius: 12px;
         background: var(--bg3);
         border: 1px solid var(--b0);
-        display: flex; align-items: center; justify-content: center;
-        position: relative; overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
       }
-      .bc-art svg { width: 28px; height: 28px; stroke: var(--teal); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; opacity: 0.4; }
-      .bc-art::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 60% 40%, rgba(0,229,188,0.14), transparent 65%); }
+      .bc-art svg {
+        width: 28px;
+        height: 28px;
+        stroke: var(--teal);
+        fill: none;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        opacity: 0.4;
+      }
+      .bc-art::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 60% 40%, rgba(0, 229, 188, 0.14), transparent 65%);
+      }
 
       /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    WHY TRACEBRIEF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
       .why-sec {
         background:
-          radial-gradient(
-            ellipse 65% 50% at 50% 50%,
-            rgba(255, 34, 71, 0.04) 0%,
-            transparent 65%
-          ),
+          radial-gradient(ellipse 65% 50% at 50% 50%, rgba(255, 34, 71, 0.04) 0%, transparent 65%),
           var(--bg2);
       }
       .compare {
@@ -1405,13 +1479,13 @@
         color: rgba(255, 34, 71, 0.6);
       }
       .ch-b::before {
-        content: "✗  ";
+        content: '✗  ';
       }
       .ch-a {
         color: var(--teal);
       }
       .ch-a::before {
-        content: "✓  ";
+        content: '✓  ';
       }
       .cmp-item {
         display: flex;
@@ -1609,18 +1683,14 @@
         padding: 120px 64px;
         text-align: center;
         background:
-          radial-gradient(
-            ellipse 80% 60% at 50% 50%,
-            rgba(255, 34, 71, 0.06) 0%,
-            transparent 65%
-          ),
+          radial-gradient(ellipse 80% 60% at 50% 50%, rgba(255, 34, 71, 0.06) 0%, transparent 65%),
           var(--bg);
         border-top: 2px solid var(--b-red);
         position: relative;
         overflow: hidden;
       }
       .cta-sec::before {
-        content: "";
+        content: '';
         position: absolute;
         inset: 0;
         pointer-events: none;
@@ -1649,7 +1719,7 @@
         margin-bottom: 20px;
       }
       .cta-tag::before {
-        content: "// ";
+        content: '// ';
       }
       .cta-h {
         font-family: var(--font-head);
@@ -1891,7 +1961,7 @@
         z-index: 1;
       }
       .story-dot::after {
-        content: "";
+        content: '';
         position: absolute;
         top: 10px;
         left: 4px;
@@ -2072,15 +2142,36 @@
         .sec {
           padding: 64px 24px;
         }
-        .who-list { border-radius: 10px; }
-        .who-item { grid-template-columns: 48px 1fr; }
-        .who-scenario { display: none; }
-        .who-quote-col { display: none; }
-        .who-role-col { border-right: none; }
-        .bento { grid-template-columns: 1fr 1fr; }
-        .bc-c2, .bc-c3, .bc-c4 { grid-column: span 2; }
-        .bc-wide { flex-direction: column; }
-        .bc-art { width: 56px; height: 56px; }
+        .who-list {
+          border-radius: 10px;
+        }
+        .who-item {
+          grid-template-columns: 48px 1fr;
+        }
+        .who-scenario {
+          display: none;
+        }
+        .who-quote-col {
+          display: none;
+        }
+        .who-role-col {
+          border-right: none;
+        }
+        .bento {
+          grid-template-columns: 1fr 1fr;
+        }
+        .bc-c2,
+        .bc-c3,
+        .bc-c4 {
+          grid-column: span 2;
+        }
+        .bc-wide {
+          flex-direction: column;
+        }
+        .bc-art {
+          width: 56px;
+          height: 56px;
+        }
         .prob-grid,
         .testi-grid {
           grid-template-columns: 1fr;
@@ -2133,9 +2224,17 @@
         }
       }
       @media (max-width: 600px) {
-        .bento { grid-template-columns: 1fr; }
-        .bc-c2, .bc-c3, .bc-c4 { grid-column: span 1; }
-        .how-steps { grid-template-columns: 1fr; }
+        .bento {
+          grid-template-columns: 1fr;
+        }
+        .bc-c2,
+        .bc-c3,
+        .bc-c4 {
+          grid-column: span 1;
+        }
+        .how-steps {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
@@ -2143,20 +2242,18 @@
     <!-- ██ NAV ████████████████████████████████████████████████ -->
     <nav>
       <div class="nav-inner">
-      <div class="n-logo">TraceBrief <span class="n-logo-k">バグ</span></div>
-      <div class="n-links">
-        <a href="#who">Who It's For</a>
-        <a href="#how">How It Works</a>
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
-        <a href="docs.html">Docs</a>
-        <a href="#faq">FAQ</a>
-      </div>
-      <div class="n-right">
-        <button class="n-install" onclick="installClick()">
-          Install Free →
-        </button>
-      </div>
+        <div class="n-logo">TraceBrief <span class="n-logo-k">バグ</span></div>
+        <div class="n-links">
+          <a href="#who">Who It's For</a>
+          <a href="#how">How It Works</a>
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="docs.html">Docs</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div class="n-right">
+          <button class="n-install" onclick="installClick()">Install Free →</button>
+        </div>
       </div>
     </nav>
 
@@ -2166,26 +2263,24 @@
       <div class="hero-glow"></div>
       <div class="vtick l">
         <div class="vtick-inner">
-          <span>スクリーン</span><span>レコード</span><span>証拠</span
-          ><span>バグ</span><span>注釈</span><span>送信</span>
-          <span>スクリーン</span><span>レコード</span><span>証拠</span
-          ><span>バグ</span><span>注釈</span><span>送信</span>
+          <span>スクリーン</span><span>レコード</span><span>証拠</span><span>バグ</span
+          ><span>注釈</span><span>送信</span> <span>スクリーン</span><span>レコード</span
+          ><span>証拠</span><span>バグ</span><span>注釈</span><span>送信</span>
         </div>
       </div>
       <div class="vtick r">
         <div class="vtick-inner" style="animation-delay: -11s">
-          <span>CAPTURE</span><span>PROOF</span><span>SEND</span
-          ><span>DONE</span><span>RECORD</span><span>CLOSE</span>
-          <span>CAPTURE</span><span>PROOF</span><span>SEND</span
+          <span>CAPTURE</span><span>PROOF</span><span>SEND</span><span>DONE</span><span>RECORD</span
+          ><span>CLOSE</span> <span>CAPTURE</span><span>PROOF</span><span>SEND</span
           ><span>DONE</span><span>RECORD</span><span>CLOSE</span>
         </div>
       </div>
 
       <div class="hero-inner">
         <div class="hero-eyebrow rv">
-          <span class="eyebrow-dot"></span>
-          Free Chrome Extension &nbsp;·&nbsp; No Account &nbsp;·&nbsp; No Server
-          &nbsp;·&nbsp; Just Works
+          <!-- <span class="eyebrow-dot"></span> -->
+          Free Browser Extension &nbsp;·&nbsp; No Account &nbsp;·&nbsp; No Server &nbsp;·&nbsp; Just
+          Works
         </div>
 
         <h1 class="hero-h1 rv d1">
@@ -2196,10 +2291,9 @@
 
         <p class="hero-sub rv d2">
           TraceBrief captures
-          <strong>screenshots, recordings, and reproduction steps</strong> —
-          then formats everything so you can paste it straight into a ticket, an
-          email, or a support chat. No "can't reproduce." No follow-up
-          questions. No exported file required.
+          <strong>screenshots, recordings, and reproduction steps</strong> — then formats everything
+          so you can paste it straight into a ticket, an email, or a support chat. No "can't
+          reproduce." No follow-up questions. No exported file required.
         </p>
 
         <!-- Who it's for — quick pills -->
@@ -2237,17 +2331,26 @@
 
         <div class="hero-ctas rv d4">
           <button class="btn-primary" id="btn-install" onclick="installClick()">
-            <svg id="install-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <svg
+              id="install-icon"
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
             <span id="install-label">Install — It's Free</span>
           </button>
           <div class="store-badges">
             <!-- Firefox -->
-            <a
-              href="#"
-              class="browser-icon-btn"
-              id="link-firefox"
-              title="Install on Firefox"
-            >
+            <a href="#" class="browser-icon-btn" id="link-firefox" title="Install on Firefox">
               <svg
                 width="22"
                 height="22"
@@ -2276,12 +2379,7 @@
               </svg>
             </a>
             <!-- Edge -->
-            <a
-              href="#"
-              class="browser-icon-btn"
-              id="link-edge"
-              title="Install on Edge"
-            >
+            <a href="#" class="browser-icon-btn" id="link-edge" title="Install on Edge">
               <svg
                 width="22"
                 height="22"
@@ -2313,18 +2411,11 @@
                   fill="white"
                   opacity=".25"
                 />
-                <ellipse
-                  cx="32"
-                  cy="38"
-                  rx="18"
-                  ry="8"
-                  fill="white"
-                  opacity=".15"
-                />
+                <ellipse cx="32" cy="38" rx="18" ry="8" fill="white" opacity=".15" />
               </svg>
             </a>
             <!-- Safari -->
-            <a
+            <!-- <a
               href="#"
               class="browser-icon-btn"
               id="link-safari"
@@ -2399,7 +2490,7 @@
                   opacity=".5"
                 />
               </svg>
-            </a>
+            </a> -->
           </div>
         </div>
       </div>
@@ -2469,131 +2560,175 @@
 
     <!-- ██ WHO IT'S FOR ████████████████████████████████████████ -->
     <div class="sec-outer who-sec">
-    <section class="sec" id="who">
-      <div class="sec-tag rv">01 · Who It's For</div>
-      <h2 class="sec-h2 rv d1">
-        If it happened on your screen<br />and you need to
-        <span class="t">prove it</span> — this is for you.
-      </h2>
-      <p class="sec-sub rv d2">
-        TraceBrief started as a QA tool. Then PMs started using it. Then support
-        agents. Then someone used it to report a Netflix billing issue to
-        customer service. Turns out "capture what broke and send it clearly" is
-        a universal problem.
-      </p>
+      <section class="sec" id="who">
+        <div class="sec-tag rv">01 · Who It's For</div>
+        <h2 class="sec-h2 rv d1">
+          If it happened on your screen<br />and you need to <span class="t">prove it</span> — this
+          is for you.
+        </h2>
+        <p class="sec-sub rv d2">
+          TraceBrief started as a QA tool. Then PMs started using it. Then support agents. Then
+          someone used it to report a Netflix billing issue to customer service. Turns out "capture
+          what broke and send it clearly" is a universal problem.
+        </p>
 
-      <div class="who-list rv">
-
-        <div class="who-item d1">
-          <div class="who-num">01</div>
-          <div class="who-role-col">
-            <div class="who-icon-box">
-              <svg viewBox="0 0 24 24"><path d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/></svg>
+        <div class="who-list rv">
+          <div class="who-item d1">
+            <div class="who-num">01</div>
+            <div class="who-role-col">
+              <div class="who-icon-box">
+                <svg viewBox="0 0 24 24">
+                  <path d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" />
+                </svg>
+              </div>
+              <span class="who-role">QA Engineers</span>
             </div>
-            <span class="who-role">QA Engineers</span>
-          </div>
-          <div class="who-scenario">Capture the bug live. Steps → Expected → Actual. Annotate the exact failure point. Paste directly into Jira — one round, one fix.</div>
-          <div class="who-quote-col">"Finally. A ticket that gets fixed first try."</div>
-        </div>
-
-        <div class="who-item d2">
-          <div class="who-num">02</div>
-          <div class="who-role-col">
-            <div class="who-icon-box">
-              <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            <div class="who-scenario">
+              Capture the bug live. Steps → Expected → Actual. Annotate the exact failure point.
+              Paste directly into Jira — one round, one fix.
             </div>
-            <span class="who-role">Developers</span>
+            <div class="who-quote-col">"Finally. A ticket that gets fixed first try."</div>
           </div>
-          <div class="who-scenario">Got a confusing report? Reproduce it, capture everything, send evidence back. No more "I can't reproduce it" ping-pong.</div>
-          <div class="who-quote-col">"I sent the evidence pack. Fixed in 20 minutes."</div>
-        </div>
 
-        <div class="who-item d3">
-          <div class="who-num">03</div>
-          <div class="who-role-col">
-            <div class="who-icon-box">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <div class="who-item d2">
+            <div class="who-num">02</div>
+            <div class="who-role-col">
+              <div class="who-icon-box">
+                <svg viewBox="0 0 24 24">
+                  <polyline points="16 18 22 12 16 6" />
+                  <polyline points="8 6 2 12 8 18" />
+                </svg>
+              </div>
+              <span class="who-role">Developers</span>
             </div>
-            <span class="who-role">Product Managers</span>
-          </div>
-          <div class="who-scenario">Document UX regressions, broken acceptance criteria, and stakeholder-facing bugs with clean structured packs.</div>
-          <div class="who-quote-col">"The PM tool I didn't know I needed."</div>
-        </div>
-
-        <div class="who-item d4">
-          <div class="who-num">04</div>
-          <div class="who-role-col">
-            <div class="who-icon-box">
-              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <div class="who-scenario">
+              Got a confusing report? Reproduce it, capture everything, send evidence back. No more
+              "I can't reproduce it" ping-pong.
             </div>
-            <span class="who-role">Support Agents</span>
+            <div class="who-quote-col">"I sent the evidence pack. Fixed in 20 minutes."</div>
           </div>
-          <div class="who-scenario">Document what you're seeing in a user's account. Context that helps devs act on the first read — not the fifth reply.</div>
-          <div class="who-quote-col">"Resolved tickets 3× faster with evidence packs."</div>
-        </div>
 
-        <div class="who-item d1">
-          <div class="who-num">05</div>
-          <div class="who-role-col">
-            <div class="who-icon-box">
-              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <div class="who-item d3">
+            <div class="who-num">03</div>
+            <div class="who-role-col">
+              <div class="who-icon-box">
+                <svg viewBox="0 0 24 24">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <path d="M3 9h18M9 21V9" />
+                </svg>
+              </div>
+              <span class="who-role">Product Managers</span>
             </div>
-            <span class="who-role">HR &amp; Ops</span>
-          </div>
-          <div class="who-scenario">Broken HRIS form? Payroll portal acting up? Send IT a clear report with steps instead of a vague Slack message.</div>
-          <div class="who-quote-col">"IT actually understood the problem."</div>
-        </div>
-
-        <div class="who-item d2">
-          <div class="who-num">06</div>
-          <div class="who-role-col">
-            <div class="who-icon-box">
-              <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <div class="who-scenario">
+              Document UX regressions, broken acceptance criteria, and stakeholder-facing bugs with
+              clean structured packs.
             </div>
-            <span class="who-role">Finance &amp; Accounting</span>
+            <div class="who-quote-col">"The PM tool I didn't know I needed."</div>
           </div>
-          <div class="who-scenario">Invoice not loading. Payment form erroring. Send your vendor evidence that gets a same-day fix instead of a ticket queue number.</div>
-          <div class="who-quote-col">"The vendor fixed it in hours, not weeks."</div>
-        </div>
 
-        <div class="who-item d3">
-          <div class="who-num">07</div>
-          <div class="who-role-col">
-            <div class="who-icon-box">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          <div class="who-item d4">
+            <div class="who-num">04</div>
+            <div class="who-role-col">
+              <div class="who-icon-box">
+                <svg viewBox="0 0 24 24">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
+              </div>
+              <span class="who-role">Support Agents</span>
             </div>
-            <span class="who-role">Regular Users</span>
-          </div>
-          <div class="who-scenario">Netflix won't load. Bank app shows wrong balance. Capture it, structure it, send proof — instead of typing an explanation nobody reads.</div>
-          <div class="who-quote-col">"Support believed me with the recording."</div>
-        </div>
-
-        <div class="who-item d4">
-          <div class="who-num">08</div>
-          <div class="who-role-col">
-            <div class="who-icon-box">
-              <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            <div class="who-scenario">
+              Document what you're seeing in a user's account. Context that helps devs act on the
+              first read — not the fifth reply.
             </div>
-            <span class="who-role">Educators &amp; Students</span>
+            <div class="who-quote-col">"Resolved tickets 3× faster with evidence packs."</div>
           </div>
-          <div class="who-scenario">LMS broken, assignment won't submit. Document it clearly so IT can help fast — and prove you actually tried before the deadline.</div>
-          <div class="who-quote-col">"Proved the system broke. Got my extension."</div>
-        </div>
 
-      </div>
-    </section>
-    </div><!-- /sec-outer who-sec -->
+          <div class="who-item d1">
+            <div class="who-num">05</div>
+            <div class="who-role-col">
+              <div class="who-icon-box">
+                <svg viewBox="0 0 24 24">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <span class="who-role">HR &amp; Ops</span>
+            </div>
+            <div class="who-scenario">
+              Broken HRIS form? Payroll portal acting up? Send IT a clear report with steps instead
+              of a vague Slack message.
+            </div>
+            <div class="who-quote-col">"IT actually understood the problem."</div>
+          </div>
+
+          <div class="who-item d2">
+            <div class="who-num">06</div>
+            <div class="who-role-col">
+              <div class="who-icon-box">
+                <svg viewBox="0 0 24 24">
+                  <line x1="12" y1="1" x2="12" y2="23" />
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                </svg>
+              </div>
+              <span class="who-role">Finance &amp; Accounting</span>
+            </div>
+            <div class="who-scenario">
+              Invoice not loading. Payment form erroring. Send your vendor evidence that gets a
+              same-day fix instead of a ticket queue number.
+            </div>
+            <div class="who-quote-col">"The vendor fixed it in hours, not weeks."</div>
+          </div>
+
+          <div class="who-item d3">
+            <div class="who-num">07</div>
+            <div class="who-role-col">
+              <div class="who-icon-box">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 8v4M12 16h.01" />
+                </svg>
+              </div>
+              <span class="who-role">Regular Users</span>
+            </div>
+            <div class="who-scenario">
+              Netflix won't load. Bank app shows wrong balance. Capture it, structure it, send proof
+              — instead of typing an explanation nobody reads.
+            </div>
+            <div class="who-quote-col">"Support believed me with the recording."</div>
+          </div>
+
+          <div class="who-item d4">
+            <div class="who-num">08</div>
+            <div class="who-role-col">
+              <div class="who-icon-box">
+                <svg viewBox="0 0 24 24">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                  <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                </svg>
+              </div>
+              <span class="who-role">Educators &amp; Students</span>
+            </div>
+            <div class="who-scenario">
+              LMS broken, assignment won't submit. Document it clearly so IT can help fast — and
+              prove you actually tried before the deadline.
+            </div>
+            <div class="who-quote-col">"Proved the system broke. Got my extension."</div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- /sec-outer who-sec -->
 
     <!-- ██ PROBLEM ████████████████████████████████████████████ -->
     <section class="sec" id="problem">
       <div class="sec-tag rv">02 · The Problem</div>
       <h2 class="sec-h2 rv d1">
-        Every time something breaks,<br />the same
-        <span class="r">exhausting</span> cycle starts.
+        Every time something breaks,<br />the same <span class="r">exhausting</span> cycle starts.
       </h2>
       <p class="sec-sub rv d2">
-        Doesn't matter if you're a QA engineer or someone trying to get Netflix
-        to refund a charge — the experience is identical. And it's infuriating.
+        Doesn't matter if you're a QA engineer or someone trying to get Netflix to refund a charge —
+        the experience is identical. And it's infuriating.
       </p>
 
       <div class="prob-grid">
@@ -2601,9 +2736,8 @@
           <div class="prob-n">01</div>
           <div class="prob-h">"I can't reproduce it."</div>
           <p class="prob-p">
-            You watched it happen. You have a recording. You explained it three
-            different ways. Still got the four words that end careers and ruin
-            Mondays.
+            You watched it happen. You have a recording. You explained it three different ways.
+            Still got the four words that end careers and ruin Mondays.
           </p>
           <div class="prob-quote">
             "Did you try clearing cache?" — Person who did not look at the video
@@ -2613,9 +2747,8 @@
           <div class="prob-n">02</div>
           <div class="prob-h">The explanation nobody reads.</div>
           <p class="prob-p">
-            You wrote three paragraphs. You numbered the steps. You specified
-            the browser version to the patch number. The response was "can you
-            share more context?"
+            You wrote three paragraphs. You numbered the steps. You specified the browser version to
+            the patch number. The response was "can you share more context?"
           </p>
           <div class="prob-quote">
             "Can you send a quick video?" — After you already sent a video
@@ -2625,9 +2758,8 @@
           <div class="prob-n">03</div>
           <div class="prob-h">Evidence scattered everywhere.</div>
           <p class="prob-p">
-            Screenshot in Downloads. Recording on Loom. Steps in a Notion doc.
-            URL in a Slack thread from three weeks ago. All pointing at a ticket
-            that says "Needs Info."
+            Screenshot in Downloads. Recording on Loom. Steps in a Notion doc. URL in a Slack thread
+            from three weeks ago. All pointing at a ticket that says "Needs Info."
           </p>
           <div class="prob-quote">
             "Where was that original screenshot?" — Someone, a month later
@@ -2638,95 +2770,107 @@
 
     <!-- ██ HOW IT WORKS ████████████████████████████████████████ -->
     <div class="sec-outer how-sec">
-    <section class="sec" id="how">
-      <div class="sec-tag rv">03 · How It Works</div>
-      <h2 class="sec-h2 rv d1">
-        Three steps to capture.<br /><span class="t">Two ways to send.</span>
-      </h2>
-      <p class="sec-sub rv d2">
-        TraceBrief lives in Chrome's side panel — open while you browse, capture
-        when something breaks, format it instantly. No file management. No
-        tab-switching. No uploading.
-      </p>
+      <section class="sec" id="how">
+        <div class="sec-tag rv">03 · How It Works</div>
+        <h2 class="sec-h2 rv d1">
+          Three steps to capture.<br /><span class="t">Two ways to send.</span>
+        </h2>
+        <p class="sec-sub rv d2">
+          TraceBrief lives in Chrome's side panel — open while you browse, capture when something
+          breaks, format it instantly. No file management. No tab-switching. No uploading.
+        </p>
 
-      <!-- 3 capture steps -->
-      <div class="how-steps">
-        <div class="how-card rv d1">
-          <div class="how-n">01</div>
-          <div class="how-badge">Capture</div>
-          <div class="how-title">Screenshot or Record</div>
-          <div class="how-desc">
-            Hit capture while the broken thing is still broken. Standard
-            screenshot, full-page scroll, or screen recording for timing and
-            behaviour bugs. Alt+S to capture without leaving your flow.
+        <!-- 3 capture steps -->
+        <div class="how-steps">
+          <div class="how-card rv d1">
+            <div class="how-n">01</div>
+            <div class="how-badge">Capture</div>
+            <div class="how-title">Screenshot or Record</div>
+            <div class="how-desc">
+              Hit capture while the broken thing is still broken. Standard screenshot, full-page
+              scroll, or screen recording for timing and behaviour bugs. Alt+S to capture without
+              leaving your flow.
+            </div>
+          </div>
+          <div class="how-card rv d2">
+            <div class="how-n">02</div>
+            <div class="how-badge">Structure</div>
+            <div class="how-title">Add Steps & Context</div>
+            <div class="how-desc">
+              Log your reproduction steps. Add Expected vs Actual. TraceBrief auto-captures URL,
+              browser, OS, and timestamp. Annotate screenshots with arrows and labels if needed.
+            </div>
+          </div>
+          <div class="how-card rv d3">
+            <div class="how-n">03</div>
+            <div class="how-badge">Send</div>
+            <div class="how-title">Copy or Export</div>
+            <div class="how-desc">
+              Now you've got two clean options — paste directly from the panel, or export a file.
+              Either way, the other person gets everything they need to understand and fix the
+              issue.
+            </div>
           </div>
         </div>
-        <div class="how-card rv d2">
-          <div class="how-n">02</div>
-          <div class="how-badge">Structure</div>
-          <div class="how-title">Add Steps & Context</div>
-          <div class="how-desc">
-            Log your reproduction steps. Add Expected vs Actual. TraceBrief
-            auto-captures URL, browser, OS, and timestamp. Annotate screenshots
-            with arrows and labels if needed.
-          </div>
-        </div>
-        <div class="how-card rv d3">
-          <div class="how-n">03</div>
-          <div class="how-badge">Send</div>
-          <div class="how-title">Copy or Export</div>
-          <div class="how-desc">
-            Now you've got two clean options — paste directly from the panel, or
-            export a file. Either way, the other person gets everything they
-            need to understand and fix the issue.
-          </div>
-        </div>
-      </div>
 
-      <!-- The two output paths — the real story -->
-      <div class="output-split rv">
-        <div class="output-col primary">
-          <div class="output-badge ob-copy"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Primary path</div>
-          <div class="output-title">Copy & paste — right from the panel</div>
-          <div class="output-desc">
-            The side panel stays open while you work. Finish capturing, switch
-            to your Jira ticket, Slack message, or email — and paste. TraceBrief
-            formats everything for wherever it's going. No files. No downloads.
-            No app-switching.
+        <!-- The two output paths — the real story -->
+        <div class="output-split rv">
+          <div class="output-col primary">
+            <div class="output-badge ob-copy">
+              <svg
+                width="10"
+                height="10"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+              </svg>
+              Primary path
+            </div>
+            <div class="output-title">Copy & paste — right from the panel</div>
+            <div class="output-desc">
+              The side panel stays open while you work. Finish capturing, switch to your Jira
+              ticket, Slack message, or email — and paste. TraceBrief formats everything for
+              wherever it's going. No files. No downloads. No app-switching.
+            </div>
+            <div class="format-pills">
+              <div class="fmt-pill fp-copy">Plain Text</div>
+              <div class="fmt-pill fp-copy">Markdown</div>
+              <div class="fmt-pill fp-copy">CSV</div>
+              <div class="fmt-pill fp-copy">HTML</div>
+              <div class="fmt-pill fp-copy">JSON</div>
+            </div>
+            <div class="output-note">
+              Open Jira in one tab, your app in the other. TraceBrief is in the side panel.
+              Reproduce → capture → paste. Done.
+            </div>
           </div>
-          <div class="format-pills">
-            <div class="fmt-pill fp-copy">Plain Text</div>
-            <div class="fmt-pill fp-copy">Markdown</div>
-            <div class="fmt-pill fp-copy">CSV</div>
-            <div class="fmt-pill fp-copy">HTML</div>
-            <div class="fmt-pill fp-copy">JSON</div>
-          </div>
-          <div class="output-note">
-            Open Jira in one tab, your app in the other. TraceBrief is in the
-            side panel. Reproduce → capture → paste. Done.
+          <div class="output-col">
+            <div class="output-badge ob-export">↓ Export path</div>
+            <div class="output-title">Export a file when you need one</div>
+            <div class="output-desc">
+              Sometimes you need an attachment. An archived evidence record. Something to email,
+              upload to a support ticket, or share with someone outside your tools. Export does all
+              of that.
+            </div>
+            <div class="format-pills">
+              <div class="fmt-pill fp-export">ZIP Bundle</div>
+              <div class="fmt-pill fp-export">CSV</div>
+              <div class="fmt-pill fp-export">HTML Gallery</div>
+            </div>
+            <div class="output-note">
+              ZIP contains all screenshots, recordings, and a structured summary in one file. HTML
+              gallery is sandboxed — safe to open anywhere.
+            </div>
           </div>
         </div>
-        <div class="output-col">
-          <div class="output-badge ob-export">↓ Export path</div>
-          <div class="output-title">Export a file when you need one</div>
-          <div class="output-desc">
-            Sometimes you need an attachment. An archived evidence record.
-            Something to email, upload to a support ticket, or share with
-            someone outside your tools. Export does all of that.
-          </div>
-          <div class="format-pills">
-            <div class="fmt-pill fp-export">ZIP Bundle</div>
-            <div class="fmt-pill fp-export">CSV</div>
-            <div class="fmt-pill fp-export">HTML Gallery</div>
-          </div>
-          <div class="output-note">
-            ZIP contains all screenshots, recordings, and a structured summary
-            in one file. HTML gallery is sandboxed — safe to open anywhere.
-          </div>
-        </div>
-      </div>
-    </section>
-    </div><!-- /sec-outer how-sec -->
+      </section>
+    </div>
+    <!-- /sec-outer how-sec -->
 
     <!-- ██ FEATURES ███████████████████████████████████████████ -->
     <section class="sec" id="features">
@@ -2735,246 +2879,314 @@
         Everything you need.<br /><span class="t">Nothing you don't.</span>
       </h2>
       <p class="sec-sub rv d2">
-        Built with least-privilege Chrome permissions, local-first storage, and
-        strict CSP. No account, no server, no data leaving your machine until
-        you choose to send it.
+        Built with least-privilege Chrome permissions, local-first storage, and strict CSP. No
+        account, no server, no data leaving your machine until you choose to send it.
       </p>
 
       <div class="bento rv">
-
         <!-- Screenshots — wide left -->
         <div class="bc bc-c4 bc-wide d1">
           <div class="bc-art">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <polyline points="21 15 16 10 5 21" />
+            </svg>
           </div>
           <div class="bc-body">
-            <div class="bc-icon ic-teal"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+            <div class="bc-icon ic-teal">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg>
+            </div>
             <div class="bc-title">Screenshots + Full-Page Capture</div>
-            <div class="bc-desc">Instant capture. Full-page scrolling stitches tall dashboards and forms automatically — no cropping, even for pages that scroll for days.</div>
+            <div class="bc-desc">
+              Instant capture. Full-page scrolling stitches tall dashboards and forms automatically
+              — no cropping, even for pages that scroll for days.
+            </div>
             <div class="bc-pill">Alt+S shortcut</div>
           </div>
         </div>
 
         <!-- Recording — tall right -->
         <div class="bc bc-c2 d2">
-          <div class="bc-icon ic-red"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
+          <div class="bc-icon ic-red">
+            <svg viewBox="0 0 24 24">
+              <polygon points="23 7 16 12 23 17 23 7" />
+              <rect x="1" y="5" width="15" height="14" rx="2" />
+            </svg>
+          </div>
           <div class="bc-title">Screen Recordings</div>
-          <div class="bc-desc">For timing bugs, animation glitches, and multi-step flows. Moving proof for things a screenshot will never capture.</div>
+          <div class="bc-desc">
+            For timing bugs, animation glitches, and multi-step flows. Moving proof for things a
+            screenshot will never capture.
+          </div>
           <div class="bc-pill">No Loom needed</div>
         </div>
 
         <!-- Annotator -->
         <div class="bc bc-c2 d3">
-          <div class="bc-icon ic-amber"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+          <div class="bc-icon ic-amber">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 20h9" />
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+            </svg>
+          </div>
           <div class="bc-title">Annotation Editor</div>
-          <div class="bc-desc">Scrollable canvas for full-page screenshots. Arrows, labels, highlights — stable on any image height.</div>
+          <div class="bc-desc">
+            Scrollable canvas for full-page screenshots. Arrows, labels, highlights — stable on any
+            image height.
+          </div>
           <div class="bc-pill">Scrollable canvas</div>
         </div>
 
         <!-- Step Logger -->
         <div class="bc bc-c2 d4">
-          <div class="bc-icon ic-teal"><svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div>
+          <div class="bc-icon ic-teal">
+            <svg viewBox="0 0 24 24">
+              <line x1="8" y1="6" x2="21" y2="6" />
+              <line x1="8" y1="12" x2="21" y2="12" />
+              <line x1="8" y1="18" x2="21" y2="18" />
+              <line x1="3" y1="6" x2="3.01" y2="6" />
+              <line x1="3" y1="12" x2="3.01" y2="12" />
+              <line x1="3" y1="18" x2="3.01" y2="18" />
+            </svg>
+          </div>
           <div class="bc-title">Step Logger</div>
-          <div class="bc-desc">Steps → Expected → Actual with auto-captured URL, browser, OS, and timestamp. The structure that actually gets bugs resolved.</div>
+          <div class="bc-desc">
+            Steps → Expected → Actual with auto-captured URL, browser, OS, and timestamp. The
+            structure that actually gets bugs resolved.
+          </div>
           <div class="bc-pill">Structured format</div>
         </div>
 
         <!-- 5 Formats — wide -->
         <div class="bc bc-c4 bc-wide d5">
           <div class="bc-art">
-            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></svg>
           </div>
           <div class="bc-body">
-            <div class="bc-icon ic-blue"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+            <div class="bc-icon ic-blue">
+              <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></svg>
+            </div>
             <div class="bc-title">5 Output Formats</div>
-            <div class="bc-desc">Plain text, Markdown, CSV, HTML, JSON — copy from the panel into anything. Or export as ZIP bundle, HTML gallery, or CSV file. Paste into Jira, Slack, email, GitHub — no integrations needed.</div>
+            <div class="bc-desc">
+              Plain text, Markdown, CSV, HTML, JSON — copy from the panel into anything. Or export
+              as ZIP bundle, HTML gallery, or CSV file. Paste into Jira, Slack, email, GitHub — no
+              integrations needed.
+            </div>
             <div class="bc-pill">Copy or export</div>
           </div>
         </div>
 
         <!-- Privacy -->
         <div class="bc bc-c2 d6">
-          <div class="bc-icon ic-teal"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="bc-icon ic-teal">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+          </div>
           <div class="bc-title">Privacy by Default</div>
-          <div class="bc-desc">Everything local until you send it. Sandboxed previews. Strict CSP. No server collecting your screenshots.</div>
+          <div class="bc-desc">
+            Everything local until you send it. Sandboxed previews. Strict CSP. No server collecting
+            your screenshots.
+          </div>
           <div class="bc-pill">Local-first · MV3</div>
         </div>
-
       </div>
     </section>
 
     <!-- ██ THE STORY COMPARISON █████████████████████████████████ -->
     <div class="sec-outer story-sec">
-    <section class="sec" id="why">
-      <div class="sec-tag rv">05 · Two Outcomes</div>
-      <h2 class="sec-h2 center rv d1">
-        Same bug. Same Tuesday.<br /><span class="r">Very different day.</span>
-      </h2>
-      <p class="sec-sub center rv d2">
-        You found a bug at 2pm. Here's how the next few hours go — with and
-        without TraceBrief.
-      </p>
+      <section class="sec" id="why">
+        <div class="sec-tag rv">05 · Two Outcomes</div>
+        <h2 class="sec-h2 center rv d1">
+          Same bug. Same Tuesday.<br /><span class="r">Very different day.</span>
+        </h2>
+        <p class="sec-sub center rv d2">
+          You found a bug at 2pm. Here's how the next few hours go — with and without TraceBrief.
+        </p>
 
-      <div class="story-wrap rv">
-        <!-- Timeline A: without -->
-        <div class="story-col story-without">
-          <div class="story-col-head">
-            <div class="story-col-label without-label">Without TraceBrief</div>
-            <div class="story-col-time">The next 3 hours</div>
+        <div class="story-wrap rv">
+          <!-- Timeline A: without -->
+          <div class="story-col story-without">
+            <div class="story-col-head">
+              <div class="story-col-label without-label">Without TraceBrief</div>
+              <div class="story-col-time">The next 3 hours</div>
+            </div>
+            <div class="story-timeline">
+              <div class="story-beat">
+                <div class="story-time">2:00pm</div>
+                <div class="story-dot dot-bad"></div>
+                <div class="story-content">
+                  <div class="story-event">You find the bug</div>
+                  <div class="story-detail">
+                    Take a screenshot. It lands in Downloads as
+                    <span class="mono-inline">Screen Shot 2024-11-12 at 2.00.47 PM.png</span>. Fine.
+                  </div>
+                </div>
+              </div>
+              <div class="story-beat">
+                <div class="story-time">2:15pm</div>
+                <div class="story-dot dot-bad"></div>
+                <div class="story-content">
+                  <div class="story-event">You write the ticket</div>
+                  <div class="story-detail">
+                    Three paragraphs. Numbered steps. You paste them into Jira — the formatting
+                    collapses. You reformat. You attach the screenshot. You add a Loom link "just in
+                    case."
+                  </div>
+                </div>
+              </div>
+              <div class="story-beat">
+                <div class="story-time">2:45pm</div>
+                <div class="story-dot dot-bad"></div>
+                <div class="story-content">
+                  <div class="story-event">"Can't reproduce it."</div>
+                  <div class="story-detail">
+                    The dev replies. They didn't watch the Loom. They need "more context." You
+                    explain again in a Slack thread. Different format. Same information.
+                  </div>
+                </div>
+              </div>
+              <div class="story-beat">
+                <div class="story-time">3:30pm</div>
+                <div class="story-dot dot-bad"></div>
+                <div class="story-content">
+                  <div class="story-event">"Which environment was this?"</div>
+                  <div class="story-detail">
+                    Staging, you said. In the ticket. You go back and check — you did write it. You
+                    paste it again. Dev asks for the original screenshot. You dig through Downloads.
+                  </div>
+                </div>
+              </div>
+              <div class="story-beat">
+                <div class="story-time">5:00pm</div>
+                <div class="story-dot dot-bad"></div>
+                <div class="story-content">
+                  <div class="story-event">Ticket moves to "Next Sprint"</div>
+                  <div class="story-detail">
+                    Triaged. Not enough signal. By the time it surfaces again in two weeks, you'll
+                    have to re-explain everything — and hope the bug is still reproducible.
+                  </div>
+                </div>
+              </div>
+              <div class="story-outcome outcome-bad">
+                <div class="story-outcome-icon">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="rgba(255,34,71,0.55)"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                </div>
+                <div class="story-outcome-text">
+                  3 hours spent. Bug not fixed. You've explained it four times to two people. The
+                  Loom link will expire in 5 days.
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="story-timeline">
-            <div class="story-beat">
-              <div class="story-time">2:00pm</div>
-              <div class="story-dot dot-bad"></div>
-              <div class="story-content">
-                <div class="story-event">You find the bug</div>
-                <div class="story-detail">
-                  Take a screenshot. It lands in Downloads as
-                  <span class="mono-inline"
-                    >Screen Shot 2024-11-12 at 2.00.47 PM.png</span
-                  >. Fine.
+
+          <!-- Divider -->
+          <div class="story-vs">VS</div>
+
+          <!-- Timeline B: with TraceBrief -->
+          <div class="story-col story-with">
+            <div class="story-col-head">
+              <div class="story-col-label with-label">With TraceBrief</div>
+              <div class="story-col-time">The next 30 minutes</div>
+            </div>
+            <div class="story-timeline">
+              <div class="story-beat">
+                <div class="story-time">2:00pm</div>
+                <div class="story-dot dot-good"></div>
+                <div class="story-content">
+                  <div class="story-event">You find the bug</div>
+                  <div class="story-detail">
+                    Hit Alt+S. Screenshot captured, stored in the panel. The URL, browser, OS, and
+                    timestamp are already captured automatically.
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="story-beat">
-              <div class="story-time">2:15pm</div>
-              <div class="story-dot dot-bad"></div>
-              <div class="story-content">
-                <div class="story-event">You write the ticket</div>
-                <div class="story-detail">
-                  Three paragraphs. Numbered steps. You paste them into Jira —
-                  the formatting collapses. You reformat. You attach the
-                  screenshot. You add a Loom link "just in case."
+              <div class="story-beat">
+                <div class="story-time">2:05pm</div>
+                <div class="story-dot dot-good"></div>
+                <div class="story-content">
+                  <div class="story-event">You add steps + annotate</div>
+                  <div class="story-detail">
+                    Three steps in the panel. Expected vs actual. Draw an arrow pointing at the
+                    exact broken element. 5 minutes total — the panel is open right next to the
+                    page.
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="story-beat">
-              <div class="story-time">2:45pm</div>
-              <div class="story-dot dot-bad"></div>
-              <div class="story-content">
-                <div class="story-event">"Can't reproduce it."</div>
-                <div class="story-detail">
-                  The dev replies. They didn't watch the Loom. They need "more
-                  context." You explain again in a Slack thread. Different
-                  format. Same information.
+              <div class="story-beat">
+                <div class="story-time">2:12pm</div>
+                <div class="story-dot dot-good"></div>
+                <div class="story-content">
+                  <div class="story-event">You open Jira in the same window</div>
+                  <div class="story-detail">
+                    TraceBrief is still open in the side panel. Copy Markdown. Create ticket. Paste.
+                    The annotated screenshot goes in as an attachment. Done.
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="story-beat">
-              <div class="story-time">3:30pm</div>
-              <div class="story-dot dot-bad"></div>
-              <div class="story-content">
-                <div class="story-event">"Which environment was this?"</div>
-                <div class="story-detail">
-                  Staging, you said. In the ticket. You go back and check — you
-                  did write it. You paste it again. Dev asks for the original
-                  screenshot. You dig through Downloads.
+              <div class="story-beat">
+                <div class="story-time">2:28pm</div>
+                <div class="story-dot dot-good"></div>
+                <div class="story-content">
+                  <div class="story-event">"Oh, I see it. Fixing now."</div>
+                  <div class="story-detail">
+                    Dev replies. They saw the annotated screenshot. They read the steps. The
+                    environment was in the auto-captured context. No follow-up needed.
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="story-beat">
-              <div class="story-time">5:00pm</div>
-              <div class="story-dot dot-bad"></div>
-              <div class="story-content">
-                <div class="story-event">Ticket moves to "Next Sprint"</div>
-                <div class="story-detail">
-                  Triaged. Not enough signal. By the time it surfaces again in
-                  two weeks, you'll have to re-explain everything — and hope the
-                  bug is still reproducible.
+              <div class="story-beat">
+                <div class="story-time">3:45pm</div>
+                <div class="story-dot dot-good"></div>
+                <div class="story-content">
+                  <div class="story-event">PR merged. Bug closed.</div>
+                  <div class="story-detail">
+                    Same day. Fixed in one round. You've moved on to the next thing. The evidence
+                    pack is archived in History if anyone needs it later.
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="story-outcome outcome-bad">
-              <div class="story-outcome-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,34,71,0.55)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-              <div class="story-outcome-text">
-                3 hours spent. Bug not fixed. You've explained it four times to
-                two people. The Loom link will expire in 5 days.
+              <div class="story-outcome outcome-good">
+                <div class="story-outcome-icon">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="rgba(0,229,188,0.75)"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+                <div class="story-outcome-text">
+                  28 minutes. Bug fixed same day. You explained it once, to one person, perfectly.
+                  No follow-ups. No Loom links.
+                </div>
               </div>
             </div>
           </div>
         </div>
-
-        <!-- Divider -->
-        <div class="story-vs">VS</div>
-
-        <!-- Timeline B: with TraceBrief -->
-        <div class="story-col story-with">
-          <div class="story-col-head">
-            <div class="story-col-label with-label">With TraceBrief</div>
-            <div class="story-col-time">The next 30 minutes</div>
-          </div>
-          <div class="story-timeline">
-            <div class="story-beat">
-              <div class="story-time">2:00pm</div>
-              <div class="story-dot dot-good"></div>
-              <div class="story-content">
-                <div class="story-event">You find the bug</div>
-                <div class="story-detail">
-                  Hit Alt+S. Screenshot captured, stored in the panel. The URL,
-                  browser, OS, and timestamp are already captured automatically.
-                </div>
-              </div>
-            </div>
-            <div class="story-beat">
-              <div class="story-time">2:05pm</div>
-              <div class="story-dot dot-good"></div>
-              <div class="story-content">
-                <div class="story-event">You add steps + annotate</div>
-                <div class="story-detail">
-                  Three steps in the panel. Expected vs actual. Draw an arrow
-                  pointing at the exact broken element. 5 minutes total — the
-                  panel is open right next to the page.
-                </div>
-              </div>
-            </div>
-            <div class="story-beat">
-              <div class="story-time">2:12pm</div>
-              <div class="story-dot dot-good"></div>
-              <div class="story-content">
-                <div class="story-event">You open Jira in the same window</div>
-                <div class="story-detail">
-                  TraceBrief is still open in the side panel. Copy Markdown.
-                  Create ticket. Paste. The annotated screenshot goes in as an
-                  attachment. Done.
-                </div>
-              </div>
-            </div>
-            <div class="story-beat">
-              <div class="story-time">2:28pm</div>
-              <div class="story-dot dot-good"></div>
-              <div class="story-content">
-                <div class="story-event">"Oh, I see it. Fixing now."</div>
-                <div class="story-detail">
-                  Dev replies. They saw the annotated screenshot. They read the
-                  steps. The environment was in the auto-captured context. No
-                  follow-up needed.
-                </div>
-              </div>
-            </div>
-            <div class="story-beat">
-              <div class="story-time">3:45pm</div>
-              <div class="story-dot dot-good"></div>
-              <div class="story-content">
-                <div class="story-event">PR merged. Bug closed.</div>
-                <div class="story-detail">
-                  Same day. Fixed in one round. You've moved on to the next
-                  thing. The evidence pack is archived in History if anyone
-                  needs it later.
-                </div>
-              </div>
-            </div>
-            <div class="story-outcome outcome-good">
-              <div class="story-outcome-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(0,229,188,0.75)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <div class="story-outcome-text">
-                28 minutes. Bug fixed same day. You explained it once, to one
-                person, perfectly. No follow-ups. No Loom links.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    </div><!-- /sec-outer story-sec -->
+      </section>
+    </div>
+    <!-- /sec-outer story-sec -->
 
     <!-- ██ TESTIMONIALS ████████████████████████████████████████ -->
     <section class="sec" id="testimonials">
@@ -2987,8 +3199,8 @@
         <div class="testi-card rv d1">
           <div class="testi-q">"</div>
           <div class="testi-text">
-            Filed a bug with a 3-minute recording, annotated screenshots, and
-            structured steps. Dev responded in 20 minutes with a fix.
+            Filed a bug with a 3-minute recording, annotated screenshots, and structured steps. Dev
+            responded in 20 minutes with a fix.
             <strong>TraceBrief made me look like a professional.</strong>
           </div>
           <div class="testi-foot">
@@ -3002,10 +3214,9 @@
         <div class="testi-card rv d2">
           <div class="testi-q">"</div>
           <div class="testi-text">
-            We had a Slack channel called #reproduced where we celebrated when
-            devs actually saw the bug.
-            <strong>TraceBrief killed that channel.</strong> In the best
-            possible way.
+            We had a Slack channel called #reproduced where we celebrated when devs actually saw the
+            bug.
+            <strong>TraceBrief killed that channel.</strong> In the best possible way.
           </div>
           <div class="testi-foot">
             <div class="testi-av av2">MR</div>
@@ -3020,8 +3231,7 @@
           <div class="testi-text">
             As a developer — please, everyone, install this.
             <strong
-              >I fix bugs faster when you send evidence packs instead of "it
-              broke idk."</strong
+              >I fix bugs faster when you send evidence packs instead of "it broke idk."</strong
             >
             I am sincerely begging you.
           </div>
@@ -3052,12 +3262,9 @@
           <div class="faq-ans">
             <div class="faq-ans-body">
               Yes, free. No catch.
-              <strong
-                >No data harvesting, no ads, no features paywalled
-                later.</strong
-              >
-              TraceBrief runs locally. We make money when people find it useful
-              enough to tell their teams. That's the model.
+              <strong>No data harvesting, no ads, no features paywalled later.</strong>
+              TraceBrief runs locally. We make money when people find it useful enough to tell their
+              teams. That's the model.
             </div>
           </div>
         </div>
@@ -3069,9 +3276,7 @@
           <div class="faq-ans">
             <div class="faq-ans-body">
               No. Install it, open it, use it.
-              <strong
-                >No email. No password. No "please verify your account."</strong
-              >
+              <strong>No email. No password. No "please verify your account."</strong>
               We are not collecting leads. We just want to be a useful tool.
             </div>
           </div>
@@ -3083,14 +3288,13 @@
           </div>
           <div class="faq-ans">
             <div class="faq-ans-body">
-              Absolutely. TraceBrief is for anyone who needs to prove what
-              happened on a screen.
+              Absolutely. TraceBrief is for anyone who needs to prove what happened on a screen.
               <strong
-                >Netflix customer service, HR reporting a broken payroll portal,
-                a student whose assignment won't submit</strong
+                >Netflix customer service, HR reporting a broken payroll portal, a student whose
+                assignment won't submit</strong
               >
-              — the tool doesn't care what industry you're in. If it broke on a
-              screen, you can document it.
+              — the tool doesn't care what industry you're in. If it broke on a screen, you can
+              document it.
             </div>
           </div>
         </div>
@@ -3102,11 +3306,9 @@
           <div class="faq-ans">
             <div class="faq-ans-body">
               No. The copy/paste path is the primary workflow.
-              <strong>The panel stays open while you work.</strong> Capture
-              everything, then paste the formatted output — Markdown, plain
-              text, CSV, HTML, or JSON — directly into your ticket, email, or
-              Slack. Export a file only when you specifically need an
-              attachment.
+              <strong>The panel stays open while you work.</strong> Capture everything, then paste
+              the formatted output — Markdown, plain text, CSV, HTML, or JSON — directly into your
+              ticket, email, or Slack. Export a file only when you specifically need an attachment.
             </div>
           </div>
         </div>
@@ -3117,13 +3319,9 @@
           </div>
           <div class="faq-ans">
             <div class="faq-ans-body">
-              <strong
-                >Your data stays on your machine until you choose to send
-                it.</strong
-              >
-              We request only the Chrome permissions needed to function. There
-              is no server ingesting your screenshots. Local-first is the
-              architecture, not a marketing line.
+              <strong>Your data stays on your machine until you choose to send it.</strong>
+              We request only the Chrome permissions needed to function. There is no server
+              ingesting your screenshots. Local-first is the architecture, not a marketing line.
             </div>
           </div>
         </div>
@@ -3135,10 +3333,9 @@
           <div class="faq-ans">
             <div class="faq-ans-body">
               Yes — because we output to
-              <strong>plain text, Markdown, CSV, HTML, and JSON</strong>,
-              TraceBrief works with anything that accepts pasted text or a file
-              attachment. Which is everything. We don't do fragile API
-              integrations. You copy. You paste. It works.
+              <strong>plain text, Markdown, CSV, HTML, and JSON</strong>, TraceBrief works with
+              anything that accepts pasted text or a file attachment. Which is everything. We don't
+              do fragile API integrations. You copy. You paste. It works.
             </div>
           </div>
         </div>
@@ -3153,10 +3350,9 @@
         <span class="t">Start</span> proving.
       </h2>
       <p class="cta-sub rv">
-        Install in 30 seconds — <strong>free, no account, no card</strong> — and
-        paste your first evidence pack before your next standup. Your devs will
-        fix it. Your support team will thank you. Your future self will be
-        relieved.
+        Install in 30 seconds — <strong>free, no account, no card</strong> — and paste your first
+        evidence pack before your next standup. Your devs will fix it. Your support team will thank
+        you. Your future self will be relieved.
       </p>
       <div class="cta-btns rv">
         <button
@@ -3164,68 +3360,100 @@
           onclick="installClick()"
           style="padding: 15px 36px; font-size: 0.88rem"
         >
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
           Install — It's Free
         </button>
       </div>
       <div class="cta-note rv">
-        Free forever · Chrome Web Store · 100% local · No account needed ·
-        証拠パック
+        Free forever · Chrome Web Store · 100% local · No account needed · 証拠パック
       </div>
     </section>
 
     <!-- ██ PRICING ██████████████████████████████████████████████ -->
     <div class="sec-outer pricing-sec">
-    <section class="sec" id="pricing">
-      <div class="sec-tag rv">09 · Pricing</div>
-      <h2 class="sec-h2 center rv d1">
-        Free.<br /><span class="t">Actually free.</span>
-      </h2>
-      <p class="sec-sub center rv d2" style="max-width: 520px; margin-left: auto; margin-right: auto;">
-        Not "free with a 14-day trial." Not "free tier with 3 exports a month."
-        Just free. Here's why.
-      </p>
+      <section class="sec" id="pricing">
+        <div class="sec-tag rv">09 · Pricing</div>
+        <h2 class="sec-h2 center rv d1">Free.<br /><span class="t">Actually free.</span></h2>
+        <p
+          class="sec-sub center rv d2"
+          style="max-width: 520px; margin-left: auto; margin-right: auto"
+        >
+          Not "free with a 14-day trial." Not "free tier with 3 exports a month." Just free. Here's
+          why.
+        </p>
 
-      <div class="pricing-why-block rv">
-        <p>
-          TraceBrief started as a tool I built for my own workflow. It grew into something more.
-          Keeping it free means anyone — a QA engineer at a startup, a student who can't submit
-          an assignment, someone arguing with Netflix support — can use it without thinking about it.
-        </p>
-        <p>
-          There are no ads. No data collection. No enterprise tier with "unlimited exports" that
-          costs $49/month. The extension does its job and stays out of your way.
-        </p>
-        <div class="pricing-divider"></div>
-        <div class="pricing-coffee">
-          <div class="pricing-coffee-text">
-            <div class="pricing-coffee-head">Want to support it?</div>
-            <p>
-              If TraceBrief has saved you time — even once — a coffee goes a long way.
-              No pressure, no guilt, no email asking why you haven't upgraded.
-            </p>
+        <div class="pricing-why-block rv">
+          <p>
+            TraceBrief started as a tool I built for my own workflow. It grew into something more.
+            Keeping it free means anyone — a QA engineer at a startup, a student who can't submit an
+            assignment, someone arguing with Netflix support — can use it without thinking about it.
+          </p>
+          <p>
+            There are no ads. No data collection. No enterprise tier with "unlimited exports" that
+            costs $49/month. The extension does its job and stays out of your way.
+          </p>
+          <div class="pricing-divider"></div>
+          <div class="pricing-coffee">
+            <div class="pricing-coffee-text">
+              <div class="pricing-coffee-head">Want to support it?</div>
+              <p>
+                If TraceBrief has saved you time — even once — a coffee goes a long way. No
+                pressure, no guilt, no email asking why you haven't upgraded.
+              </p>
+            </div>
+            <a href="#" class="btn-coffee-subtle"
+              ><svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M17 8h1a4 4 0 1 1 0 8h-1" />
+                <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z" />
+                <line x1="6" y1="2" x2="6" y2="4" />
+                <line x1="10" y1="2" x2="10" y2="4" />
+                <line x1="14" y1="2" x2="14" y2="4" />
+              </svg>
+              Buy me a coffee</a
+            >
           </div>
-          <a href="#" class="btn-coffee-subtle"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg> Buy me a coffee</a>
         </div>
-      </div>
-    </section>
-    </div><!-- /sec-outer pricing-sec -->
+      </section>
+    </div>
+    <!-- /sec-outer pricing-sec -->
 
     <!-- ██ FOOTER ██████████████████████████████████████████████ -->
     <footer>
       <div class="footer-inner">
-      <div class="f-logo">TraceBrief <span class="f-logo-k">バグ</span></div>
-      <div class="f-links">
-        <a href="#">Chrome Store</a>
-        <a href="#">GitHub</a>
-        <a href="docs.html">Docs</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#faq">FAQ</a>
-      </div>
-      <div class="f-right">
-        Chrome MV3 · Evidence Capture for Everyone<br />
-        © 2025 · v1.0 · Built with spite and DM Sans
-      </div>
+        <div class="f-logo">TraceBrief <span class="f-logo-k">バグ</span></div>
+        <div class="f-links">
+          <a href="#">Chrome Store</a>
+          <a href="#">GitHub</a>
+          <a href="docs.html">Docs</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div class="f-right">
+          Chrome MV3 · Evidence Capture for Everyone<br />
+          © 2025 · v1.0 · Built with spite and DM Sans
+        </div>
       </div>
     </footer>
 
@@ -3235,78 +3463,78 @@
         (ee, obs) =>
           ee.forEach((e) => {
             if (e.isIntersecting) {
-              e.target.classList.add("in");
+              e.target.classList.add('in');
               obs.unobserve(e.target);
             }
           }),
-        { threshold: 0.1, rootMargin: "0px 0px -30px 0px" },
+        { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
       );
-      document.querySelectorAll(".rv").forEach((el) => ro.observe(el));
+      document.querySelectorAll('.rv').forEach((el) => ro.observe(el));
 
       // faq
       function faq(el) {
         const ans = el.nextElementSibling,
-          open = el.classList.contains("open");
-        document.querySelectorAll(".faq-q.open").forEach((q) => {
-          q.classList.remove("open");
-          q.nextElementSibling.classList.remove("open");
+          open = el.classList.contains('open');
+        document.querySelectorAll('.faq-q.open').forEach((q) => {
+          q.classList.remove('open');
+          q.nextElementSibling.classList.remove('open');
         });
         if (!open) {
-          el.classList.add("open");
-          ans.classList.add("open");
+          el.classList.add('open');
+          ans.classList.add('open');
         }
       }
 
       // smooth scroll helper
       function scrollTo(id) {
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
       }
 
       const STORES = {
-        chrome: "https://chrome.google.com/webstore", // replace with real URL
-        firefox: "https://addons.mozilla.org", // replace with real URL
-        edge: "https://microsoftedge.microsoft.com/addons", // replace with real URL
-        safari: "https://apps.apple.com", // replace with real URL
+        chrome: 'https://chrome.google.com/webstore', // replace with real URL
+        firefox: 'https://addons.mozilla.org', // replace with real URL
+        edge: 'https://microsoftedge.microsoft.com/addons', // replace with real URL
+        // safari: "https://apps.apple.com", // replace with real URL
       };
 
       function detectBrowser() {
         const ua = navigator.userAgent;
-        if (ua.includes("Edg/")) return "edge";
-        if (ua.includes("Firefox/")) return "firefox";
-        if (ua.includes("Safari/") && !ua.includes("Chrome")) return "safari";
-        return "chrome"; // default
+        if (ua.includes('Edg/')) return 'edge';
+        if (ua.includes('Firefox/')) return 'firefox';
+        // if (ua.includes("Safari/") && !ua.includes("Chrome")) return "safari";
+        return 'chrome'; // default
       }
 
       const BROWSER_LABELS = {
-        chrome: { label: "Install on Chrome — Free" },
-        firefox: { label: "Install on Firefox — Free" },
-        edge: { label: "Install on Edge — Free" },
-        safari: { label: "Install on Safari — Free" },
+        chrome: { label: 'Install on Chrome — Free' },
+        firefox: { label: 'Install on Firefox — Free' },
+        edge: { label: 'Install on Edge — Free' },
+        // safari: { label: "Install on Safari — Free" },
       };
 
       function installClick() {
         const b = detectBrowser();
-        window.open(STORES[b], "_blank");
+        window.open(STORES[b], '_blank');
       }
 
       // On load: update main button label + highlight current browser in the "also on" row
       (function () {
         const b = detectBrowser();
         const { label } = BROWSER_LABELS[b];
-        const labelEl = document.getElementById("install-label");
+        const labelEl = document.getElementById('install-label');
         if (labelEl) labelEl.textContent = label;
 
         // Hide the current browser from the icon row — it's already the main button
         const linkMap = {
-          firefox: "link-firefox",
-          edge: "link-edge",
-          safari: "link-safari",
+          firefox: 'link-firefox',
+          edge: 'link-edge',
+          // safari: "link-safari",
           chrome: null,
         };
         const currentLinkId = linkMap[b];
         if (currentLinkId) {
           const el = document.getElementById(currentLinkId);
-          if (el) el.style.display = "none";
+          if (el) el.style.display = 'none';
         }
       })();
     </script>
