@@ -3855,10 +3855,11 @@
       <section class="sec" id="why">
         <div class="sec-tag rv">05 · Two Outcomes</div>
         <h2 class="sec-h2 center rv d1">
-          Same bug. Same Tuesday.<br /><span class="r">Very different day.</span>
+          Same bug. Same Tuesday.<br /><span class="r">Very different outcome.</span>
         </h2>
         <p class="sec-sub center rv d2">
-          You found a bug at 2pm. Here's how the next few hours go — with and without TraceBrief.
+          One version ends in follow-ups, missing context, and a ticket nobody wants to touch. The
+          other ends with a report people can actually use.
         </p>
 
         <div class="story-wrap rv">
@@ -3875,56 +3876,48 @@
                 <div class="story-content">
                   <div class="story-event">You find the bug</div>
                   <div class="story-detail">
-                    Take a screenshot. It lands in Downloads as
-                    <span class="mono-inline">Screen Shot 2024-11-12 at 2.00.47 PM.png</span>. Fine.
+                    You grab a screenshot. It disappears into Downloads with a filename only a
+                    machine could love.
                   </div>
                 </div>
               </div>
+
               <div class="story-beat">
-                <div class="story-time">2:15pm</div>
+                <div class="story-time">2:20pm</div>
                 <div class="story-dot dot-bad"></div>
                 <div class="story-content">
                   <div class="story-event">You write the ticket</div>
                   <div class="story-detail">
-                    Three paragraphs. Numbered steps. You paste them into Jira — the formatting
-                    collapses. You reformat. You attach the screenshot. You add a Loom link "just in
-                    case."
+                    Steps, notes, environment, maybe a recording link for extra insurance. Somehow
+                    it still feels incomplete.
                   </div>
                 </div>
               </div>
+
               <div class="story-beat">
-                <div class="story-time">2:45pm</div>
+                <div class="story-time">2:50pm</div>
                 <div class="story-dot dot-bad"></div>
                 <div class="story-content">
-                  <div class="story-event">"Can't reproduce it."</div>
+                  <div class="story-event">“Can’t reproduce it.”</div>
                   <div class="story-detail">
-                    The dev replies. They didn't watch the Loom. They need "more context." You
-                    explain again in a Slack thread. Different format. Same information.
+                    Now you are explaining the same issue again in chat, with slightly worse
+                    formatting and slightly less patience.
                   </div>
                 </div>
               </div>
+
               <div class="story-beat">
-                <div class="story-time">3:30pm</div>
+                <div class="story-time">4:10pm</div>
                 <div class="story-dot dot-bad"></div>
                 <div class="story-content">
-                  <div class="story-event">"Which environment was this?"</div>
+                  <div class="story-event">The context starts leaking out</div>
                   <div class="story-detail">
-                    Staging, you said. In the ticket. You go back and check — you did write it. You
-                    paste it again. Dev asks for the original screenshot. You dig through Downloads.
+                    Which environment? Which screenshot? Which step was failing? Everyone is
+                    searching. Nobody is fixing.
                   </div>
                 </div>
               </div>
-              <div class="story-beat">
-                <div class="story-time">5:00pm</div>
-                <div class="story-dot dot-bad"></div>
-                <div class="story-content">
-                  <div class="story-event">Ticket moves to "Next Sprint"</div>
-                  <div class="story-detail">
-                    Triaged. Not enough signal. By the time it surfaces again in two weeks, you'll
-                    have to re-explain everything — and hope the bug is still reproducible.
-                  </div>
-                </div>
-              </div>
+
               <div class="story-outcome outcome-bad">
                 <div class="story-outcome-icon">
                   <svg
@@ -3942,8 +3935,8 @@
                   </svg>
                 </div>
                 <div class="story-outcome-text">
-                  3 hours spent. Bug not fixed. You've explained it four times to two people. The
-                  Loom link will expire in 5 days.
+                  Hours spent. Bug still floating around. You explained it three times and somehow
+                  still owe “more context.”
                 </div>
               </div>
             </div>
@@ -3963,58 +3956,50 @@
                 <div class="story-time">2:00pm</div>
                 <div class="story-dot dot-good"></div>
                 <div class="story-content">
-                  <div class="story-event">You find the bug</div>
+                  <div class="story-event">You capture it on the spot</div>
                   <div class="story-detail">
-                    Hit Alt+S. Screenshot captured, stored in the panel. The URL, browser, OS, and
-                    timestamp are already captured automatically.
+                    Screenshot or recording, while the issue is still happening and before it
+                    decides to become “not reproducible.”
                   </div>
                 </div>
               </div>
+
               <div class="story-beat">
-                <div class="story-time">2:05pm</div>
+                <div class="story-time">2:06pm</div>
                 <div class="story-dot dot-good"></div>
                 <div class="story-content">
-                  <div class="story-event">You add steps + annotate</div>
+                  <div class="story-event">You add the missing context</div>
                   <div class="story-detail">
-                    Three steps in the panel. Expected vs actual. Draw an arrow pointing at the
-                    exact broken element. 5 minutes total — the panel is open right next to the
-                    page.
+                    Repro steps. Expected vs actual. An annotation on the exact broken spot. The
+                    report starts looking useful immediately.
                   </div>
                 </div>
               </div>
+
               <div class="story-beat">
-                <div class="story-time">2:12pm</div>
+                <div class="story-time">2:14pm</div>
                 <div class="story-dot dot-good"></div>
                 <div class="story-content">
-                  <div class="story-event">You open Jira in the same window</div>
+                  <div class="story-event">You export a clean pack</div>
                   <div class="story-detail">
-                    TraceBrief is still open in the side panel. Copy Markdown. Create ticket. Paste.
-                    The annotated screenshot goes in as an attachment. Done.
+                    Structured, clear, and ready to attach where the bug is being tracked. No
+                    scattered files. No side quests.
                   </div>
                 </div>
               </div>
+
               <div class="story-beat">
                 <div class="story-time">2:28pm</div>
                 <div class="story-dot dot-good"></div>
                 <div class="story-content">
-                  <div class="story-event">"Oh, I see it. Fixing now."</div>
+                  <div class="story-event">The response is actually useful</div>
                   <div class="story-detail">
-                    Dev replies. They saw the annotated screenshot. They read the steps. The
-                    environment was in the auto-captured context. No follow-up needed.
+                    “Yep, I see it.” Because the evidence, steps, and context were all there the
+                    first time. A rare and beautiful moment.
                   </div>
                 </div>
               </div>
-              <div class="story-beat">
-                <div class="story-time">3:45pm</div>
-                <div class="story-dot dot-good"></div>
-                <div class="story-content">
-                  <div class="story-event">PR merged. Bug closed.</div>
-                  <div class="story-detail">
-                    Same day. Fixed in one round. You've moved on to the next thing. The evidence
-                    pack is archived in History if anyone needs it later.
-                  </div>
-                </div>
-              </div>
+
               <div class="story-outcome outcome-good">
                 <div class="story-outcome-icon">
                   <svg
@@ -4031,8 +4016,8 @@
                   </svg>
                 </div>
                 <div class="story-outcome-text">
-                  28 minutes. Bug fixed same day. You explained it once, to one person, perfectly.
-                  No follow-ups. No Loom links.
+                  One clear report. One round of explanation. Much better odds the bug gets handled
+                  before your coffee gets cold.
                 </div>
               </div>
             </div>
