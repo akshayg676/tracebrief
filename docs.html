@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+<title>TraceBrief — Documentation</title>
+<meta name="description" content="TraceBrief documentation. Everything you need to capture, structure, and send evidence packs. Guides for QA, developers, PMs, and everyone else.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"></noscript>
+<style>
+:root {
+  --red:    #FF2247;
+  --red-g:  rgba(255,34,71,0.20);
+  --red-d:  rgba(255,34,71,0.09);
+  --teal:   #00E5BC;
+  --teal-d: rgba(0,229,188,0.09);
+  --yellow: #FFD60A;
+  --blue:   #1A6CFF;
+
+  --bg:     #06060E;
+  --bg2:    #0A0A16;
+  --bg3:    #0E0E1C;
+  --surface:rgba(255,255,255,0.04);
+  --s-h:    rgba(255,255,255,0.07);
+
+  --b0:     rgba(255,255,255,0.07);
+  --b-red:  rgba(255,34,71,0.25);
+  --b-teal: rgba(0,229,188,0.20);
+
+  --t1: #EEEEFF;
+  --t2: rgba(238,238,255,0.88);
+  --t3: rgba(238,238,255,0.52);
+  --t4: rgba(238,238,255,0.28);
+
+  --r: 8px; --rl: 12px;
+  --font-body: 'Geist', system-ui, sans-serif;
+  --font-head: 'Syne', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --sidebar-w: 260px;
+  --page-max: 1280px;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--t2);
+  font-family:var(--font-body);font-size:16px;line-height:1.7;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+}
+
+@keyframes flicker{0%,100%{opacity:1}91%{opacity:1}92%{opacity:.3}94%{opacity:1}97%{opacity:.7}98%{opacity:1}}
+@keyframes reveal-up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 var(--red-g)}60%{box-shadow:0 0 0 6px transparent}}
+
+.rv{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+.rv.in{opacity:1;transform:translateY(0)}
+.rv.d1{transition-delay:.05s}.rv.d2{transition-delay:.10s}.rv.d3{transition-delay:.15s}
+.rv.d4{transition-delay:.20s}.rv.d5{transition-delay:.25s}.rv.d6{transition-delay:.30s}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:1000;height:52px;
+  background:rgba(6,6,14,.95);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--b0);
+  display:flex;align-items:center;
+}
+.nav-inner{
+  max-width:var(--page-max);margin:0 auto;width:100%;
+  display:flex;align-items:center;gap:16px;padding:0 24px;
+}
+.n-logo{
+  font-family:var(--font-head);font-weight:800;font-size:1rem;
+  letter-spacing:2px;color:var(--t1);
+  display:flex;align-items:center;gap:7px;flex-shrink:0;
+}
+.n-logo-k{font-family:var(--font-mono);font-size:.58rem;color:var(--red);opacity:.8;animation:flicker 7s ease-in-out infinite}
+.n-sep{width:1px;height:20px;background:var(--b0);flex-shrink:0}
+.n-doc-label{
+  font-family:var(--font-mono);font-size:.62rem;letter-spacing:3px;
+  text-transform:uppercase;color:var(--teal);flex-shrink:0;
+}
+.n-search{
+  flex:1;display:flex;align-items:center;gap:8px;
+  background:var(--surface);border:1px solid var(--b0);border-radius:var(--r);
+  padding:7px 12px;max-width:320px;transition:border-color .15s;cursor:text;
+}
+.n-search:focus-within{border-color:var(--b-teal)}
+.n-search-icon{font-size:.8rem;color:var(--t3);flex-shrink:0}
+.n-search input{
+  flex:1;background:none;border:none;outline:none;
+  font-family:var(--font-body);font-size:.8rem;color:var(--t1);min-width:0;
+}
+.n-search input::placeholder{color:var(--t3)}
+.n-search-kbd{
+  font-family:var(--font-mono);font-size:.52rem;letter-spacing:1px;
+  color:var(--t4);border:1px solid var(--b0);border-radius:3px;
+  padding:2px 5px;flex-shrink:0;
+}
+.n-spacer{flex:1}
+.n-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.n-back{
+  font-size:.72rem;font-weight:500;color:var(--t3);
+  padding:6px 12px;border:1px solid var(--b0);border-radius:var(--r);
+  transition:all .15s;display:flex;align-items:center;gap:5px;
+}
+.n-back:hover{color:var(--t1);border-color:rgba(255,255,255,.15);background:var(--surface)}
+.n-install{
+  font-size:.72rem;font-weight:700;letter-spacing:.4px;
+  color:#001a14;padding:7px 18px;background:var(--teal);border-radius:var(--r);
+  box-shadow:0 0 16px rgba(0,229,188,.28);transition:all .15s;
+}
+.n-install:hover{background:#1affd4;transform:translateY(-1px)}
+
+/* ── MAIN LAYOUT ── */
+.docs-layout{
+  display:grid;
+  grid-template-columns:var(--sidebar-w) 1fr;
+  min-height:calc(100vh - 52px);
+  align-items:start;
+  max-width:var(--page-max);
+  margin:0 auto;
+}
+
+/* ── SIDEBAR ── */
+.docs-sidebar{
+  position:sticky;top:52px;
+  height:calc(100vh - 52px);
+  overflow-y:auto;
+  background:var(--bg2);
+  border-right:1px solid var(--b0);
+  padding:20px 0;
+  scrollbar-width:thin;
+  scrollbar-color:var(--b0) transparent;
+}
+.docs-sidebar::-webkit-scrollbar{width:4px}
+.docs-sidebar::-webkit-scrollbar-track{background:transparent}
+.docs-sidebar::-webkit-scrollbar-thumb{background:var(--b0);border-radius:2px}
+
+.sb-section{margin-bottom:28px}
+.sb-section-label{
+  font-family:var(--font-mono);font-size:.55rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--t4);padding:0 20px;margin-bottom:6px;
+}
+.sb-link{
+  display:flex;align-items:center;gap:9px;
+  padding:8px 20px;font-size:.8rem;color:var(--t3);
+  transition:all .15s;cursor:pointer;
+  border-left:2px solid transparent;
+}
+.sb-link:hover{color:var(--t1);background:var(--surface)}
+.sb-link.active{
+  color:var(--teal);background:var(--teal-d);
+  border-left-color:var(--teal);
+}
+.sb-link-icon{font-size:.85rem;flex-shrink:0;width:18px;text-align:center}
+.sb-badge{
+  margin-left:auto;font-family:var(--font-mono);font-size:.5rem;
+  letter-spacing:1px;padding:2px 6px;border-radius:3px;
+  background:var(--red-d);color:var(--red);border:1px solid var(--b-red);
+}
+.sb-divider{height:1px;background:var(--b0);margin:12px 0}
+
+/* ── DOCS CONTENT ── */
+.docs-content{padding:40px 56px 80px;min-height:600px}
+
+/* Section header within docs */
+.doc-section-hero{
+  margin-bottom:48px;
+  padding-bottom:32px;
+  border-bottom:1px solid var(--b0);
+}
+.doc-section-tag{
+  font-family:var(--font-mono);font-size:.58rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--teal);margin-bottom:10px;
+}
+.doc-section-tag::before{content:'// '}
+.doc-h2{
+  font-family:var(--font-head);font-weight:800;
+  font-size:clamp(22px,3vw,36px);line-height:1.1;letter-spacing:-1px;
+  color:var(--t1);margin-bottom:10px;
+}
+.doc-h2 span{color:var(--red)}
+.doc-intro{font-size:.9rem;color:var(--t2);line-height:1.85;max-width:580px}
+
+/* Guide cards grid */
+.doc-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:48px}
+.doc-card{
+  background:var(--bg3);border:1px solid var(--b0);border-radius:var(--rl);
+  padding:22px 20px;transition:all .2s;cursor:pointer;
+  display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden;
+}
+.doc-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--teal),transparent);
+  opacity:0;transition:opacity .25s;
+}
+.doc-card:hover{border-color:var(--b-teal);background:rgba(0,229,188,.03);transform:translateY(-2px)}
+.doc-card:hover::before{opacity:1}
+.dc-icon{font-size:1.4rem}
+.dc-title{font-family:var(--font-head);font-weight:700;font-size:.85rem;color:var(--t1)}
+.dc-desc{font-size:.75rem;color:var(--t3);line-height:1.65}
+.dc-link{
+  margin-top:4px;font-family:var(--font-mono);font-size:.6rem;
+  color:var(--teal);opacity:.6;display:flex;align-items:center;gap:5px;
+  transition:opacity .15s;
+}
+.doc-card:hover .dc-link{opacity:1}
+.dc-badge{
+  position:absolute;top:12px;right:12px;
+  font-family:var(--font-mono);font-size:.48rem;letter-spacing:1.5px;
+  text-transform:uppercase;padding:2px 7px;border-radius:3px;
+}
+.badge-new{background:var(--red-d);color:var(--red);border:1px solid var(--b-red)}
+.badge-core{background:var(--teal-d);color:var(--teal);border:1px solid var(--b-teal)}
+
+/* Content article — visible when a doc is "open" */
+.doc-article{display:none;animation:reveal-up .35s ease}
+.doc-article.visible{display:block}
+
+.article-header{margin-bottom:36px;padding-bottom:24px;border-bottom:1px solid var(--b0)}
+.article-tag{font-family:var(--font-mono);font-size:.55rem;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:8px}
+.article-h{
+  font-family:var(--font-head);font-weight:800;
+  font-size:clamp(20px,2.8vw,32px);line-height:1.15;letter-spacing:-1px;
+  color:var(--t1);margin-bottom:10px;
+}
+.article-sub{font-size:.88rem;color:var(--t2);line-height:1.8;max-width:520px}
+
+/* Article body typography */
+.article-body h3{
+  font-family:var(--font-head);font-weight:700;
+  font-size:1rem;color:var(--t1);
+  margin:32px 0 12px;display:flex;align-items:center;gap:8px;
+}
+.article-body h3::before{
+  content:'';display:inline-block;width:3px;height:16px;
+  background:var(--teal);border-radius:2px;flex-shrink:0;
+}
+.article-body p{font-size:.85rem;color:var(--t2);line-height:1.85;margin-bottom:14px}
+.article-body strong{color:var(--t1);font-weight:600}
+.article-body em{color:var(--teal);font-style:normal}
+
+/* Steps list */
+.article-steps{
+  display:flex;flex-direction:column;gap:1px;
+  background:var(--b0);border-radius:var(--rl);overflow:hidden;
+  margin:20px 0;
+}
+.a-step{
+  background:var(--bg3);padding:16px 20px;
+  display:flex;align-items:flex-start;gap:14px;
+  transition:background .2s;
+}
+.a-step:hover{background:rgba(0,229,188,.03)}
+.a-step-n{
+  font-family:var(--font-head);font-weight:800;font-size:1.1rem;
+  color:var(--teal);opacity:.5;flex-shrink:0;width:24px;line-height:1.4;
+}
+.a-step-body{}
+.a-step-title{font-family:var(--font-head);font-weight:700;font-size:.82rem;color:var(--t1);margin-bottom:4px}
+.a-step-desc{font-size:.78rem;color:var(--t2);line-height:1.75}
+
+/* Code block */
+.code-block{
+  background:var(--bg3);border:1px solid var(--b0);border-radius:var(--r);
+  padding:16px 20px;margin:16px 0;font-family:var(--font-mono);
+  font-size:.75rem;color:var(--teal);line-height:1.7;overflow-x:auto;
+}
+.code-block .cm{color:var(--t4)} /* comment */
+.code-block .ck{color:var(--red)} /* keyword */
+
+/* Tip / warning boxes */
+.tip-box{
+  border-radius:var(--r);padding:14px 18px;margin:16px 0;
+  font-size:.8rem;line-height:1.75;
+  display:flex;gap:12px;align-items:flex-start;
+}
+.tip-icon{flex-shrink:0;font-size:1rem;margin-top:1px}
+.tip-green{background:var(--teal-d);border:1px solid var(--b-teal);color:rgba(0,229,188,.8)}
+.tip-red{background:var(--red-d);border:1px solid var(--b-red);color:rgba(255,34,71,.8)}
+.tip-yellow{background:rgba(255,214,10,.07);border:1px solid rgba(255,214,10,.2);color:rgba(255,214,10,.8)}
+
+/* Format table */
+.format-table{
+  width:100%;border-collapse:collapse;margin:20px 0;
+  font-size:.78rem;
+}
+.format-table th{
+  font-family:var(--font-mono);font-size:.55rem;letter-spacing:2px;text-transform:uppercase;
+  color:var(--t3);padding:10px 14px;text-align:left;
+  border-bottom:1px solid var(--b0);
+}
+.format-table td{
+  padding:12px 14px;border-bottom:1px solid var(--b0);
+  color:var(--t2);vertical-align:top;line-height:1.65;
+}
+.format-table tr:last-child td{border-bottom:none}
+.format-table tr:hover td{background:var(--surface)}
+.fmt-name{
+  font-family:var(--font-mono);font-size:.72rem;color:var(--teal);
+  font-weight:600;
+}
+
+/* Article nav — prev / next */
+.article-nav{
+  display:flex;justify-content:space-between;gap:16px;
+  margin-top:48px;padding-top:24px;border-top:1px solid var(--b0);
+}
+.a-nav-btn{
+  display:flex;align-items:center;gap:10px;
+  padding:14px 18px;border:1px solid var(--b0);border-radius:var(--r);
+  background:var(--surface);transition:all .2s;flex:1;max-width:48%;
+}
+.a-nav-btn:hover{border-color:var(--b-teal);background:var(--teal-d)}
+.a-nav-btn.next{justify-content:flex-end;text-align:right}
+.a-nav-label{font-family:var(--font-mono);font-size:.55rem;letter-spacing:2px;text-transform:uppercase;color:var(--t4);margin-bottom:3px}
+.a-nav-title{font-family:var(--font-head);font-weight:700;font-size:.82rem;color:var(--t1)}
+.a-nav-arrow{font-size:1.1rem;color:var(--teal);flex-shrink:0}
+
+/* Back to index button */
+.back-to-index{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:.75rem;font-weight:500;color:var(--t3);
+  padding:7px 14px;border:1px solid var(--b0);border-radius:var(--r);
+  background:var(--surface);transition:all .15s;margin-bottom:32px;
+}
+.back-to-index:hover{color:var(--teal);border-color:var(--b-teal);background:var(--teal-d)}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--bg);border-top:1px solid var(--b0);
+  padding:28px 0;
+}
+.footer-inner{
+  max-width:var(--page-max);margin:0 auto;width:100%;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  padding:0 24px;
+}
+.f-logo{font-family:var(--font-head);font-weight:800;font-size:.95rem;letter-spacing:2px;color:var(--t1);display:flex;align-items:center;gap:7px}
+.f-logo-k{font-family:var(--font-mono);font-size:.55rem;color:var(--red);opacity:.7}
+.f-links{display:flex;gap:20px}
+.f-links a{font-size:.72rem;color:var(--t3);transition:color .15s}
+.f-links a:hover{color:var(--teal)}
+.f-right{font-family:var(--font-mono);font-size:.6rem;color:var(--t4);text-align:right;line-height:1.6}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .docs-layout{grid-template-columns:1fr}
+  .docs-sidebar{
+    position:static;height:auto;
+    border-right:none;border-bottom:1px solid var(--b0);
+    padding:16px 0;
+  }
+  .sb-section{margin-bottom:0}
+  .docs-sidebar .sb-section:not(:first-child){display:none}
+  .docs-content{padding:28px 24px 60px}
+  .doc-cards{grid-template-columns:1fr}
+  footer{padding:28px 0}
+  .footer-inner{flex-direction:column;text-align:center;padding:0 24px}
+  .f-links{flex-wrap:wrap;justify-content:center}
+  .f-right{text-align:center}
+  nav .n-search{display:none}
+  .nav-inner{padding:0 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="n-logo">TraceBrief <span class="n-logo-k">バグ</span></a>
+    <div class="n-sep"></div>
+    <div class="n-doc-label">Docs</div>
+    <div class="n-search">
+      <span class="n-search-icon">🔍</span>
+      <input type="text" placeholder="Search docs…" id="search-input" oninput="filterDocs(this.value)">
+      <span class="n-search-kbd">⌘K</span>
+    </div>
+    <div class="n-spacer"></div>
+    <div class="n-right">
+      <a href="index.html" class="n-back">← Back to site</a>
+      <button class="n-install" onclick="window.open('https://chrome.google.com/webstore','_blank')">Install Free →</button>
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN LAYOUT -->
+<div class="docs-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="docs-sidebar">
+    <div class="sb-section">
+      <div class="sb-section-label">Get Started</div>
+      <div class="sb-link active" onclick="showDoc('quickstart')" id="sb-quickstart">
+        <span class="sb-link-icon">⚡</span> Quick Start
+        <span class="sb-badge">Start here</span>
+      </div>
+      <div class="sb-link" onclick="showDoc('install')" id="sb-install">
+        <span class="sb-link-icon">⬇</span> Installation
+      </div>
+      <div class="sb-link" onclick="showDoc('panel')" id="sb-panel">
+        <span class="sb-link-icon">🪟</span> Opening the Panel
+      </div>
+      <div class="sb-link" onclick="showDoc('permissions')" id="sb-permissions">
+        <span class="sb-link-icon">🔐</span> Permissions
+      </div>
+    </div>
+
+    <div class="sb-divider"></div>
+
+    <div class="sb-section">
+      <div class="sb-section-label">Capturing Evidence</div>
+      <div class="sb-link" onclick="showDoc('capture')" id="sb-capture">
+        <span class="sb-link-icon">📸</span> Screenshots
+      </div>
+      <div class="sb-link" onclick="showDoc('recording')" id="sb-recording">
+        <span class="sb-link-icon">🎬</span> Screen Recordings
+      </div>
+      <div class="sb-link" onclick="showDoc('annotate')" id="sb-annotate">
+        <span class="sb-link-icon">✏️</span> Annotation Editor
+      </div>
+    </div>
+
+    <div class="sb-divider"></div>
+
+    <div class="sb-section">
+      <div class="sb-section-label">Structuring Reports</div>
+      <div class="sb-link" onclick="showDoc('steps')" id="sb-steps">
+        <span class="sb-link-icon">📋</span> Step Logger
+      </div>
+      <div class="sb-link" onclick="showDoc('context')" id="sb-context">
+        <span class="sb-link-icon">🔍</span> Context Tab
+      </div>
+      <div class="sb-link" onclick="showDoc('packs')" id="sb-packs">
+        <span class="sb-link-icon">📦</span> Evidence Packs
+      </div>
+    </div>
+
+    <div class="sb-divider"></div>
+
+    <div class="sb-section">
+      <div class="sb-section-label">Output & Export</div>
+      <div class="sb-link" onclick="showDoc('export')" id="sb-export">
+        <span class="sb-link-icon">⚡</span> Copy & Paste Output
+      </div>
+      <div class="sb-link" onclick="showDoc('formats')" id="sb-formats">
+        <span class="sb-link-icon">📄</span> Export Formats
+      </div>
+      <div class="sb-link" onclick="showDoc('destinations')" id="sb-destinations">
+        <span class="sb-link-icon">🎯</span> Jira, GitHub & More
+      </div>
+    </div>
+
+    <div class="sb-divider"></div>
+
+    <div class="sb-section">
+      <div class="sb-section-label">Reference</div>
+      <div class="sb-link" onclick="showDoc('privacy')" id="sb-privacy">
+        <span class="sb-link-icon">🔒</span> Privacy & Security
+      </div>
+      <div class="sb-link" onclick="showDoc('troubleshoot')" id="sb-troubleshoot">
+        <span class="sb-link-icon">🛠</span> Troubleshooting
+      </div>
+      <div class="sb-link" onclick="showDoc('glossary')" id="sb-glossary">
+        <span class="sb-link-icon">📖</span> Glossary
+      </div>
+      <div class="sb-link" onclick="showDoc('bestpractices')" id="sb-bestpractices">
+        <span class="sb-link-icon">⭐</span> Best Practices
+      </div>
+    </div>
+  </aside>
+
+  <!-- CONTENT AREA -->
+  <main class="docs-content" id="docs-content">
+
+    <!-- INDEX VIEW (default) -->
+    <div id="view-index">
+      <div class="doc-section-hero rv">
+        <div class="doc-section-tag">Overview</div>
+        <h2 class="doc-h2">Documentation<br><span>pick where to start.</span></h2>
+        <p class="doc-intro">All guides in one place. If this is your first time, start with Quick Start. If you know what you need, jump straight to the section.</p>
+      </div>
+
+      <div class="rv d1">
+        <div class="doc-section-tag">Get Started</div>
+        <div class="doc-cards" style="margin-top:14px">
+          <div class="doc-card" onclick="showDoc('quickstart')">
+            <span class="dc-badge badge-core">Start Here</span>
+            <div class="dc-icon">⚡</div>
+            <div class="dc-title">Quick Start Guide</div>
+            <div class="dc-desc">Zero to first evidence pack in under 5 minutes. The fastest path to useful, regardless of what you're doing.</div>
+            <div class="dc-link">Read guide →</div>
+          </div>
+          <div class="doc-card" onclick="showDoc('install')">
+            <div class="dc-icon">⬇</div>
+            <div class="dc-title">Installation</div>
+            <div class="dc-desc">Installing from the Chrome Web Store or loading unpacked for development. Pinning to your toolbar.</div>
+            <div class="dc-link">Read guide →</div>
+          </div>
+          <div class="doc-card" onclick="showDoc('panel')">
+            <div class="dc-icon">🪟</div>
+            <div class="dc-title">Opening the Panel</div>
+            <div class="dc-desc">How to open the side panel, keep it visible while browsing, and navigate the five tabs.</div>
+            <div class="dc-link">Read guide →</div>
+          </div>
+          <div class="doc-card" onclick="showDoc('permissions')">
+            <div class="dc-icon">🔐</div>
+            <div class="dc-title">Permissions Explained</div>
+            <div class="dc-desc">What permissions TraceBrief requests, why each one is needed, and what we explicitly don't do with them.</div>
+            <div class="dc-link">Read guide →</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rv d2" style="margin-top:12px">
+        <div class="doc-section-tag">Capturing Evidence</div>
+        <div class="doc-cards" style="margin-top:14px">
+          <div class="doc-card" onclick="showDoc('capture')">
+            <div class="dc-icon">📸</div>
+            <div class="dc-title">Screenshots & Full-Page Capture</div>
+            <div class="dc-desc">Standard capture, full-page scrolling for tall pages, and how to handle restricted pages where capture doesn't work.</div>
+            <div class="dc-link">Read guide →</div>
+          </div>
+          <div class="doc-card" onclick="showDoc('recording')">
+            <div class="dc-icon">🎬</div>
+            <div class="dc-title">Screen Recordings</div>
+            <div class="dc-desc">When to record instead of screenshot. How to keep recordings short and high-signal. Stopping and saving.</div>
+            <div class="dc-link">Read guide →</div>
+          </div>
+          <div class="doc-card" onclick="showDoc('annotate')">
+            <div class="dc-icon">✏️</div>
+            <div class="dc-title">Annotation Editor</div>
+            <div class="dc-desc">The scrollable annotation canvas. Arrows, labels, highlights. Handling tall screenshots. Saving edits.</div>
+            <div class="dc-link">Read guide →</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rv d3" style="margin-top:12px">
+        <div class="doc-section-tag">Structuring & Sending</div>
+        <div class="doc-cards" style="margin-top:14px">
+          <div class="doc-card" onclick="showDoc('steps')">
+            <div class="dc-icon">📋</div>
+            <div class="dc-title">Step Logger</div>
+            <div class="dc-desc">Writing Steps → Expected → Actual. Environment fields. The format that gets bugs fixed on the first round.</div>
+            <div class="dc-link">Read guide →</div>
+          </div>
+          <div class="doc-card" onclick="showDoc('export')">
+            <span class="dc-badge badge-new">Primary</span>
+            <div class="dc-icon">⚡</div>
+            <div class="dc-title">Copy & Paste Output</div>
+            <div class="dc-desc">The fastest workflow: capture in the panel, paste into Jira, Slack, email, or anywhere else. Five copy formats explained.</div>
+            <div class="dc-link">Read guide →</div>
+          </div>
+          <div class="doc-card" onclick="showDoc('formats')">
+            <div class="dc-icon">📄</div>
+            <div class="dc-title">Export Formats</div>
+            <div class="dc-desc">ZIP, CSV, HTML gallery — when to use each, what each file contains, and who each format is for.</div>
+            <div class="dc-link">Read guide →</div>
+          </div>
+          <div class="doc-card" onclick="showDoc('destinations')">
+            <div class="dc-icon">🎯</div>
+            <div class="dc-title">Jira, GitHub & More</div>
+            <div class="dc-desc">Exactly how to attach or paste a TraceBrief pack into Jira, GitHub Issues, Linear, email, and Slack.</div>
+            <div class="dc-link">Read guide →</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rv d4" style="margin-top:12px">
+        <div class="doc-section-tag">Reference</div>
+        <div class="doc-cards" style="margin-top:14px">
+          <div class="doc-card" onclick="showDoc('privacy')">
+            <div class="dc-icon">🔒</div>
+            <div class="dc-title">Privacy & Security</div>
+            <div class="dc-desc">Local-first storage, sandboxed HTML previews, strict CSP, and why we don't have a server ingesting your screenshots.</div>
+            <div class="dc-link">Read guide →</div>
+          </div>
+          <div class="doc-card" onclick="showDoc('troubleshoot')">
+            <div class="dc-icon">🛠</div>
+            <div class="dc-title">Troubleshooting</div>
+            <div class="dc-desc">Screenshot fails, annotator scroll issues, export buttons disabled, recording won't save. Causes and fixes.</div>
+            <div class="dc-link">Read guide →</div>
+          </div>
+          <div class="doc-card" onclick="showDoc('bestpractices')">
+            <div class="dc-icon">⭐</div>
+            <div class="dc-title">Best Practices</div>
+            <div class="dc-desc">How to write high-signal evidence. Naming conventions, what to capture, what to skip, and how to keep packs clean.</div>
+            <div class="dc-link">Read guide →</div>
+          </div>
+          <div class="doc-card" onclick="showDoc('glossary')">
+            <div class="dc-icon">📖</div>
+            <div class="dc-title">Glossary</div>
+            <div class="dc-desc">Evidence Item, Evidence Pack, Step Logger, Sandboxed Preview — every TraceBrief term defined clearly.</div>
+            <div class="dc-link">Read guide →</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ARTICLE: QUICK START ── -->
+    <div id="view-quickstart" class="doc-article">
+      <button class="back-to-index" onclick="showIndex()">← All docs</button>
+      <div class="article-header">
+        <div class="article-tag">Get Started</div>
+        <h2 class="article-h">Quick Start Guide</h2>
+        <p class="article-sub">Zero to your first evidence pack in under 5 minutes. This works whether you're a QA engineer, a PM, or someone trying to prove to Netflix that their app is broken.</p>
+      </div>
+      <div class="article-body">
+        <div class="tip-box tip-green"><span class="tip-icon">✓</span><div>No account required. No email. Open the extension and go.</div></div>
+        <h3>The fastest workflow</h3>
+        <div class="article-steps">
+          <div class="a-step"><div class="a-step-n">1</div><div class="a-step-body"><div class="a-step-title">Open TraceBrief</div><div class="a-step-desc">Click the TraceBrief icon in your Chrome toolbar, or open the Chrome side panel and select TraceBrief. It appears alongside your current tab — no new windows.</div></div></div>
+          <div class="a-step"><div class="a-step-n">2</div><div class="a-step-body"><div class="a-step-title">Capture what's broken</div><div class="a-step-desc">On the <strong>Capture tab</strong>, hit Screenshot (Alt+S) or Screen Record. Capture while the broken thing is still visible. Don't navigate away first.</div></div></div>
+          <div class="a-step"><div class="a-step-n">3</div><div class="a-step-body"><div class="a-step-title">Add reproduction steps</div><div class="a-step-desc">Switch to the <strong>Steps tab</strong>. Add what you did, what you expected, and what actually happened. Three to five steps is usually enough.</div></div></div>
+          <div class="a-step"><div class="a-step-n">4</div><div class="a-step-body"><div class="a-step-title">Copy and paste — or export</div><div class="a-step-desc">On the <strong>Export tab</strong>, choose your format and hit Copy. Switch to your Jira ticket, email, or Slack message and paste. Or hit Export for a downloadable file.</div></div></div>
+        </div>
+        <div class="tip-box tip-yellow"><span class="tip-icon">💡</span><div>The side panel stays open while you switch tabs. Reproduce the bug in one tab, paste into your ticket in another — TraceBrief remembers everything.</div></div>
+        <h3>What you get</h3>
+        <p>A single structured evidence pack containing your screenshots or recording, reproduction steps, expected vs actual behaviour, and auto-captured context (URL, browser, OS, timestamp). Formatted to paste anywhere or export as a file.</p>
+      </div>
+      <div class="article-nav">
+        <div></div>
+        <div class="a-nav-btn next" onclick="showDoc('install')">
+          <div><div class="a-nav-label">Next</div><div class="a-nav-title">Installation</div></div>
+          <div class="a-nav-arrow">→</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ARTICLE: CAPTURE ── -->
+    <div id="view-capture" class="doc-article">
+      <button class="back-to-index" onclick="showIndex()">← All docs</button>
+      <div class="article-header">
+        <div class="article-tag">Capturing Evidence</div>
+        <h2 class="article-h">Screenshots & Full-Page Capture</h2>
+        <p class="article-sub">Capture any page state instantly. Full-page scrolling stitches tall dashboards automatically. No file management needed — everything goes straight into your evidence pack.</p>
+      </div>
+      <div class="article-body">
+        <h3>Standard screenshot</h3>
+        <p>Click <strong>Screenshot</strong> in the Capture tab, or press <em>Alt+S</em> from anywhere. The screenshot captures the current visible viewport and appears in your Evidence list immediately.</p>
+        <h3>Full-page capture</h3>
+        <p>For dashboards, long forms, or any page that scrolls — click <strong>Full Page</strong>. TraceBrief scrolls the page automatically and stitches the images together. <strong>Scroll to the top first</strong> for the cleanest result.</p>
+        <div class="tip-box tip-yellow"><span class="tip-icon">💡</span><div>Some sites prevent full-page capture. If it fails, use standard screenshot and capture the key sections individually.</div></div>
+        <h3>What happens after capture</h3>
+        <p>Your screenshot appears as an Evidence Item in the Capture tab. You can preview it, rename it, open it in the annotation editor, download it, or delete it. All evidence stays local until you export.</p>
+        <div class="tip-box tip-red"><span class="tip-icon">⚠</span><div>Chrome's internal pages (chrome://, chrome-extension://) and some secure payment flows block capture. This is a Chrome security constraint — not a TraceBrief bug.</div></div>
+        <h3>Naming your screenshots</h3>
+        <p>Rename evidence items immediately after capture. <strong>"Billing — upgrade button disabled"</strong> is useful. <strong>"Screenshot 1"</strong> is not. You'll thank yourself when you're filing the ticket two hours later.</p>
+      </div>
+      <div class="article-nav">
+        <div class="a-nav-btn" onclick="showDoc('quickstart')"><div class="a-nav-arrow">←</div><div><div class="a-nav-label">Previous</div><div class="a-nav-title">Quick Start</div></div></div>
+        <div class="a-nav-btn next" onclick="showDoc('recording')"><div><div class="a-nav-label">Next</div><div class="a-nav-title">Screen Recordings</div></div><div class="a-nav-arrow">→</div></div>
+      </div>
+    </div>
+
+    <!-- ── ARTICLE: EXPORT / OUTPUT ── -->
+    <div id="view-export" class="doc-article">
+      <button class="back-to-index" onclick="showIndex()">← All docs</button>
+      <div class="article-header">
+        <div class="article-tag">Output & Export</div>
+        <h2 class="article-h">Copy & Paste Output</h2>
+        <p class="article-sub">The primary workflow. The side panel stays open while you work — capture in your app, paste into your ticket. No file downloads, no tab management, no friction.</p>
+      </div>
+      <div class="article-body">
+        <h3>The two paths</h3>
+        <p><strong>Copy path (primary):</strong> choose a format on the Export tab, hit Copy, switch to your destination, paste. The side panel remembers your evidence while you switch tabs.</p>
+        <p><strong>Export path (when you need a file):</strong> download a ZIP, CSV, or HTML gallery. Use this when you need an attachment, an archived record, or something to email outside your tools.</p>
+        <h3>Copy formats</h3>
+        <table class="format-table">
+          <tr><th>Format</th><th>Best for</th><th>Contains</th></tr>
+          <tr><td><div class="fmt-name">Plain Text</div></td><td>Email, Slack, any plain field</td><td>Steps, expected, actual, environment — readable by anyone</td></tr>
+          <tr><td><div class="fmt-name">Markdown</div></td><td>GitHub Issues, Linear, Notion</td><td>Full structured report with headers and formatted lists</td></tr>
+          <tr><td><div class="fmt-name">CSV</div></td><td>Jira (paste into description)</td><td>Steps and metadata in comma-separated format</td></tr>
+          <tr><td><div class="fmt-name">HTML</div></td><td>Rich email, internal wiki</td><td>Formatted HTML you can paste into rich-text editors</td></tr>
+          <tr><td><div class="fmt-name">JSON</div></td><td>APIs, custom tooling, devs</td><td>Full structured data — all fields, all evidence references</td></tr>
+        </table>
+        <h3>Export file formats</h3>
+        <table class="format-table">
+          <tr><th>Format</th><th>Best for</th><th>Contains</th></tr>
+          <tr><td><div class="fmt-name">ZIP Bundle</div></td><td>Ticket attachments, archiving</td><td>All screenshots, recordings, CSV summary — one file</td></tr>
+          <tr><td><div class="fmt-name">HTML Gallery</div></td><td>Stakeholder review, sharing</td><td>Sandboxed click-through gallery — safe to open anywhere</td></tr>
+          <tr><td><div class="fmt-name">CSV</div></td><td>Lightweight attachment</td><td>Steps, metadata, file references — no binary assets</td></tr>
+        </table>
+        <div class="tip-box tip-green"><span class="tip-icon">✓</span><div>HTML gallery exports are sandboxed — they cannot execute scripts. Safe to open and share with anyone, including non-technical stakeholders.</div></div>
+      </div>
+      <div class="article-nav">
+        <div class="a-nav-btn" onclick="showDoc('steps')"><div class="a-nav-arrow">←</div><div><div class="a-nav-label">Previous</div><div class="a-nav-title">Step Logger</div></div></div>
+        <div class="a-nav-btn next" onclick="showDoc('formats')"><div><div class="a-nav-label">Next</div><div class="a-nav-title">Export Formats</div></div><div class="a-nav-arrow">→</div></div>
+      </div>
+    </div>
+
+    <!-- ── ARTICLE: STEPS ── -->
+    <div id="view-steps" class="doc-article">
+      <button class="back-to-index" onclick="showIndex()">← All docs</button>
+      <div class="article-header">
+        <div class="article-tag">Structuring Reports</div>
+        <h2 class="article-h">Step Logger</h2>
+        <p class="article-sub">Steps are what turn a screenshot into a reproducible report. Without them, even a perfect recording can get "I can't reproduce it." With them, you get a fix.</p>
+      </div>
+      <div class="article-body">
+        <h3>The structure that works</h3>
+        <p>Every good bug report has the same three parts. TraceBrief's Step Logger makes all three easy:</p>
+        <div class="article-steps">
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">Steps to Reproduce</div><div class="a-step-desc">Numbered steps. Start from a known state ("Log in as admin, go to Billing"). Be specific about what you click. Write like you're instructing someone who has never used the app.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">Expected Result</div><div class="a-step-desc">What should happen. One sentence. "File downloads immediately" or "User is redirected to the dashboard."</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">Actual Result</div><div class="a-step-desc">What actually happened. Be precise. "Page refreshes and no file is downloaded" is better than "it didn't work."</div></div></div>
+        </div>
+        <h3>Environment context</h3>
+        <p>TraceBrief auto-captures URL, browser, OS, and timestamp. You can add additional context manually — account role, feature flags, environment (staging vs production). <strong>This is the context that turns a 3-round ticket into a 1-round fix.</strong></p>
+        <div class="tip-box tip-yellow"><span class="tip-icon">💡</span><div>Three to five steps is usually the right length. More than eight steps and you're probably describing two separate bugs.</div></div>
+        <h3>What gets exported</h3>
+        <p>Your steps are included in every output format — plain text, Markdown, CSV, HTML, JSON, and all file exports. They travel with your evidence, wherever you send it.</p>
+      </div>
+      <div class="article-nav">
+        <div class="a-nav-btn" onclick="showDoc('annotate')"><div class="a-nav-arrow">←</div><div><div class="a-nav-label">Previous</div><div class="a-nav-title">Annotation Editor</div></div></div>
+        <div class="a-nav-btn next" onclick="showDoc('export')"><div><div class="a-nav-label">Next</div><div class="a-nav-title">Copy & Paste Output</div></div><div class="a-nav-arrow">→</div></div>
+      </div>
+    </div>
+
+    <!-- ── ARTICLE: PRIVACY ── -->
+    <div id="view-privacy" class="doc-article">
+      <button class="back-to-index" onclick="showIndex()">← All docs</button>
+      <div class="article-header">
+        <div class="article-tag">Reference</div>
+        <h2 class="article-h">Privacy & Security</h2>
+        <p class="article-sub">Local-first by design. Your data stays on your machine until you choose to send it. Here's exactly what that means, technically.</p>
+      </div>
+      <div class="article-body">
+        <h3>Local-first storage</h3>
+        <p>Everything TraceBrief captures — screenshots, recordings, steps, context — is stored in Chrome's local extension storage. <strong>It does not leave your machine</strong> unless you explicitly copy or export it.</p>
+        <div class="tip-box tip-green"><span class="tip-icon">✓</span><div>We do not run a server that receives your captures. There is no TraceBrief cloud. Your screenshots are not backed up anywhere we can see.</div></div>
+        <h3>Permissions we request</h3>
+        <p>TraceBrief requests the minimum permissions required to function — nothing more:</p>
+        <div class="article-steps">
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">storage</div><div class="a-step-desc">Saves your evidence items and steps locally in Chrome. Nothing is sent anywhere.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">sidePanel</div><div class="a-step-desc">Shows the TraceBrief UI in Chrome's side panel.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">activeTab / tabs</div><div class="a-step-desc">Accesses the current tab for capture. Only active when you trigger a capture action.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">tabCapture (recordings only)</div><div class="a-step-desc">Required for screen recording. Chrome may prompt you to choose what to share — that's Chrome's own permission flow, not ours.</div></div></div>
+        </div>
+        <h3>Sandboxed HTML previews</h3>
+        <p>HTML gallery exports are rendered inside a sandboxed iframe using <code style="font-family:var(--font-mono);font-size:.78rem;color:var(--teal)">srcdoc</code>. This blocks script execution. You can share HTML galleries with anyone — they cannot run code.</p>
+        <h3>Image validation</h3>
+        <p>TraceBrief validates all image payloads against a strict allow-list (PNG, JPEG, WebP only). Unknown or unexpected data URL types are rejected before processing.</p>
+        <div class="tip-box tip-yellow"><span class="tip-icon">💡</span><div>If your screenshots contain sensitive customer data, treat your exports with the same care you'd give any sensitive file. TraceBrief doesn't see them — but your recipients will.</div></div>
+      </div>
+      <div class="article-nav">
+        <div class="a-nav-btn" onclick="showDoc('destinations')"><div class="a-nav-arrow">←</div><div><div class="a-nav-label">Previous</div><div class="a-nav-title">Jira, GitHub & More</div></div></div>
+        <div class="a-nav-btn next" onclick="showDoc('troubleshoot')"><div><div class="a-nav-label">Next</div><div class="a-nav-title">Troubleshooting</div></div><div class="a-nav-arrow">→</div></div>
+      </div>
+    </div>
+
+    <!-- ── ARTICLE: TROUBLESHOOTING ── -->
+    <div id="view-troubleshoot" class="doc-article">
+      <button class="back-to-index" onclick="showIndex()">← All docs</button>
+      <div class="article-header">
+        <div class="article-tag">Reference</div>
+        <h2 class="article-h">Troubleshooting</h2>
+        <p class="article-sub">Something isn't working. Here are the most common issues, why they happen, and how to fix them.</p>
+      </div>
+      <div class="article-body">
+        <h3>Screenshot capture fails</h3>
+        <p><strong>Most likely cause:</strong> restricted pages. Chrome blocks capture on internal pages (<code style="font-family:var(--font-mono);font-size:.78rem;color:var(--teal)">chrome://</code>), some payment flows, and pages with strict security headers.</p>
+        <p><strong>Fix:</strong> refresh the tab and try again. If it fails on a specific page type, use standard screenshot and capture the area manually. This is a Chrome constraint.</p>
+        <h3>Annotator scroll stuck or unresponsive</h3>
+        <p><strong>Most likely cause:</strong> mouse is outside the scrollable editor container.</p>
+        <p><strong>Fix:</strong> ensure your cursor is inside the editor when scrolling. Close and reopen the annotator. In rare cases, reducing Chrome's zoom level (Ctrl/Cmd + -) helps. The annotator scroll stability was a v1 priority fix — if you're seeing persistent issues, check for a newer version.</p>
+        <h3>Recording doesn't save</h3>
+        <p><strong>Most likely cause:</strong> the browser share prompt wasn't completed, or Stop Recording wasn't clicked properly.</p>
+        <p><strong>Fix:</strong> ensure you clicked Stop Recording in the panel (not just closed the share prompt). Try again with tab-only recording selected in Chrome's share dialog.</p>
+        <h3>Export buttons are greyed out</h3>
+        <p><strong>This is intentional.</strong> TraceBrief disables export actions when they can't complete successfully — and shows you exactly why. Hover the disabled button to see the reason. Common causes: no items selected, no steps logged, export still generating.</p>
+        <div class="tip-box tip-green"><span class="tip-icon">✓</span><div>Disabled actions explain why they're disabled. If you're unsure, hover the button — TraceBrief will tell you what's missing.</div></div>
+        <h3>Full-page capture misses content</h3>
+        <p>Scroll to the top of the page before triggering full-page capture. Some pages with lazy-loaded content or fixed headers don't scroll cleanly — use standard screenshots for those sections and capture in two passes.</p>
+      </div>
+      <div class="article-nav">
+        <div class="a-nav-btn" onclick="showDoc('privacy')"><div class="a-nav-arrow">←</div><div><div class="a-nav-label">Previous</div><div class="a-nav-title">Privacy & Security</div></div></div>
+        <div class="a-nav-btn next" onclick="showDoc('bestpractices')"><div><div class="a-nav-label">Next</div><div class="a-nav-title">Best Practices</div></div><div class="a-nav-arrow">→</div></div>
+      </div>
+    </div>
+
+    <!-- Placeholder articles for remaining docs -->
+    <div id="view-install" class="doc-article">
+      <button class="back-to-index" onclick="showIndex()">← All docs</button>
+      <div class="article-header">
+        <div class="article-tag">Get Started</div>
+        <h2 class="article-h">Installation</h2>
+        <p class="article-sub">Installing TraceBrief from the Chrome Web Store, or loading it unpacked for development. Takes under a minute.</p>
+      </div>
+      <div class="article-body">
+        <h3>From the Chrome Web Store</h3>
+        <p>Search for <strong>TraceBrief</strong> in the Chrome Web Store and click <strong>Add to Chrome</strong>. Chrome will ask you to confirm the permissions. Once installed, pin it to your toolbar for fast access.</p>
+        <h3>Load Unpacked (Developer / Pre-release)</h3>
+        <p>If TraceBrief is provided as a folder or zip before it's on the store:</p>
+        <div class="article-steps">
+          <div class="a-step"><div class="a-step-n">1</div><div class="a-step-body"><div class="a-step-title">Unzip the folder</div><div class="a-step-desc">Make sure the folder contains a <code style="font-family:var(--font-mono);font-size:.78rem;color:var(--teal)">manifest.json</code> file at the root. That's the extension root.</div></div></div>
+          <div class="a-step"><div class="a-step-n">2</div><div class="a-step-body"><div class="a-step-title">Open chrome://extensions</div><div class="a-step-desc">Type that address into Chrome's URL bar. Don't Google it — type it directly.</div></div></div>
+          <div class="a-step"><div class="a-step-n">3</div><div class="a-step-body"><div class="a-step-title">Enable Developer Mode</div><div class="a-step-desc">Toggle it on in the top-right corner of the extensions page.</div></div></div>
+          <div class="a-step"><div class="a-step-n">4</div><div class="a-step-body"><div class="a-step-title">Click "Load Unpacked"</div><div class="a-step-desc">Select the folder where <code style="font-family:var(--font-mono);font-size:.78rem;color:var(--teal)">manifest.json</code> lives. TraceBrief will appear in your extensions list.</div></div></div>
+          <div class="a-step"><div class="a-step-n">5</div><div class="a-step-body"><div class="a-step-title">Pin to toolbar (optional)</div><div class="a-step-desc">Click the puzzle piece icon in Chrome's toolbar → find TraceBrief → click the pin. Makes opening the side panel faster.</div></div></div>
+        </div>
+        <div class="tip-box tip-yellow"><span class="tip-icon">💡</span><div>If Chrome shows errors after loading, check that you selected the correct root folder (the one with manifest.json, not a parent or child folder).</div></div>
+      </div>
+      <div class="article-nav">
+        <div class="a-nav-btn" onclick="showDoc('quickstart')"><div class="a-nav-arrow">←</div><div><div class="a-nav-label">Previous</div><div class="a-nav-title">Quick Start</div></div></div>
+        <div class="a-nav-btn next" onclick="showDoc('panel')"><div><div class="a-nav-label">Next</div><div class="a-nav-title">Opening the Panel</div></div><div class="a-nav-arrow">→</div></div>
+      </div>
+    </div>
+    <div id="view-panel" class="doc-article">
+      <button class="back-to-index" onclick="showIndex()">← All docs</button>
+      <div class="article-header">
+        <div class="article-tag">Get Started</div>
+        <h2 class="article-h">Opening the Panel</h2>
+        <p class="article-sub">TraceBrief lives in Chrome's side panel — visible alongside your tab while you browse, so you never lose your place.</p>
+      </div>
+      <div class="article-body">
+        <h3>How to open it</h3>
+        <p>Click the <strong>TraceBrief icon</strong> in your Chrome toolbar. If you've pinned it, it'll open the side panel directly. If not, click the puzzle piece icon first → find TraceBrief → click it.</p>
+        <p>You can also open the side panel via <strong>Chrome's View menu → Side Panel</strong> and then select TraceBrief from the dropdown.</p>
+        <div class="tip-box tip-green"><span class="tip-icon">✓</span><div>The side panel stays open as you navigate tabs. You don't need to reopen it every time you change pages.</div></div>
+        <h3>The five tabs</h3>
+        <div class="article-steps">
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">Capture</div><div class="a-step-desc">Screenshot and recording controls. Your evidence list. This is where you spend most of your time.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">Steps</div><div class="a-step-desc">The step logger. Write your Steps → Expected → Actual here.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">Context</div><div class="a-step-desc">Auto-captured environment data (URL, browser, OS, timestamp). Add extra fields manually.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">Export</div><div class="a-step-desc">Copy your pack in 5 formats, or download as ZIP / HTML gallery / CSV.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">History</div><div class="a-step-desc">Browse past evidence packs. Useful when a bug resurfaces and you need the original evidence.</div></div></div>
+        </div>
+        <h3>Keyboard shortcuts</h3>
+        <p><strong>Alt+S</strong> — capture a screenshot using the current mode (works while the panel is open, even if you're focused on the page).</p>
+        <p><strong>Alt+R</strong> — start or stop a screen recording.</p>
+      </div>
+      <div class="article-nav">
+        <div class="a-nav-btn" onclick="showDoc('install')"><div class="a-nav-arrow">←</div><div><div class="a-nav-label">Previous</div><div class="a-nav-title">Installation</div></div></div>
+        <div class="a-nav-btn next" onclick="showDoc('permissions')"><div><div class="a-nav-label">Next</div><div class="a-nav-title">Permissions</div></div><div class="a-nav-arrow">→</div></div>
+      </div>
+    </div>
+    <div id="view-permissions" class="doc-article">
+      <button class="back-to-index" onclick="showIndex()">← All docs</button>
+      <div class="article-header">
+        <div class="article-tag">Get Started</div>
+        <h2 class="article-h">Permissions Explained</h2>
+        <p class="article-sub">TraceBrief is built on least-privilege. We request only what's needed, and nothing leaves your machine unless you send it.</p>
+      </div>
+      <div class="article-body">
+        <h3>What we request and why</h3>
+        <div class="article-steps">
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">storage</div><div class="a-step-desc">Saves your evidence items, steps, and context locally in Chrome's extension storage. Nothing is sent anywhere automatically.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">sidePanel</div><div class="a-step-desc">Lets TraceBrief appear in Chrome's side panel. Without this, there's no UI.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">activeTab / tabs</div><div class="a-step-desc">Accesses the current tab for screenshot capture. Only active when you explicitly trigger a capture — not in the background.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">tabCapture (recordings only)</div><div class="a-step-desc">Required for screen recording. When you start recording, Chrome will prompt you to choose what to share. That's Chrome's own security flow — TraceBrief doesn't see anything until you confirm.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">Host access (http/https)</div><div class="a-step-desc">Broader access is needed for full-page capture and selected-area capture to work reliably across sites. Capture only happens on explicit user action — no background activity.</div></div></div>
+        </div>
+        <div class="tip-box tip-green"><span class="tip-icon">✓</span><div>Capture only happens when you click capture. TraceBrief has no always-on observers, no background data collection, and no network calls to our servers.</div></div>
+        <h3>What we explicitly don't do</h3>
+        <p>We don't have a server receiving your screenshots. We don't collect analytics on what pages you visit or what you capture. We don't share data with third parties. The extension does its job locally and stays out of everything else.</p>
+        <p>See the <strong>Privacy & Security</strong> guide for the full technical breakdown.</p>
+      </div>
+      <div class="article-nav">
+        <div class="a-nav-btn" onclick="showDoc('panel')"><div class="a-nav-arrow">←</div><div><div class="a-nav-label">Previous</div><div class="a-nav-title">Opening the Panel</div></div></div>
+        <div class="a-nav-btn next" onclick="showDoc('capture')"><div><div class="a-nav-label">Next</div><div class="a-nav-title">Screenshots</div></div><div class="a-nav-arrow">→</div></div>
+      </div>
+    </div>
+    <div id="view-recording" class="doc-article">
+      <button class="back-to-index" onclick="showIndex()">← All docs</button>
+      <div class="article-header">
+        <div class="article-tag">Capturing Evidence</div>
+        <h2 class="article-h">Screen Recordings</h2>
+        <p class="article-sub">For timing bugs, animation glitches, and multi-step flows. Moving proof for things a screenshot will never capture.</p>
+      </div>
+      <div class="article-body">
+        <h3>When to record instead of screenshot</h3>
+        <p>Use a recording when the problem is about <strong>behaviour over time</strong> — a spinner that never stops, an animation that glitches, a multi-step flow that fails on step 4. Screenshots can't show timing. Recordings can.</p>
+        <p>For static state issues (wrong label, missing field, incorrect value), a screenshot is faster and clearer.</p>
+        <h3>Audio options</h3>
+        <p>Click the <strong>▾ caret</strong> next to Screen Record to choose your audio mode before starting:</p>
+        <div class="article-steps">
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">None</div><div class="a-step-desc">Video only. Best for most bug reports — keeps file size small and avoids capturing private conversations.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">Mic</div><div class="a-step-desc">Records your microphone. Useful if you want to narrate what you're doing as you reproduce the issue.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">System</div><div class="a-step-desc">Records tab/system audio. Good for capturing audio glitches or confirming that sounds are missing.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">Mic + System</div><div class="a-step-desc">Records both. Use when you're explaining out loud and also need the on-screen audio.</div></div></div>
+        </div>
+        <h3>Recording a clip</h3>
+        <p>Click <strong>Screen Record</strong> (or press <em>Alt+R</em>). Chrome will ask what to share — choose the tab with the issue. Reproduce the problem, then click <strong>Stop Recording</strong> (or press Alt+R again). The recording saves as an evidence item automatically.</p>
+        <div class="tip-box tip-yellow"><span class="tip-icon">💡</span><div>Keep recordings under 30 seconds. Pause briefly on the final broken state before stopping. Long recordings get skipped — short ones get fixed.</div></div>
+        <div class="tip-box tip-red"><span class="tip-icon">⚠</span><div>If the recording doesn't save, make sure you clicked Stop Recording in the panel — not just dismissed Chrome's share dialog. Try again selecting tab-only in Chrome's share prompt.</div></div>
+      </div>
+      <div class="article-nav">
+        <div class="a-nav-btn" onclick="showDoc('capture')"><div class="a-nav-arrow">←</div><div><div class="a-nav-label">Previous</div><div class="a-nav-title">Screenshots</div></div></div>
+        <div class="a-nav-btn next" onclick="showDoc('annotate')"><div><div class="a-nav-label">Next</div><div class="a-nav-title">Annotation Editor</div></div><div class="a-nav-arrow">→</div></div>
+      </div>
+    </div>
+    <div id="view-annotate" class="doc-article">
+      <button class="back-to-index" onclick="showIndex()">← All docs</button>
+      <div class="article-header">
+        <div class="article-tag">Capturing Evidence</div>
+        <h2 class="article-h">Annotation Editor</h2>
+        <p class="article-sub">Point directly at the problem. The annotation editor gives you a scrollable canvas for tall screenshots — arrows, text labels, highlights.</p>
+      </div>
+      <div class="article-body">
+        <h3>Opening the editor</h3>
+        <p>In your Evidence list, click any screenshot to open it in the annotation editor. The canvas scrolls for tall screenshots — v1 included a specific stability fix for this.</p>
+        <h3>What you can do</h3>
+        <div class="article-steps">
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">Draw arrows</div><div class="a-step-desc">Point directly at the broken element. One arrow is worth three paragraphs of explanation.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">Add text labels</div><div class="a-step-desc">Short labels like "Expected here" or "This field is missing" turn an annotated screenshot into a self-contained explanation.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">Highlight areas</div><div class="a-step-desc">Draw attention to the exact region of the page that matters. Works well for layout bugs and misalignment issues.</div></div></div>
+        </div>
+        <h3>Saving your annotations</h3>
+        <p>Click <strong>Save / Done</strong> when finished. The evidence item updates in your list — the original is replaced with the annotated version. If you want to keep both, duplicate the item before annotating.</p>
+        <div class="tip-box tip-yellow"><span class="tip-icon">💡</span><div>If scrolling feels stuck, make sure your cursor is inside the editor area (not outside the modal). Close and reopen if needed. Reducing Chrome's zoom level helps in rare cases.</div></div>
+        <div class="tip-box tip-green"><span class="tip-icon">✓</span><div>The scroll container is separate from the editing stage — tall screenshots up to full-page length are fully supported without locking up.</div></div>
+      </div>
+      <div class="article-nav">
+        <div class="a-nav-btn" onclick="showDoc('recording')"><div class="a-nav-arrow">←</div><div><div class="a-nav-label">Previous</div><div class="a-nav-title">Screen Recordings</div></div></div>
+        <div class="a-nav-btn next" onclick="showDoc('steps')"><div><div class="a-nav-label">Next</div><div class="a-nav-title">Step Logger</div></div><div class="a-nav-arrow">→</div></div>
+      </div>
+    </div>
+    <div id="view-context" class="doc-article">
+      <button class="back-to-index" onclick="showIndex()">← All docs</button>
+      <div class="article-header">
+        <div class="article-tag">Structuring Reports</div>
+        <h2 class="article-h">Context Tab</h2>
+        <p class="article-sub">Auto-captured environment data that turns a screenshot into a reproducible report. The stuff developers ask for every single time.</p>
+      </div>
+      <div class="article-body">
+        <h3>What's captured automatically</h3>
+        <p>Every time you capture evidence, TraceBrief records:</p>
+        <div class="article-steps">
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">URL</div><div class="a-step-desc">The exact page where the issue occurred. No more "which page was it on?"</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">Browser & version</div><div class="a-step-desc">Chrome version number included. Eliminates "what browser are you using?" entirely.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">Operating system</div><div class="a-step-desc">Mac / Windows / Linux. Relevant for rendering and OS-specific bugs.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">Viewport size</div><div class="a-step-desc">Screen dimensions at time of capture. Essential for responsive layout bugs.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">Timestamp</div><div class="a-step-desc">Exact date and time of capture — useful for correlating with server logs.</div></div></div>
+        </div>
+        <h3>Adding custom context</h3>
+        <p>In the Context tab you can manually add fields like <strong>account role</strong>, <strong>feature flags</strong>, <strong>environment</strong> (staging vs production), or any other relevant info. These get included in all export formats.</p>
+        <div class="tip-box tip-green"><span class="tip-icon">✓</span><div>The Context tab is the single thing that most reduces ticket back-and-forth. Fill it out before exporting.</div></div>
+      </div>
+      <div class="article-nav">
+        <div></div>
+        <div class="a-nav-btn next" onclick="showDoc('packs')"><div><div class="a-nav-label">Next</div><div class="a-nav-title">Evidence Packs</div></div><div class="a-nav-arrow">→</div></div>
+      </div>
+    </div>
+    <div id="view-packs" class="doc-article">
+      <button class="back-to-index" onclick="showIndex()">← All docs</button>
+      <div class="article-header">
+        <div class="article-tag">Structuring Reports</div>
+        <h2 class="article-h">Evidence Packs</h2>
+        <p class="article-sub">An Evidence Pack is the complete, shareable record of what happened — screenshots or recordings, reproduction steps, context, all in one place.</p>
+      </div>
+      <div class="article-body">
+        <h3>What's in a pack</h3>
+        <p>An Evidence Pack bundles together:</p>
+        <div class="article-steps">
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">Evidence Items</div><div class="a-step-desc">Screenshots and/or recordings captured during the session.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">Steps to Reproduce</div><div class="a-step-desc">Your numbered steps, Expected result, and Actual result.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">Environment Context</div><div class="a-step-desc">Auto-captured and manual fields: URL, browser, OS, timestamp, and anything you added.</div></div></div>
+        </div>
+        <h3>Managing evidence items</h3>
+        <p><strong>Rename immediately</strong> after capture. "Checkout — payment error on mobile" is infinitely more useful than "Screenshot 3" when you're filing the ticket an hour later.</p>
+        <p><strong>Delete noise</strong> before exporting — screenshots you took by mistake, duplicates, or captures from the wrong state. A clean pack is a fast fix.</p>
+        <p><strong>Select items</strong> before exporting to send only what's relevant. You don't have to export everything.</p>
+        <h3>History</h3>
+        <p>Past packs are saved in the History tab. Useful when a bug resurfaces in a future sprint and you need to pull up the original evidence without reproducing from scratch.</p>
+      </div>
+      <div class="article-nav">
+        <div></div>
+        <div class="a-nav-btn next" onclick="showDoc('export')"><div><div class="a-nav-label">Next</div><div class="a-nav-title">Copy & Paste Output</div></div><div class="a-nav-arrow">→</div></div>
+      </div>
+    </div>
+    <div id="view-formats" class="doc-article">
+      <button class="back-to-index" onclick="showIndex()">← All docs</button>
+      <div class="article-header">
+        <div class="article-tag">Output & Export</div>
+        <h2 class="article-h">Export Formats</h2>
+        <p class="article-sub">ZIP, CSV, HTML gallery — three file formats for when you need an attachment rather than a paste.</p>
+      </div>
+      <div class="article-body">
+        <h3>Choosing the right format</h3>
+        <table class="format-table">
+          <tr><th>Format</th><th>Best for</th><th>Contains</th></tr>
+          <tr><td><div class="fmt-name">ZIP Bundle</div></td><td>Ticket attachments, archiving, sharing everything</td><td>All screenshots, recordings, CSV summary — one file, everything included</td></tr>
+          <tr><td><div class="fmt-name">HTML Gallery</div></td><td>Stakeholder review, PM sign-off, sharing with non-technical viewers</td><td>Sandboxed click-through gallery — safe to open anywhere, no scripts run</td></tr>
+          <tr><td><div class="fmt-name">CSV</div></td><td>Lightweight attachment, pasting steps into text fields, tracking multiple reports</td><td>Steps, metadata, file references — no binary assets, small file size</td></tr>
+        </table>
+        <h3>ZIP Bundle</h3>
+        <p>The recommended format for most ticket workflows. Contains every screenshot and recording, plus a structured summary file. Attach to Jira, email it, or archive it. Everything travels together.</p>
+        <h3>HTML Gallery</h3>
+        <p>A click-through gallery that renders your screenshots and steps in a clean, readable layout. Designed for stakeholders who just need to <em>see what happened</em> without opening a ticket tool.</p>
+        <div class="tip-box tip-green"><span class="tip-icon">✓</span><div>HTML galleries are sandboxed — rendered in an iframe that blocks script execution. Safe to open and forward to anyone, including external stakeholders.</div></div>
+        <h3>CSV</h3>
+        <p>Best when you need a lightweight, text-only attachment — or you want to paste your steps and metadata into a spreadsheet, import them into a tracker, or quickly copy them into a plain text field.</p>
+      </div>
+      <div class="article-nav">
+        <div class="a-nav-btn" onclick="showDoc('export')"><div class="a-nav-arrow">←</div><div><div class="a-nav-label">Previous</div><div class="a-nav-title">Copy & Paste Output</div></div></div>
+        <div class="a-nav-btn next" onclick="showDoc('destinations')"><div><div class="a-nav-label">Next</div><div class="a-nav-title">Jira, GitHub & More</div></div><div class="a-nav-arrow">→</div></div>
+      </div>
+    </div>
+    <div id="view-destinations" class="doc-article">
+      <button class="back-to-index" onclick="showIndex()">← All docs</button>
+      <div class="article-header">
+        <div class="article-tag">Output & Export</div>
+        <h2 class="article-h">Jira, GitHub & More</h2>
+        <p class="article-sub">TraceBrief outputs to open formats so it works with anything. Here's exactly how to get your evidence pack into the tools your team uses.</p>
+      </div>
+      <div class="article-body">
+        <h3>Jira</h3>
+        <p><strong>Best approach:</strong> paste <em>Markdown</em> directly into the description field (Jira supports Markdown). Attach the ZIP as a file attachment for the screenshots. Or paste <em>CSV</em> if you just want the steps in a text block.</p>
+        <h3>GitHub Issues</h3>
+        <p><strong>Best approach:</strong> paste <em>Markdown</em> directly into the issue body. GitHub renders it perfectly — headers, lists, and code blocks all come through. Drag-and-drop any screenshots from the ZIP into the comment.</p>
+        <h3>Linear</h3>
+        <p><strong>Best approach:</strong> paste <em>Markdown</em> into the issue description. Linear has excellent Markdown support. Attach images from the ZIP as inline attachments.</p>
+        <h3>Slack</h3>
+        <p><strong>Best approach:</strong> paste <em>Plain Text</em> or <em>Markdown</em> into the message. Attach the ZIP or individual screenshots as file attachments. Slack renders Markdown formatting in messages.</p>
+        <h3>Email</h3>
+        <p><strong>Best approach:</strong> paste <em>HTML</em> into a rich-text email composer (Gmail, Outlook), or paste <em>Plain Text</em> for plain email. Attach the ZIP or HTML gallery for recipients who need to view everything.</p>
+        <h3>Notion / Confluence / Docs</h3>
+        <p><strong>Best approach:</strong> paste <em>Markdown</em> — most modern wikis convert it on paste. Or use <em>HTML</em> in rich-text editors. Attach screenshots inline for visual evidence.</p>
+        <div class="tip-box tip-green"><span class="tip-icon">✓</span><div>TraceBrief doesn't do fragile API integrations. Copy → paste → done. It works with anything that accepts text or file attachments — which is everything.</div></div>
+      </div>
+      <div class="article-nav">
+        <div class="a-nav-btn" onclick="showDoc('formats')"><div class="a-nav-arrow">←</div><div><div class="a-nav-label">Previous</div><div class="a-nav-title">Export Formats</div></div></div>
+        <div class="a-nav-btn next" onclick="showDoc('privacy')"><div><div class="a-nav-label">Next</div><div class="a-nav-title">Privacy & Security</div></div><div class="a-nav-arrow">→</div></div>
+      </div>
+    </div>
+    <div id="view-bestpractices" class="doc-article">
+      <button class="back-to-index" onclick="showIndex()">← All docs</button>
+      <div class="article-header"><div class="article-tag">Reference</div><h2 class="article-h">Best Practices</h2><p class="article-sub">How to write high-signal evidence that gets issues resolved first time.</p></div>
+      <div class="article-body">
+        <h3>The golden rules</h3>
+        <div class="article-steps">
+          <div class="a-step"><div class="a-step-n">1</div><div class="a-step-body"><div class="a-step-title">Capture at the moment of failure</div><div class="a-step-desc">Screenshot or record while the broken state is visible. Don't navigate away and come back — the exact state matters.</div></div></div>
+          <div class="a-step"><div class="a-step-n">2</div><div class="a-step-body"><div class="a-step-title">Name everything immediately</div><div class="a-step-desc">"Checkout — payment button disabled on mobile" is useful. "Screenshot 3" is not. Rename right after capture.</div></div></div>
+          <div class="a-step"><div class="a-step-n">3</div><div class="a-step-body"><div class="a-step-title">Keep recordings short</div><div class="a-step-desc">10–30 seconds is ideal. Pause briefly on the final broken state before stopping. Long recordings get skimmed or skipped.</div></div></div>
+          <div class="a-step"><div class="a-step-n">4</div><div class="a-step-body"><div class="a-step-title">Always add Expected vs Actual</div><div class="a-step-desc">One sentence each. "Expected: file downloads. Actual: page refreshes." This is the most important part of any report.</div></div></div>
+          <div class="a-step"><div class="a-step-n">5</div><div class="a-step-body"><div class="a-step-title">Export only what matters</div><div class="a-step-desc">Select relevant items before exporting. Noise in a pack is almost as bad as no pack at all.</div></div></div>
+        </div>
+      </div>
+      <div class="article-nav"><div class="a-nav-btn" onclick="showDoc('troubleshoot')"><div class="a-nav-arrow">←</div><div><div class="a-nav-label">Previous</div><div class="a-nav-title">Troubleshooting</div></div></div><div class="a-nav-btn next" onclick="showDoc('glossary')"><div><div class="a-nav-label">Next</div><div class="a-nav-title">Glossary</div></div><div class="a-nav-arrow">→</div></div></div>
+    </div>
+    <div id="view-glossary" class="doc-article">
+      <button class="back-to-index" onclick="showIndex()">← All docs</button>
+      <div class="article-header"><div class="article-tag">Reference</div><h2 class="article-h">Glossary</h2><p class="article-sub">Every TraceBrief term defined clearly.</p></div>
+      <div class="article-body">
+        <h3>Terms</h3>
+        <div class="article-steps">
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">Evidence Item</div><div class="a-step-desc">A single captured asset — a screenshot or a recording — stored in TraceBrief with a title, timestamp, and optional notes.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">Evidence Pack</div><div class="a-step-desc">A named bundle containing evidence items, steps, and context. The complete, shareable record of what happened.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">Step Logger</div><div class="a-step-desc">The Steps tab interface for recording reproduction steps, expected result, actual result, and environment context.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">Sandboxed Preview</div><div class="a-step-desc">HTML gallery exports are rendered in a sandboxed iframe. Scripts cannot execute. Safe to open and share.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">Local-first</div><div class="a-step-desc">All data stays on your machine in Chrome's local extension storage until you explicitly copy or export it.</div></div></div>
+          <div class="a-step"><div class="a-step-n">→</div><div class="a-step-body"><div class="a-step-title">MV3</div><div class="a-step-desc">Manifest V3 — Chrome's current extension architecture. Enforces cleaner boundaries, better security defaults, and least-privilege permissions.</div></div></div>
+        </div>
+      </div>
+      <div class="article-nav"><div class="a-nav-btn" onclick="showDoc('bestpractices')"><div class="a-nav-arrow">←</div><div><div class="a-nav-label">Previous</div><div class="a-nav-title">Best Practices</div></div></div><div></div></div>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="f-logo">TraceBrief <span class="f-logo-k">バグ</span></div>
+    <div class="f-links">
+      <a href="index.html">← Back to site</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="#">Chrome Store</a>
+      <a href="#">GitHub</a>
+    </div>
+    <div class="f-right">Documentation · v1.0<br>Chrome MV3 Extension</div>
+  </div>
+</footer>
+
+<script>
+// scroll reveal — disconnect after firing
+const ro = new IntersectionObserver((ee,obs) => ee.forEach(e => {
+  if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+}), {threshold:.1});
+document.querySelectorAll('.rv').forEach(el => ro.observe(el));
+
+let currentDoc = null;
+
+function showIndex() {
+  document.querySelectorAll('.doc-article').forEach(a => a.classList.remove('visible'));
+  document.getElementById('view-index').style.display = 'block';
+  document.querySelectorAll('.sb-link').forEach(l => l.classList.remove('active'));
+  currentDoc = null;
+  window.scrollTo({top: document.querySelector('.docs-layout').offsetTop - 52, behavior:'smooth'});
+}
+
+function showDoc(id) {
+  document.getElementById('view-index').style.display = 'none';
+  document.querySelectorAll('.doc-article').forEach(a => a.classList.remove('visible'));
+  const target = document.getElementById('view-' + id);
+  if (target) target.classList.add('visible');
+  document.querySelectorAll('.sb-link').forEach(l => l.classList.remove('active'));
+  const sb = document.getElementById('sb-' + id);
+  if (sb) sb.classList.add('active');
+  currentDoc = id;
+  window.scrollTo({top: document.querySelector('.docs-layout').offsetTop - 52, behavior:'smooth'});
+}
+
+// default view
+showDoc('quickstart');
+
+// search filter
+function filterDocs(query) {
+  if (!query) { showDoc(currentDoc || 'quickstart'); return; }
+  const q = query.toLowerCase();
+  const docs = {
+    quickstart:'quick start install first pack', install:'install chrome load unpacked developer mode',
+    panel:'side panel tabs open', permissions:'permissions storage tabs capture',
+    capture:'screenshot full page capture', recording:'recording screen record video',
+    annotate:'annotate annotation arrow label', steps:'steps expected actual reproduce',
+    context:'context url browser os timestamp', packs:'packs evidence history',
+    export:'copy paste output format markdown', formats:'zip csv html export file',
+    destinations:'jira github linear slack email', privacy:'privacy security local sandboxed',
+    troubleshoot:'troubleshoot bug fix error stuck', bestpractices:'best practices tips',
+    glossary:'glossary terms definitions'
+  };
+  let best = null;
+  Object.entries(docs).forEach(([id, keywords]) => {
+    if (keywords.includes(q) || id.includes(q)) best = id;
+  });
+  if (best) showDoc(best);
+}
+
+// ⌘K / Ctrl+K focus search
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    e.preventDefault();
+    document.getElementById('search-input').focus();
+  }
+});
+</script>
+</body>
+</html>
