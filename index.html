@@ -3953,18 +3953,17 @@
       <div class="faq-wrap" style="margin-top: 48px">
         <div class="faq-item rv">
           <div class="faq-q" onclick="faq(this)">
-            Is it actually free? What's the catch?
+            Is it free?
             <div class="faq-plus">+</div>
           </div>
           <div class="faq-ans">
             <div class="faq-ans-body">
-              Yes, free. No catch.
-              <strong>No data harvesting, no ads, no features paywalled later.</strong>
-              TraceBrief runs locally. We make money when people find it useful enough to tell their
-              teams. That's the model.
+              Yes. TraceBrief is free to use.
+              <strong>No account, no subscription wall, no “start your trial” detour.</strong>
             </div>
           </div>
         </div>
+
         <div class="faq-item rv">
           <div class="faq-q" onclick="faq(this)">
             Do I need an account?
@@ -3972,67 +3971,96 @@
           </div>
           <div class="faq-ans">
             <div class="faq-ans-body">
-              No. Install it, open it, use it.
-              <strong>No email. No password. No "please verify your account."</strong>
-              We are not collecting leads. We just want to be a useful tool.
+              No. You open the extension and use it directly.
+              <strong>No email, no password, no setup ritual.</strong>
             </div>
           </div>
         </div>
+
         <div class="faq-item rv">
           <div class="faq-q" onclick="faq(this)">
-            Can I use it for non-technical things?
+            What does it actually capture?
             <div class="faq-plus">+</div>
           </div>
           <div class="faq-ans">
             <div class="faq-ans-body">
-              Absolutely. TraceBrief is for anyone who needs to prove what happened on a screen.
+              Screenshots, screen recordings, and step-by-step reproduction notes.
               <strong
-                >Netflix customer service, HR reporting a broken payroll portal, a student whose
-                assignment won't submit</strong
+                >TraceBrief turns them into an organized evidence pack instead of five scattered
+                files and a guess.</strong
               >
-              — the tool doesn't care what industry you're in. If it broke on a screen, you can
-              document it.
             </div>
           </div>
         </div>
+
         <div class="faq-item rv">
           <div class="faq-q" onclick="faq(this)">
-            Do I have to export a file?
+            Where does my data go?
             <div class="faq-plus">+</div>
           </div>
           <div class="faq-ans">
             <div class="faq-ans-body">
-              No. The copy/paste path is the primary workflow.
-              <strong>The panel stays open while you work.</strong> Capture everything, then paste
-              the formatted output — Markdown, plain text, CSV, HTML, or JSON — directly into your
-              ticket, email, or Slack. Export a file only when you specifically need an attachment.
+              Your data stays local in extension storage unless you export it.
+              <strong
+                >TraceBrief only captures when you explicitly click screenshot or record.</strong
+              >
+              No background capture. No server quietly collecting your evidence.
             </div>
           </div>
         </div>
+
         <div class="faq-item rv">
           <div class="faq-q" onclick="faq(this)">
-            Where does my data go? Who sees my screenshots?
+            Which export should I use?
             <div class="faq-plus">+</div>
           </div>
           <div class="faq-ans">
             <div class="faq-ans-body">
-              <strong>Your data stays on your machine until you choose to send it.</strong>
-              We request only the Chrome permissions needed to function. There is no server
-              ingesting your screenshots. Local-first is the architecture, not a marketing line.
+              Use <strong>CSV</strong> for structured ticket data, <strong>ZIP</strong> for the full
+              pack, and <strong>HTML gallery</strong> when someone wants a cleaner click-through
+              view. Same bug. Different audience. Slightly less chaos.
             </div>
           </div>
         </div>
+
         <div class="faq-item rv">
           <div class="faq-q" onclick="faq(this)">
-            Does it work with Jira / GitHub / Linear / anything?
+            Is the HTML export safe to open?
             <div class="faq-plus">+</div>
           </div>
           <div class="faq-ans">
             <div class="faq-ans-body">
-              Yes — because we output to
-              <strong>plain text, Markdown, CSV, HTML, and JSON</strong>, TraceBrief works with
-              anything that accepts pasted text or a file attachment. Which is everything. We don't
-              do fragile API integrations. You copy. You paste. It works.
+              Yes. The HTML gallery preview is designed to be safe.
+              <strong>It uses a sandboxed preview model that blocks script execution.</strong>
+              Useful proof pack, not a surprise JavaScript side quest.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item rv">
+          <div class="faq-q" onclick="faq(this)">
+            Why does it ask for permissions?
+            <div class="faq-plus">+</div>
+          </div>
+          <div class="faq-ans">
+            <div class="faq-ans-body">
+              Because Chrome requires them for capture features. TraceBrief uses permissions for
+              things like local storage, side panel access, current-tab capture, and recording when
+              enabled.
+              <strong>The capture actions still happen only when you trigger them.</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item rv">
+          <div class="faq-q" onclick="faq(this)">
+            Does it work everywhere?
+            <div class="faq-plus">+</div>
+          </div>
+          <div class="faq-ans">
+            <div class="faq-ans-body">
+              It works on normal websites, but some restricted browser pages can block capture.
+              <strong>That is a browser limitation, not TraceBrief being dramatic.</strong>
             </div>
           </div>
         </div>
