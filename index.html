@@ -1314,13 +1314,13 @@
 
       /* span helpers */
       .bc-c2 {
-        grid-column: span 2;
+        grid-column: span 3;
       }
       .bc-c3 {
         grid-column: span 3;
       }
       .bc-c4 {
-        grid-column: span 4;
+        grid-column: span 3;
       }
 
       /* Icon */
@@ -3774,20 +3774,13 @@
         Everything you need.<br /><span class="t">Nothing you don't.</span>
       </h2>
       <p class="sec-sub rv d2">
-        Built with least-privilege Chrome permissions, local-first storage, and strict CSP. No
-        account, no server, no data leaving your machine until you choose to send it.
+        Screenshots, recordings, repro steps, and clean exports — with local-first storage and
+        privacy defaults that don’t require a trust exercise.
       </p>
 
       <div class="bento rv">
-        <!-- Screenshots — wide left -->
+        <!-- Screenshots — screenrecord -->
         <div class="bc bc-c4 bc-wide d1">
-          <div class="bc-art">
-            <svg viewBox="0 0 24 24">
-              <rect x="3" y="3" width="18" height="18" rx="2" />
-              <circle cx="8.5" cy="8.5" r="1.5" />
-              <polyline points="21 15 16 10 5 21" />
-            </svg>
-          </div>
           <div class="bc-body">
             <div class="bc-icon ic-teal">
               <svg viewBox="0 0 24 24">
@@ -3796,49 +3789,18 @@
                 <polyline points="21 15 16 10 5 21" />
               </svg>
             </div>
-            <div class="bc-title">Screenshots + Full-Page Capture</div>
+            <div class="bc-title">Screenshots, Recordings, and Annotation</div>
             <div class="bc-desc">
-              Instant capture. Full-page scrolling stitches tall dashboards and forms automatically
-              — no cropping, even for pages that scroll for days.
+              Capture the visible state, selected area, full page, or record the flow when the bug
+              only makes sense in motion. Then annotate the evidence so nobody replies with “can you
+              point to the issue?” after you already did.
             </div>
-            <div class="bc-pill">Alt+S shortcut</div>
+            <div class="bc-pill">Visible · Selected Area · Full Page</div>
           </div>
-        </div>
-
-        <!-- Recording — tall right -->
-        <div class="bc bc-c2 d2">
-          <div class="bc-icon ic-red">
-            <svg viewBox="0 0 24 24">
-              <polygon points="23 7 16 12 23 17 23 7" />
-              <rect x="1" y="5" width="15" height="14" rx="2" />
-            </svg>
-          </div>
-          <div class="bc-title">Screen Recordings</div>
-          <div class="bc-desc">
-            For timing bugs, animation glitches, and multi-step flows. Moving proof for things a
-            screenshot will never capture.
-          </div>
-          <div class="bc-pill">No Loom needed</div>
-        </div>
-
-        <!-- Annotator -->
-        <div class="bc bc-c2 d3">
-          <div class="bc-icon ic-amber">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 20h9" />
-              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-            </svg>
-          </div>
-          <div class="bc-title">Annotation Editor</div>
-          <div class="bc-desc">
-            Scrollable canvas for full-page screenshots. Arrows, labels, highlights — stable on any
-            image height.
-          </div>
-          <div class="bc-pill">Scrollable canvas</div>
         </div>
 
         <!-- Step Logger -->
-        <div class="bc bc-c2 d4">
+        <div class="bc bc-c2 d2">
           <div class="bc-icon ic-teal">
             <svg viewBox="0 0 24 24">
               <line x1="8" y1="6" x2="21" y2="6" />
@@ -3854,14 +3816,11 @@
             Steps → Expected → Actual with auto-captured URL, browser, OS, and timestamp. The
             structure that actually gets bugs resolved.
           </div>
-          <div class="bc-pill">Structured format</div>
+          <div class="bc-pill">Structured, not chaotic</div>
         </div>
 
         <!-- 5 Formats — wide -->
-        <div class="bc bc-c4 bc-wide d5">
-          <div class="bc-art">
-            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></svg>
-          </div>
+        <div class="bc bc-c2 bc-wide d3">
           <div class="bc-body">
             <div class="bc-icon ic-blue">
               <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></svg>
@@ -3877,16 +3836,16 @@
         </div>
 
         <!-- Privacy -->
-        <div class="bc bc-c2 d6">
+        <div class="bc bc-c4 d4">
           <div class="bc-icon ic-teal">
             <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
           </div>
-          <div class="bc-title">Privacy by Default</div>
+          <div class="bc-title">Local-First and Safe by Default</div>
           <div class="bc-desc">
             Everything local until you send it. Sandboxed previews. Strict CSP. No server collecting
             your screenshots.
           </div>
-          <div class="bc-pill">Local-first · MV3</div>
+          <div class="bc-pill">No account · No server · No background spying</div>
         </div>
       </div>
     </section>
