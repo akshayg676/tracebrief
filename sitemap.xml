@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Replace https://your-domain.example with your production domain before or right after first deploy. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tracebrief.akshayg.dev/</loc>
@@ -7,7 +6,7 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://tracebrief.akshayg.dev/docs</loc>
+    <loc>https://tracebrief.akshayg.dev/docs/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
