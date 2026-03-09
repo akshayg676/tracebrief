@@ -1,0 +1,1070 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    <title>Privacy Policy — TraceBrief</title>
+    <meta
+      name="description"
+      content="TraceBrief privacy policy. Everything stays local. We don't sell your data."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+    />
+    <noscript
+      ><link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet"
+    /></noscript>
+    <style>
+      /* ── TOKENS ── */
+      :root {
+        --red: #ff2247;
+        --red-g: rgba(255, 34, 71, 0.22);
+        --red-d: rgba(255, 34, 71, 0.1);
+        --teal: #00e5bc;
+        --teal-d: rgba(0, 229, 188, 0.1);
+        --yellow: #ffd60a;
+        --blue: #1a6cff;
+        --bg: #06060e;
+        --bg2: #0a0a16;
+        --bg3: #0e0e1c;
+        --surface: rgba(255, 255, 255, 0.042);
+        --b0: rgba(255, 255, 255, 0.07);
+        --b-teal: rgba(0, 229, 188, 0.22);
+        --b-red: rgba(255, 34, 71, 0.28);
+        --t1: #eeeeff;
+        --t2: rgba(238, 238, 255, 0.88);
+        --t3: rgba(238, 238, 255, 0.52);
+        --t4: rgba(238, 238, 255, 0.28);
+        --r: 8px;
+        --rl: 12px;
+        --font-body: 'Geist', system-ui, sans-serif;
+        --font-head: 'Syne', sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
+        --page-max: 1280px;
+      }
+
+      /* ── RESET ── */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        color: var(--t2);
+        font-family: var(--font-body);
+        font-size: 15.5px;
+        line-height: 1.75;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-feature-settings:
+          'kern' 1,
+          'liga' 1,
+          'calt' 1;
+        text-rendering: optimizeLegibility;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button {
+        font-family: inherit;
+        cursor: pointer;
+        border: none;
+        background: none;
+      }
+
+      /* ── NOISE ── */
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.024'/%3E%3C/svg%3E");
+      }
+
+      /* ── NAV ── */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        height: 58px;
+        background: rgba(6, 6, 14, 0.92);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--b0);
+        display: flex;
+        align-items: center;
+      }
+      nav::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--red), var(--teal), transparent);
+        opacity: 0.45;
+      }
+      .nav-inner {
+        max-width: var(--page-max);
+        margin: 0 auto;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        padding: 0 36px;
+      }
+      .n-logo {
+        font-family: var(--font-head);
+        font-weight: 800;
+        font-size: 1.05rem;
+        letter-spacing: 2px;
+        color: var(--t1);
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+      .n-logo-k {
+        font-family: var(--font-mono);
+        font-size: 0.58rem;
+        color: var(--red);
+        opacity: 0.8;
+      }
+      .n-spacer {
+        flex: 1;
+      }
+      .n-back {
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+        color: var(--t3);
+        padding: 6px 14px;
+        border-radius: 6px;
+        border: 1px solid var(--b0);
+        transition: all 0.15s;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .n-back:hover {
+        color: var(--t1);
+        background: var(--surface);
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+      .n-back svg {
+        width: 13px;
+        height: 13px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .n-install {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.4px;
+        color: #001a14;
+        padding: 8px 20px;
+        background: var(--teal);
+        border-radius: var(--r);
+        box-shadow: 0 0 18px rgba(0, 229, 188, 0.3);
+        transition: all 0.15s;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .n-install svg {
+        width: 13px;
+        height: 13px;
+        stroke: #001a14;
+        fill: none;
+        stroke-width: 2.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .n-install:hover {
+        background: #1affd4;
+        transform: translateY(-1px);
+        box-shadow: 0 0 28px rgba(0, 229, 188, 0.45);
+      }
+
+      /* ── HERO ── */
+      .pp-hero {
+        padding: 72px 36px 52px;
+        border-bottom: 1px solid var(--b0);
+        position: relative;
+        overflow: hidden;
+      }
+      .pp-hero-inner {
+        max-width: var(--page-max);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: end;
+        gap: 40px;
+      }
+      .pp-eyebrow {
+        font-family: var(--font-mono);
+        font-size: 0.6rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--teal);
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .pp-eyebrow::before {
+        content: '//';
+        opacity: 0.5;
+      }
+      .pp-hero h1 {
+        font-family: var(--font-head);
+        font-weight: 800;
+        font-size: clamp(30px, 4vw, 52px);
+        line-height: 1.1;
+        letter-spacing: -1px;
+        color: var(--t1);
+        margin-bottom: 16px;
+      }
+      .pp-hero h1 span {
+        color: var(--teal);
+      }
+      .pp-hero-meta {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: var(--t3);
+        letter-spacing: 0.5px;
+      }
+      .pp-hero-badge {
+        background: var(--bg2);
+        border: 1px solid var(--b0);
+        border-radius: var(--rl);
+        padding: 18px 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        flex-shrink: 0;
+        white-space: nowrap;
+      }
+      .pp-badge-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        color: var(--t3);
+      }
+      .pp-badge-row svg {
+        width: 12px;
+        height: 12px;
+        stroke: var(--teal);
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        flex-shrink: 0;
+      }
+
+      /* ── LAYOUT ── */
+      .pp-layout {
+        max-width: var(--page-max);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 240px 1fr;
+        gap: 0;
+        align-items: start;
+        padding: 0 36px;
+        min-height: 60vh;
+      }
+
+      /* ── SIDEBAR TOC ── */
+      .pp-toc {
+        position: sticky;
+        top: 76px;
+        padding: 48px 32px 48px 0;
+        border-right: 1px solid var(--b0);
+      }
+      .pp-toc-label {
+        font-family: var(--font-mono);
+        font-size: 0.58rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--t4);
+        margin-bottom: 18px;
+      }
+      .pp-toc nav {
+        position: static;
+        height: auto;
+        background: none;
+        backdrop-filter: none;
+        border: none;
+        display: block;
+      }
+      .pp-toc nav::after {
+        display: none;
+      }
+      .pp-toc-link {
+        display: block;
+        font-size: 0.78rem;
+        color: var(--t3);
+        padding: 7px 0;
+        border: none;
+        transition: color 0.15s;
+        line-height: 1.4;
+      }
+      .pp-toc-link:hover {
+        color: var(--teal);
+      }
+      .pp-toc-link.active {
+        color: var(--teal);
+        font-weight: 600;
+      }
+
+      /* ── CONTENT ── */
+      .pp-content {
+        padding: 52px 0 80px 52px;
+      }
+
+      /* summary box */
+      .pp-summary {
+        background: var(--bg2);
+        border: 1px solid var(--b0);
+        border-radius: var(--rl);
+        padding: 28px 28px;
+        margin-bottom: 56px;
+        position: relative;
+        overflow: hidden;
+      }
+      .pp-summary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--teal), transparent);
+      }
+      .pp-summary-title {
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: 0.78rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--teal);
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .pp-summary-title svg {
+        width: 14px;
+        height: 14px;
+        stroke: var(--teal);
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .pp-summary-items {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .pp-si {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 0.875rem;
+        color: var(--t2);
+      }
+      .pp-si-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--teal);
+        flex-shrink: 0;
+        margin-top: 7px;
+      }
+
+      /* section */
+      .pp-section {
+        margin-bottom: 52px;
+        padding-bottom: 52px;
+        border-bottom: 1px solid var(--b0);
+        scroll-margin-top: 80px;
+      }
+      .pp-section:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      .pp-section-tag {
+        font-family: var(--font-mono);
+        font-size: 0.58rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--t4);
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .pp-section-tag::before {
+        content: '//';
+        opacity: 0.5;
+      }
+      .pp-section h2 {
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: clamp(18px, 2vw, 24px);
+        color: var(--t1);
+        letter-spacing: -0.3px;
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+      .pp-p {
+        font-size: 0.9rem;
+        color: var(--t2);
+        line-height: 1.85;
+        margin-bottom: 16px;
+      }
+      .pp-p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* numbered items */
+      .pp-items {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 4px;
+      }
+      .pp-item {
+        background: var(--bg2);
+        border: 1px solid var(--b0);
+        border-radius: var(--r);
+        padding: 16px 20px;
+        display: grid;
+        grid-template-columns: 28px 1fr;
+        gap: 14px;
+        align-items: start;
+      }
+      .pp-item-num {
+        font-family: var(--font-mono);
+        font-size: 0.62rem;
+        color: var(--t4);
+        letter-spacing: 1px;
+        padding-top: 3px;
+      }
+      .pp-item-title {
+        font-weight: 600;
+        font-size: 0.86rem;
+        color: var(--t1);
+        margin-bottom: 4px;
+      }
+      .pp-item-body {
+        font-size: 0.83rem;
+        color: var(--t2);
+        line-height: 1.75;
+      }
+
+      /* bullet list */
+      .pp-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 4px;
+      }
+      .pp-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 0.87rem;
+        color: var(--t2);
+        line-height: 1.7;
+      }
+      .pp-list li::before {
+        content: '';
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--teal);
+        flex-shrink: 0;
+        margin-top: 9px;
+      }
+
+      /* not-collect list */
+      .pp-list.no li::before {
+        background: var(--red);
+      }
+
+      /* highlight callout */
+      .pp-callout {
+        background: rgba(0, 229, 188, 0.05);
+        border: 1px solid var(--b-teal);
+        border-radius: var(--r);
+        padding: 16px 18px;
+        margin-top: 16px;
+        font-size: 0.84rem;
+        color: rgba(0, 229, 188, 0.75);
+        line-height: 1.7;
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      .pp-callout svg {
+        width: 15px;
+        height: 15px;
+        stroke: var(--teal);
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+
+      .pp-callout.warn {
+        background: rgba(255, 34, 71, 0.05);
+        border-color: rgba(255, 34, 71, 0.22);
+        color: rgba(255, 34, 71, 0.7);
+      }
+      .pp-callout.warn svg {
+        stroke: var(--red);
+      }
+
+      /* contact box */
+      .pp-contact {
+        background: var(--bg2);
+        border: 1px solid var(--b0);
+        border-radius: var(--rl);
+        padding: 28px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .pp-contact-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        background: rgba(0, 229, 188, 0.08);
+        border: 1px solid rgba(0, 229, 188, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .pp-contact-icon svg {
+        width: 18px;
+        height: 18px;
+        stroke: var(--teal);
+        fill: none;
+        stroke-width: 1.75;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .pp-contact-label {
+        font-size: 0.78rem;
+        color: var(--t3);
+        margin-bottom: 4px;
+      }
+      .pp-contact-email {
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        color: var(--teal);
+        text-decoration: none;
+        transition: opacity 0.15s;
+      }
+      .pp-contact-email:hover {
+        opacity: 0.75;
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        border-top: 1px solid var(--b0);
+        background: var(--bg2);
+      }
+      .footer-inner {
+        max-width: var(--page-max);
+        margin: 0 auto;
+        padding: 28px 36px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .f-links {
+        display: flex;
+        gap: 4px;
+      }
+      .f-links a {
+        font-size: 0.74rem;
+        color: var(--t3);
+        padding: 5px 12px;
+        border-radius: 6px;
+        transition: all 0.15s;
+      }
+      .f-links a:hover {
+        color: var(--t1);
+        background: var(--surface);
+      }
+      .f-right {
+        font-size: 0.72rem;
+        color: var(--t4);
+        text-align: right;
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 860px) {
+        .pp-hero-inner {
+          grid-template-columns: 1fr;
+        }
+        .pp-hero-badge {
+          display: none;
+        }
+        .pp-layout {
+          grid-template-columns: 1fr;
+          padding: 0 24px;
+        }
+        .pp-toc {
+          display: none;
+        }
+        .pp-content {
+          padding: 40px 0 60px;
+        }
+        .nav-inner {
+          padding: 0 20px;
+        }
+        .footer-inner {
+          flex-direction: column;
+          text-align: center;
+        }
+        .f-links {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .f-right {
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ██ NAV ██████████████████████████████████████████████████ -->
+    <nav>
+      <div class="nav-inner">
+        <a href="/" class="n-logo">
+          TraceBrief
+          <span class="n-logo-k">バグ</span>
+        </a>
+        <div class="n-spacer"></div>
+        <a href="/" class="n-back">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6" /></svg>
+          Back to site
+        </a>
+        <a href="/docs/" class="n-back" style="border-color: rgba(255, 255, 255, 0.05)">Docs</a>
+        <a href="#" class="n-install" onclick="return false;">
+          <svg viewBox="0 0 24 24">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          Install — Free
+        </a>
+      </div>
+    </nav>
+
+    <!-- ██ HERO ███████████████████████████████████████████████████ -->
+    <header class="pp-hero">
+      <div class="pp-hero-inner">
+        <div>
+          <div class="pp-eyebrow">Legal</div>
+          <h1>Privacy <span>Policy</span></h1>
+          <p class="pp-hero-meta">Effective date: 2026-03-09 &nbsp;·&nbsp; TraceBrief v1.0</p>
+        </div>
+        <div class="pp-hero-badge">
+          <div class="pp-badge-row">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+            No data sold
+          </div>
+          <div class="pp-badge-row">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+            Local storage only
+          </div>
+          <div class="pp-badge-row">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+            No server uploads
+          </div>
+          <div class="pp-badge-row">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+            Captures on your action only
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ██ BODY ███████████████████████████████████████████████████ -->
+    <div class="pp-layout">
+      <!-- Sidebar TOC -->
+      <aside class="pp-toc">
+        <div class="pp-toc-label">Contents</div>
+        <nav>
+          <a href="#summary" class="pp-toc-link">Plain English Summary</a>
+          <a href="#what" class="pp-toc-link">What We Collect</a>
+          <a href="#not-collect" class="pp-toc-link">What We Don't Collect</a>
+          <a href="#how" class="pp-toc-link">How We Use Data</a>
+          <a href="#storage" class="pp-toc-link">Storage &amp; Retention</a>
+          <a href="#sharing" class="pp-toc-link">Sharing &amp; Selling</a>
+          <a href="#security" class="pp-toc-link">Security</a>
+          <a href="#controls" class="pp-toc-link">Your Controls</a>
+          <a href="#children" class="pp-toc-link">Children's Privacy</a>
+          <a href="#changes" class="pp-toc-link">Changes to Policy</a>
+          <a href="#contact" class="pp-toc-link">Contact</a>
+        </nav>
+      </aside>
+
+      <!-- Main content -->
+      <main class="pp-content">
+        <!-- Intro paragraph -->
+        <p class="pp-p" style="margin-bottom: 40px">
+          TraceBrief <span style="color: var(--t3)">("we", "our")</span> is a browser extension that
+          helps you capture evidence for bug reports — screenshots, screen recordings, reproduction
+          steps, and context — and export it as ticket-ready packs. This policy explains what data
+          is involved and how it's handled.
+        </p>
+
+        <!-- ── SUMMARY ── -->
+        <div class="pp-summary" id="summary">
+          <div class="pp-summary-title">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4M12 8h.01" />
+            </svg>
+            Plain English Summary
+          </div>
+          <div class="pp-summary-items">
+            <div class="pp-si">
+              <div class="pp-si-dot"></div>
+              <span
+                >TraceBrief captures content
+                <strong style="color: var(--t1)">only when you click Screenshot / Record</strong> or
+                start step logging. Nothing is captured passively.</span
+              >
+            </div>
+            <div class="pp-si">
+              <div class="pp-si-dot"></div>
+              <span
+                >Evidence and notes are stored
+                <strong style="color: var(--t1)">locally in your browser</strong> — on your device,
+                not our servers.</span
+              >
+            </div>
+            <div class="pp-si">
+              <div class="pp-si-dot"></div>
+              <span><strong style="color: var(--t1)">We do not sell your data.</strong></span>
+            </div>
+            <div class="pp-si">
+              <div class="pp-si-dot"></div>
+              <span
+                >We do not transmit your evidence to our servers — unless you choose to upload or
+                share it using your own tools.</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- ── WHAT WE COLLECT ── -->
+        <section class="pp-section" id="what">
+          <div class="pp-section-tag">01</div>
+          <h2>Data We Collect</h2>
+          <p class="pp-p">
+            TraceBrief may collect or generate the following data inside your browser as part of its
+            single purpose — creating evidence packs for bug reports and issue documentation.
+          </p>
+          <div class="pp-items">
+            <div class="pp-item">
+              <div class="pp-item-num">01</div>
+              <div>
+                <div class="pp-item-title">
+                  Website Content
+                  <span
+                    style="font-size: 0.72rem; color: var(--t4); font-weight: 400; margin-left: 6px"
+                    >user-triggered</span
+                  >
+                </div>
+                <div class="pp-item-body">
+                  Screenshots (visible viewport, selected area, or full-page), screen recordings
+                  including optional audio, and any on-page content visible within your capture.
+                </div>
+              </div>
+            </div>
+            <div class="pp-item">
+              <div class="pp-item-num">02</div>
+              <div>
+                <div class="pp-item-title">
+                  User Activity
+                  <span
+                    style="font-size: 0.72rem; color: var(--t4); font-weight: 400; margin-left: 6px"
+                    >user-triggered</span
+                  >
+                </div>
+                <div class="pp-item-body">
+                  Reproduction steps you manually record — step notes you enter, and basic step
+                  events captured when the Step Logger is active.
+                </div>
+              </div>
+            </div>
+            <div class="pp-item">
+              <div class="pp-item-num">03</div>
+              <div>
+                <div class="pp-item-title">
+                  Web Page Context
+                  <span
+                    style="font-size: 0.72rem; color: var(--t4); font-weight: 400; margin-left: 6px"
+                    >for your packs</span
+                  >
+                </div>
+                <div class="pp-item-body">
+                  Page URL, page title, timestamp, browser name and version, OS, and viewport size.
+                  Captured automatically to provide structured context in your evidence packs.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── WHAT WE DON'T COLLECT ── -->
+        <section class="pp-section" id="not-collect">
+          <div class="pp-section-tag">02</div>
+          <h2>What We Do Not Collect</h2>
+          <p class="pp-p">TraceBrief does not intentionally collect any of the following:</p>
+          <ul class="pp-list no">
+            <li>Passwords or authentication tokens</li>
+            <li>Credit card or payment details</li>
+            <li>Personal messages (email, chat, or messaging app content)</li>
+            <li>Precise GPS location</li>
+            <li>Health or medical information</li>
+          </ul>
+          <div class="pp-callout warn" style="margin-top: 20px">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+              />
+              <line x1="12" y1="9" x2="12" y2="13" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
+            <span
+              >Screenshots and recordings capture everything visible on your screen at the time.
+              Avoid capturing sensitive information you do not want stored in your evidence
+              pack.</span
+            >
+          </div>
+        </section>
+
+        <!-- ── HOW WE USE ── -->
+        <section class="pp-section" id="how">
+          <div class="pp-section-tag">03</div>
+          <h2>How We Use Data</h2>
+          <p class="pp-p">
+            We use collected data solely to operate the extension's single purpose. This means:
+          </p>
+          <ul class="pp-list">
+            <li>Creating and managing your evidence packs inside the extension</li>
+            <li>Showing previews of screenshots and recordings within the extension panel</li>
+            <li>Exporting your selected evidence as HTML, ZIP, CSV, or JSON files</li>
+          </ul>
+          <div class="pp-callout" style="margin-top: 20px">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
+            <span
+              >Your data is never used for advertising, analytics, profiling, or any purpose beyond
+              creating your evidence pack.</span
+            >
+          </div>
+        </section>
+
+        <!-- ── STORAGE ── -->
+        <section class="pp-section" id="storage">
+          <div class="pp-section-tag">04</div>
+          <h2>Data Storage &amp; Retention</h2>
+          <ul class="pp-list">
+            <li>
+              Evidence packs are stored locally using browser extension storage (<span
+                style="font-family: var(--font-mono); font-size: 0.82em; color: var(--teal)"
+                >chrome.storage.local</span
+              >).
+            </li>
+            <li>
+              Data remains on your device until you delete it inside the extension or uninstall the
+              extension.
+            </li>
+            <li>
+              Exported files (ZIP, HTML, CSV) are saved wherever your browser saves downloads — we
+              have no access to these files after export.
+            </li>
+          </ul>
+        </section>
+
+        <!-- ── SHARING ── -->
+        <section class="pp-section" id="sharing">
+          <div class="pp-section-tag">05</div>
+          <h2>Sharing &amp; Selling</h2>
+          <ul class="pp-list">
+            <li>We do not sell your data.</li>
+            <li>We do not share your data with any third parties.</li>
+            <li>TraceBrief does not upload your evidence to our servers.</li>
+          </ul>
+          <p class="pp-p" style="margin-top: 16px">
+            When you share an exported file (e.g., attaching a ZIP to a Jira ticket or emailing a
+            report), that transfer happens through your own tools and is subject to those tools'
+            privacy policies — not ours.
+          </p>
+        </section>
+
+        <!-- ── SECURITY ── -->
+        <section class="pp-section" id="security">
+          <div class="pp-section-tag">06</div>
+          <h2>Security</h2>
+          <p class="pp-p">
+            TraceBrief uses a strict Content Security Policy and safe rendering patterns to reduce
+            the risk of script injection inside extension pages. Exported HTML files use sandboxed
+            rendering to prevent execution of embedded scripts.
+          </p>
+          <div class="pp-callout warn">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+              />
+              <line x1="12" y1="9" x2="12" y2="13" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
+            <span
+              >Exported packs should be treated as sensitive documents if they contain customer
+              data, internal system information, or personal details captured in screenshots.</span
+            >
+          </div>
+        </section>
+
+        <!-- ── CONTROLS ── -->
+        <section class="pp-section" id="controls">
+          <div class="pp-section-tag">07</div>
+          <h2>Your Controls</h2>
+          <p class="pp-p">You have full control over your data:</p>
+          <ul class="pp-list">
+            <li>
+              Delete individual evidence items or entire packs at any time from within the extension
+            </li>
+            <li>
+              Choose which items to include before any export — nothing is exported automatically
+            </li>
+            <li>Uninstall the extension to remove all locally stored extension data</li>
+          </ul>
+        </section>
+
+        <!-- ── CHILDREN ── -->
+        <section class="pp-section" id="children">
+          <div class="pp-section-tag">08</div>
+          <h2>Children's Privacy</h2>
+          <p class="pp-p">
+            TraceBrief is not intended for children under the age of 13. We do not knowingly collect
+            personal data from children. If you believe a child has used the extension in a way that
+            involves their personal data, please contact us so we can address it.
+          </p>
+        </section>
+
+        <!-- ── CHANGES ── -->
+        <section class="pp-section" id="changes">
+          <div class="pp-section-tag">09</div>
+          <h2>Changes to This Policy</h2>
+          <p class="pp-p">
+            We may update this policy as the product evolves. Material changes will be posted on
+            this page with a new effective date. Continued use of the extension after changes are
+            posted constitutes acceptance of the updated policy.
+          </p>
+        </section>
+
+        <!-- ── CONTACT ── -->
+        <section class="pp-section" id="contact">
+          <div class="pp-section-tag">10</div>
+          <h2>Contact</h2>
+          <p class="pp-p" style="margin-bottom: 20px">
+            Questions about this policy? Reach out directly:
+          </p>
+          <div class="pp-contact">
+            <div class="pp-contact-icon">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
+            <div>
+              <div class="pp-contact-label">Email</div>
+              <a href="mailto:akshayg676@gmail.com" class="pp-contact-email"
+                >akshayg676@gmail.com</a
+              >
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- ██ FOOTER ██████████████████████████████████████████████ -->
+    <footer>
+      <div class="footer-inner">
+        <div class="f-links">
+          <a href="index.html">Home</a>
+          <a href="docs.html">Docs</a>
+          <a href="privacy.html" style="color: var(--teal)">Privacy</a>
+        </div>
+        <div class="f-right">
+          Chrome MV3 · Evidence Capture for Everyone<br />
+          © 2026 TraceBrief · Local-first · No account needed
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Highlight active TOC link on scroll
+      const sections = document.querySelectorAll('.pp-section, .pp-summary');
+      const tocLinks = document.querySelectorAll('.pp-toc-link');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              tocLinks.forEach((l) => l.classList.remove('active'));
+              const active = document.querySelector(`.pp-toc-link[href="#${e.target.id}"]`);
+              if (active) active.classList.add('active');
+            }
+          });
+        },
+        { threshold: 0.3, rootMargin: '-60px 0px -40% 0px' }
+      );
+      sections.forEach((s) => {
+        if (s.id) observer.observe(s);
+      });
+    </script>
+  </body>
+</html>
