@@ -2331,7 +2331,7 @@
               </svg>
             </a>
             <!-- Firefox -->
-            <a
+            <!-- <a
               href="/docs/#install"
               class="browser-icon-btn"
               id="link-firefox"
@@ -2567,7 +2567,7 @@
                   </defs>
                 </g>
               </svg>
-            </a>
+            </a> -->
             <!-- Edge -->
             <a
               href="/docs/#install"
@@ -4248,7 +4248,7 @@
 
       const STORE_URLS = {
         chrome: '',
-        firefox: '',
+        // firefox: '',
         edge: '',
         // safari: '',
       };
@@ -4258,14 +4258,14 @@
       function detectBrowser() {
         const ua = navigator.userAgent;
         if (ua.includes('Edg/')) return 'edge';
-        if (ua.includes('Firefox/')) return 'firefox';
+        // if (ua.includes('Firefox/')) return 'firefox';
         // if (ua.includes("Safari/") && !ua.includes("Chrome")) return "safari";
         return 'chrome';
       }
 
       const BROWSER_LABELS = {
         chrome: { label: 'Install on Chrome — Free' },
-        firefox: { label: 'Install on Firefox — Free' },
+        // firefox: { label: 'Install on Firefox — Free' },
         edge: { label: 'Install on Edge — Free' },
         // safari: { label: "Install on Safari — Free" },
       };
@@ -4298,7 +4298,7 @@
         if (labelEl) labelEl.textContent = label;
 
         const linkMap = {
-          firefox: 'link-firefox',
+          // firefox: 'link-firefox',
           edge: 'link-edge',
           // safari: 'link-safari',
           chrome: 'link-chrome',
