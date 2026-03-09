@@ -7,11 +7,13 @@
     <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
-    <title>TraceBrief — Capture. Structure. Send.</title>
+    <title>TraceBrief — Capture proof for bugs in seconds</title>
     <meta
       name="description"
-      content="Whatever broke on your screen — TraceBrief captures it, structures it, and gets it to the right person. Screenshots, recordings, steps, and formatted output. Free Chrome extension."
+      content="TraceBrief is a free browser extension for capturing screenshots, recordings, repro steps, and structured evidence packs — locally, without an account."
     />
+    <meta name="theme-color" content="#06060e" />
+    <meta name="color-scheme" content="dark" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -2164,7 +2166,7 @@
           <a href="#how">How It Works</a>
           <a href="#features">Features</a>
           <a href="#pricing">Pricing</a>
-          <a href="docs.html">Docs</a>
+          <a href="/docs/">Docs</a>
           <a href="#faq">FAQ</a>
         </div>
         <div class="n-right">
@@ -2265,11 +2267,16 @@
           </button>
           <div class="store-badges">
             <!-- Chrome -->
-            <a href="#" class="browser-icon-btn" id="link-chrome" title="Install on Chrome">
+            <a
+              href="/docs#install"
+              class="browser-icon-btn"
+              id="link-chrome"
+              title="Install on Chrome"
+            >
               <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                <g id="SVGRepo_iconCarrier">
+                <g stroke-width="0"></g>
+                <g stroke-linecap="round" stroke-linejoin="round"></g>
+                <g>
                   <path
                     d="M16.0005 2.00394C16.0005 2.00394 24.2527 1.63495 28.6278 9.90002H15.2983C15.2983 9.90002 12.7828 9.81923 10.634 12.8601C10.0167 14.1364 9.3532 15.4511 10.0978 18.0422C9.02517 16.2315 4.40332 8.21246 4.40332 8.21246C4.40332 8.21246 7.66332 2.33069 16.0004 2.00394H16.0005Z"
                     fill="#EF3F36"
@@ -2319,11 +2326,16 @@
               </svg>
             </a>
             <!-- Firefox -->
-            <a href="#" class="browser-icon-btn" id="link-firefox" title="Install on Firefox">
+            <a
+              href="/docs#install"
+              class="browser-icon-btn"
+              id="link-firefox"
+              title="Install on Firefox"
+            >
               <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                <g id="SVGRepo_iconCarrier">
+                <g stroke-width="0"></g>
+                <g stroke-linecap="round" stroke-linejoin="round"></g>
+                <g>
                   <path
                     d="M28.9905 10.7265C28.3816 9.2574 27.1473 7.67139 26.1784 7.17039C26.967 8.72015 27.4232 10.2746 27.5976 11.4344C27.5976 11.4344 27.5976 11.4426 27.6005 11.4578C26.0156 7.49777 23.3277 5.90065 21.1327 2.42407C21.0213 2.24869 20.9105 2.07331 20.802 1.88566C20.7407 1.77985 20.6911 1.68397 20.648 1.59336C20.557 1.41757 20.4867 1.23179 20.4386 1.03975C20.439 1.03063 20.4359 1.02169 20.4301 1.01467C20.4243 1.00765 20.4161 1.00305 20.4071 1.00175C20.3985 0.999416 20.3894 0.999416 20.3808 1.00175C20.3785 1.00281 20.3763 1.00419 20.3744 1.00584C20.3709 1.00584 20.3674 1.00994 20.3639 1.0111L20.3697 1.0035C16.8483 3.07063 15.6536 6.89446 15.544 8.80784C14.1368 8.90428 12.7913 9.42358 11.683 10.298C11.5672 10.1998 11.4461 10.1081 11.3202 10.0232C11.0008 8.9027 10.9873 7.71683 11.2811 6.58931C9.84091 7.24697 8.72095 8.28463 7.90664 9.20303H7.90023C7.34433 8.49742 7.38341 6.17015 7.41491 5.68435C7.40849 5.65395 7.00076 5.89656 6.94826 5.93339C6.45773 6.2841 5.9992 6.67771 5.57805 7.1096C5.0988 7.59655 4.66096 8.12276 4.26909 8.68274C3.36752 9.96323 2.72814 11.4101 2.3879 12.9398C2.38149 12.9702 2.37565 13.0017 2.36924 13.0327C2.34299 13.1561 2.24791 13.7751 2.23099 13.9096V13.9406C2.10704 14.5803 2.02984 15.2282 2 15.8791V15.951C2 23.7097 8.27646 30 16.0182 30C22.9521 30 28.7088 24.9549 29.8364 18.328C29.8597 18.1485 29.8789 17.9673 29.8999 17.786C30.1788 15.3763 29.869 12.8439 28.9905 10.7265ZM12.8327 21.7239C12.8981 21.7549 12.9599 21.7894 13.027 21.8197L13.0363 21.8256C12.9692 21.7929 12.901 21.759 12.8333 21.7239H12.8327ZM27.6017 11.4642V11.4508V11.466V11.4642Z"
                     fill="url(#paint0_linear_87_7118)"
@@ -2552,16 +2564,16 @@
               </svg>
             </a>
             <!-- Edge -->
-            <a href="#" class="browser-icon-btn" id="link-edge" title="Install on Edge">
+            <a href="/docs#install" class="browser-icon-btn" id="link-edge" title="Install on Edge">
               <svg
                 viewBox="0 0 27600 27600"
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
                 fill="#000000"
               >
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                <g id="SVGRepo_iconCarrier">
+                <g stroke-width="0"></g>
+                <g stroke-linecap="round" stroke-linejoin="round"></g>
+                <g>
                   <linearGradient id="A" gradientUnits="userSpaceOnUse"></linearGradient>
                   <linearGradient id="B" x1="6870" x2="24704" y1="18705" y2="18705" xlink:href="#A">
                     <stop offset="0" stop-color="#0c59a4"></stop>
@@ -2646,9 +2658,9 @@
                 preserveAspectRatio="xMidYMid"
                 fill="#000000"
               >
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                <g id="SVGRepo_iconCarrier">
+                <g stroke-width="0"></g>
+                <g stroke-linecap="round" stroke-linejoin="round"></g>
+                <g>
                   <defs>
                     <linearGradient
                       x1="50%"
@@ -4182,7 +4194,7 @@
           <a href="https://github.com/akshayg676" target="_blank" rel="noopener noreferrer"
             >GitHub</a
           >
-          <a href="docs.html">Docs</a>
+          <a href="/docs/">Docs</a>
           <a href="#pricing">Pricing</a>
           <a href="#faq">FAQ</a>
         </div>
@@ -4223,19 +4235,21 @@
         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
       }
 
-      const STORES = {
-        chrome: 'https://chrome.google.com/webstore', // replace with real URL
-        firefox: 'https://addons.mozilla.org', // replace with real URL
-        edge: 'https://microsoftedge.microsoft.com/addons', // replace with real URL
-        // safari: "https://apps.apple.com", // replace with real URL
+      const STORE_URLS = {
+        chrome: '',
+        firefox: '',
+        edge: '',
+        // safari: '',
       };
+
+      const INSTALL_GUIDE_URL = '/docs#install';
 
       function detectBrowser() {
         const ua = navigator.userAgent;
         if (ua.includes('Edg/')) return 'edge';
         if (ua.includes('Firefox/')) return 'firefox';
         // if (ua.includes("Safari/") && !ua.includes("Chrome")) return "safari";
-        return 'chrome'; // default
+        return 'chrome';
       }
 
       const BROWSER_LABELS = {
@@ -4245,25 +4259,57 @@
         // safari: { label: "Install on Safari — Free" },
       };
 
-      function installClick() {
-        const b = detectBrowser();
-        window.open(STORES[b], '_blank');
+      function getStoreUrl(browser) {
+        return STORE_URLS[browser] && STORE_URLS[browser].trim()
+          ? STORE_URLS[browser]
+          : INSTALL_GUIDE_URL;
       }
 
-      // On load: update main button label + highlight current browser in the "also on" row
+      function openInstallUrl(browser) {
+        const url = getStoreUrl(browser);
+        const isExternal = /^https?:\/\//i.test(url);
+        if (isExternal) {
+          window.open(url, '_blank', 'noopener,noreferrer');
+          return;
+        }
+        window.location.href = url;
+      }
+
+      function installClick() {
+        openInstallUrl(detectBrowser());
+      }
+
+      // On load: update main button label + wire current browser links safely
       (function () {
         const b = detectBrowser();
         const { label } = BROWSER_LABELS[b];
         const labelEl = document.getElementById('install-label');
         if (labelEl) labelEl.textContent = label;
 
-        // Hide the current browser from the icon row — it's already the main button
         const linkMap = {
           firefox: 'link-firefox',
           edge: 'link-edge',
-          // safari: "link-safari",
+          // safari: 'link-safari',
           chrome: 'link-chrome',
         };
+
+        Object.entries(linkMap).forEach(([browser, id]) => {
+          const el = document.getElementById(id);
+          if (!el) return;
+          const url = getStoreUrl(browser);
+          const isExternal = /^https?:\/\//i.test(url);
+          el.href = url;
+          if (isExternal) {
+            el.target = '_blank';
+            el.rel = 'noopener noreferrer';
+          } else {
+            el.removeAttribute('target');
+            el.removeAttribute('rel');
+          }
+          el.setAttribute('aria-label', BROWSER_LABELS[browser]?.label || 'Install');
+        });
+
+        // Hide the current browser from the icon row — it's already the main button
         const currentLinkId = linkMap[b];
         if (currentLinkId) {
           const el = document.getElementById(currentLinkId);

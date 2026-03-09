@@ -12,6 +12,8 @@
       name="description"
       content="TraceBrief documentation. Everything you need to capture, document, and export evidence packs. Guides for QA, developers, PMs, support teams, and anyone else reporting issues clearly."
     />
+    <meta name="theme-color" content="#06060e" />
+    <meta name="color-scheme" content="dark" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -924,7 +926,7 @@
     <!-- NAV -->
     <nav>
       <div class="nav-inner">
-        <a href="index.html" class="n-logo">TraceBrief <span class="n-logo-k">バグ</span></a>
+        <a href="/" class="n-logo">TraceBrief <span class="n-logo-k">バグ</span></a>
         <div class="n-sep"></div>
         <div class="n-doc-label">Docs</div>
         <div class="n-search">
@@ -939,8 +941,8 @@
         </div>
         <div class="n-spacer"></div>
         <div class="n-right">
-          <a href="index.html" class="n-back">← Back to site</a>
-          <a href="index.html#cta" class="n-install">Install Free →</a>
+          <a href="/" class="n-back">← Back to site</a>
+          <a href="/#cta" class="n-install">Install Free →</a>
         </div>
       </div>
     </nav>
@@ -2756,11 +2758,11 @@
       <div class="footer-inner">
         <div class="f-logo">TraceBrief <span class="f-logo-k">バグ</span></div>
         <div class="f-links">
-          <a href="index.html">← Back to site</a>
-          <a href="index.html#faq">FAQ</a>
-          <a href="index.html#cta">Install</a>
+          <a href="/">← Back to site</a>
+          <a href="/#faq">FAQ</a>
+          <a href="/#cta">Install</a>
           <a
-            href="#"
+            href="/docs/"
             onclick="
               showIndex();
               return false;
@@ -2787,35 +2789,86 @@
       document.querySelectorAll('.rv').forEach((el) => ro.observe(el));
 
       let currentDoc = null;
+      const DEFAULT_DOC_TITLE = 'TraceBrief — Documentation';
+      const DOC_TITLES = {
+        quickstart: 'Quick Start Guide',
+        install: 'Installation',
+        panel: 'Opening the Panel',
+        permissions: 'Permissions Explained',
+        capture: 'Screenshots, Selected Area & Full-Page Capture',
+        recording: 'Screen Recordings',
+        annotate: 'Annotation Editor',
+        steps: 'Step Logger',
+        context: 'Context Tab',
+        packs: 'Evidence & History',
+        export: 'Copy & Export Output',
+        formats: 'Export Formats',
+        destinations: 'Jira, GitHub & More',
+        privacy: 'Privacy & Security',
+        troubleshoot: 'Troubleshooting',
+        bestpractices: 'Best Practices',
+        glossary: 'Glossary',
+      };
 
-      function showIndex() {
+      function setDocTitle(id) {
+        document.title =
+          id && DOC_TITLES[id] ? `TraceBrief Docs — ${DOC_TITLES[id]}` : DEFAULT_DOC_TITLE;
+      }
+
+      function updateHash(id) {
+        const next = id ? `#${id}` : '';
+        if (window.location.hash !== next)
+          history.replaceState(null, '', next || window.location.pathname);
+      }
+
+      function scrollDocsIntoView() {
+        window.scrollTo({
+          top: document.querySelector('.docs-layout').offsetTop - 52,
+          behavior: 'smooth',
+        });
+      }
+
+      function showIndex(updateUrl = true) {
         document.querySelectorAll('.doc-article').forEach((a) => a.classList.remove('visible'));
         document.getElementById('view-index').style.display = 'block';
         document.querySelectorAll('.sb-link').forEach((l) => l.classList.remove('active'));
         currentDoc = null;
-        window.scrollTo({
-          top: document.querySelector('.docs-layout').offsetTop - 52,
-          behavior: 'smooth',
-        });
+        setDocTitle(null);
+        if (updateUrl) updateHash(null);
+        scrollDocsIntoView();
       }
 
-      function showDoc(id) {
+      function showDoc(id, updateUrl = true) {
         document.getElementById('view-index').style.display = 'none';
         document.querySelectorAll('.doc-article').forEach((a) => a.classList.remove('visible'));
         const target = document.getElementById('view-' + id);
-        if (target) target.classList.add('visible');
+        if (!target) {
+          showIndex(updateUrl);
+          return;
+        }
+        target.classList.add('visible');
         document.querySelectorAll('.sb-link').forEach((l) => l.classList.remove('active'));
         const sb = document.getElementById('sb-' + id);
         if (sb) sb.classList.add('active');
         currentDoc = id;
-        window.scrollTo({
-          top: document.querySelector('.docs-layout').offsetTop - 52,
-          behavior: 'smooth',
-        });
+        setDocTitle(id);
+        if (updateUrl) updateHash(id);
+        scrollDocsIntoView();
+      }
+
+      function routeFromHash() {
+        const id = window.location.hash.replace('#', '').trim();
+        if (id && document.getElementById('view-' + id)) {
+          showDoc(id, false);
+          return;
+        }
+        showIndex(false);
       }
 
       // default view
-      showIndex();
+      routeFromHash();
+
+      window.addEventListener('hashchange', routeFromHash);
 
       // search filter
       function filterDocs(query) {
