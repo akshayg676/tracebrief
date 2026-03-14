@@ -4247,86 +4247,81 @@
       }
 
       const STORE_URLS = {
-        chrome: '',
-        // firefox: '',
-        edge: '',
-        // safari: '',
+        chrome:
+          'https://chromewebstore.google.com/detail/tracebrief/jahpgjbbgfkfckjpambknekfbopmngof',
+        edge: 'https://microsoftedge.microsoft.com/addons/detail/tracebrief/lljnmegcpkhcnbepbedoaijgakcejkec',
       };
 
       const INSTALL_GUIDE_URL = '/docs/#install';
 
       function detectBrowser() {
         const ua = navigator.userAgent;
-        if (ua.includes('Edg/')) return 'edge';
-        // if (ua.includes('Firefox/')) return 'firefox';
-        // if (ua.includes("Safari/") && !ua.includes("Chrome")) return "safari";
-        return 'chrome';
+        return ua.includes('Edg/') ? 'edge' : 'chrome';
       }
 
       const BROWSER_LABELS = {
         chrome: { label: 'Install on Chrome — Free' },
-        // firefox: { label: 'Install on Firefox — Free' },
         edge: { label: 'Install on Edge — Free' },
-        // safari: { label: "Install on Safari — Free" },
       };
 
       function getStoreUrl(browser) {
-        return STORE_URLS[browser] && STORE_URLS[browser].trim()
-          ? STORE_URLS[browser]
-          : INSTALL_GUIDE_URL;
+        const u = STORE_URLS[browser];
+        return u && u.trim() ? u : INSTALL_GUIDE_URL;
       }
 
       function openInstallUrl(browser) {
         const url = getStoreUrl(browser);
-        const isExternal = /^https?:\/\//i.test(url);
-        if (isExternal) {
+        if (/^https?:\/\//i.test(url)) {
           window.open(url, '_blank', 'noopener,noreferrer');
-          return;
+        } else {
+          window.location.href = url;
         }
-        window.location.href = url;
       }
 
       function installClick() {
         openInstallUrl(detectBrowser());
       }
 
-      // On load: update main button label + wire current browser links safely
-      (function () {
+      function updateInstallUI() {
         const b = detectBrowser();
-        const { label } = BROWSER_LABELS[b];
-        const labelEl = document.getElementById('install-label');
-        if (labelEl) labelEl.textContent = label;
+        const label = BROWSER_LABELS[b]?.label || "Install — It's Free";
 
-        const linkMap = {
-          // firefox: 'link-firefox',
-          edge: 'link-edge',
-          // safari: 'link-safari',
-          chrome: 'link-chrome',
-        };
+        const heroLabel = document.getElementById('install-label');
+        if (heroLabel) heroLabel.textContent = label;
+
+        const navBtn = document.querySelector('.n-install');
+        if (navBtn) navBtn.textContent = label.replace(' — Free', '') + ' →';
+
+        // Wire browser icon links
+        const linkMap = { edge: 'link-edge', chrome: 'link-chrome' };
 
         Object.entries(linkMap).forEach(([browser, id]) => {
           const el = document.getElementById(id);
           if (!el) return;
+
           const url = getStoreUrl(browser);
-          const isExternal = /^https?:\/\//i.test(url);
           el.href = url;
-          if (isExternal) {
+          el.setAttribute('aria-label', BROWSER_LABELS[browser]?.label || 'Install');
+
+          if (/^https?:\/\//i.test(url)) {
             el.target = '_blank';
             el.rel = 'noopener noreferrer';
           } else {
             el.removeAttribute('target');
             el.removeAttribute('rel');
           }
-          el.setAttribute('aria-label', BROWSER_LABELS[browser]?.label || 'Install');
         });
 
-        // Hide the current browser from the icon row — it's already the main button
-        const currentLinkId = linkMap[b];
-        if (currentLinkId) {
-          const el = document.getElementById(currentLinkId);
-          if (el) el.style.display = 'none';
+        // Hide the current browser icon (main CTA already matches it)
+        const currentId = linkMap[b];
+        if (currentId) {
+          const currentEl = document.getElementById(currentId);
+          if (currentEl) currentEl.style.display = 'none';
         }
-      })();
+      }
+
+      // Run after DOM is ready (works whether script is in head or body)
+      document.addEventListener('DOMContentLoaded', updateInstallUI);
     </script>
   </body>
 </html>
