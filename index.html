@@ -339,7 +339,6 @@
         display: flex;
         align-items: center;
         gap: 7px;
-        white-space: nowrap;
       }
       .n-logo-k {
         font-family: var(--font-mono);
@@ -400,10 +399,6 @@
         border-radius: var(--r);
         box-shadow: 0 0 18px rgba(0, 229, 188, 0.3);
         transition: all 0.15s;
-        white-space: nowrap;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
       }
       .n-install:hover {
         background: #1affd4;
@@ -2061,16 +2056,6 @@
           padding: 60px 24px;
           min-height: auto;
         }
-        .hero-inner {
-          max-width: 100%;
-        }
-        .hero-eyebrow {
-          display: block;
-          max-width: 34ch;
-          margin: 0 auto 24px;
-          line-height: 1.8;
-          text-align: center;
-        }
         .vtick {
           display: none;
         }
@@ -2155,11 +2140,6 @@
         }
         .nav-inner {
           padding: 0 20px;
-          gap: 18px;
-          justify-content: space-between;
-        }
-        .n-right {
-          margin-left: auto;
         }
         .pricing-coffee {
           flex-direction: column;
@@ -2167,116 +2147,6 @@
         }
       }
       @media (max-width: 600px) {
-        nav {
-          height: auto;
-          min-height: 64px;
-        }
-        .nav-inner {
-          padding: 10px 16px;
-          gap: 12px;
-        }
-        .n-logo {
-          min-width: 0;
-          font-size: 0.9rem;
-          letter-spacing: 1px;
-          gap: 5px;
-        }
-        .n-logo-k {
-          font-size: 0.5rem;
-        }
-        .n-install {
-          padding: 10px 14px;
-          font-size: 0.68rem;
-          letter-spacing: 0.2px;
-          border-radius: 10px;
-        }
-        .hero {
-          padding: 44px 18px 48px;
-        }
-        .hero-eyebrow {
-          max-width: 30ch;
-          margin-bottom: 20px;
-          font-size: 0.52rem;
-          letter-spacing: 2.6px;
-        }
-        .hero-h1 {
-          max-width: 8.2ch;
-          margin-left: auto;
-          margin-right: auto;
-          margin-bottom: 16px;
-          font-size: clamp(40px, 15.5vw, 62px);
-          line-height: 0.9;
-          letter-spacing: -1.8px;
-        }
-        .h1-l1,
-        .h1-l3 {
-          display: block;
-        }
-        .h1-l2,
-        .h1-l2::before,
-        .h1-l2::after {
-          -webkit-text-stroke: 1.5px var(--red);
-        }
-        .hero-sub {
-          max-width: 22ch;
-          margin: 16px auto 28px;
-          font-size: 1rem;
-          line-height: 1.7;
-        }
-        .hero-who {
-          gap: 10px 8px;
-          margin-bottom: 28px;
-        }
-        .who-pill {
-          font-size: 0.54rem;
-          letter-spacing: 1.4px;
-          padding: 7px 10px;
-        }
-        .hero-stats {
-          display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          max-width: 100%;
-          margin-bottom: 32px;
-        }
-        .h-stat {
-          padding: 14px 10px;
-          border-right: none;
-          border-bottom: 1px solid var(--b0);
-        }
-        .h-stat:nth-child(odd) {
-          border-right: 1px solid var(--b0);
-        }
-        .h-stat:last-child {
-          grid-column: 1 / -1;
-          border-right: none;
-          border-bottom: none;
-        }
-        .h-stat-n {
-          font-size: 1.15rem;
-        }
-        .h-stat-l {
-          font-size: 0.64rem;
-          line-height: 1.4;
-          margin-top: 4px;
-        }
-        .hero-ctas {
-          width: 100%;
-          max-width: 360px;
-          margin: 0 auto;
-          flex-direction: column;
-          align-items: stretch;
-        }
-        .btn-primary {
-          width: 100%;
-          justify-content: center;
-          padding: 14px 20px;
-        }
-        .store-badges {
-          justify-content: center;
-        }
-        .browser-icon-btn::after {
-          display: none;
-        }
         .bento {
           grid-template-columns: 1fr;
         }
@@ -2287,27 +2157,6 @@
         }
         .how-steps {
           grid-template-columns: 1fr;
-        }
-      }
-      @media (max-width: 420px) {
-        .nav-inner {
-          padding: 10px 12px;
-          gap: 8px;
-        }
-        .n-logo {
-          font-size: 0.84rem;
-          letter-spacing: 0.7px;
-        }
-        .n-install {
-          padding: 9px 12px;
-          font-size: 0.64rem;
-        }
-        .hero-h1 {
-          max-width: 8ch;
-          font-size: clamp(36px, 15vw, 56px);
-        }
-        .hero-sub {
-          max-width: 21ch;
         }
       }
     </style>
@@ -4411,8 +4260,8 @@
       }
 
       const BROWSER_LABELS = {
-        chrome: { label: 'Install on Chrome \u2014 Free' },
-        edge: { label: 'Install on Edge \u2014 Free' },
+        chrome: { label: 'Install on Chrome — Free' },
+        edge: { label: 'Install on Edge — Free' },
       };
 
       function getStoreUrl(browser) {
@@ -4432,35 +4281,28 @@
       function installClick() {
         openInstallUrl(detectBrowser());
       }
-      function getNavInstallLabel(browser) {
-        const browserName = browser === 'edge' ? 'Edge' : 'Chrome';
-        const fullLabel = (BROWSER_LABELS[browser]?.label || 'Install \u2014 It\'s Free').replace(
-          ' \u2014 Free',
-          ''
-        );
 
-        if (window.matchMedia('(max-width: 420px)').matches) return 'Install \u2192';
-        if (window.matchMedia('(max-width: 600px)').matches) {
-          return 'Install ' + browserName + ' \u2192';
-        }
-
-        return fullLabel + ' \u2192';
-      }
       function updateInstallUI() {
         const b = detectBrowser();
-        const label = BROWSER_LABELS[b]?.label || 'Install \u2014 It\'s Free';
+        const label = BROWSER_LABELS[b]?.label || "Install — It's Free";
+
         const heroLabel = document.getElementById('install-label');
         if (heroLabel) heroLabel.textContent = label;
+
         const navBtn = document.querySelector('.n-install');
-        if (navBtn) navBtn.textContent = getNavInstallLabel(b);
+        if (navBtn) navBtn.textContent = label.replace(' — Free', '') + ' →';
+
         // Wire browser icon links
         const linkMap = { edge: 'link-edge', chrome: 'link-chrome' };
+
         Object.entries(linkMap).forEach(([browser, id]) => {
           const el = document.getElementById(id);
           if (!el) return;
+
           const url = getStoreUrl(browser);
           el.href = url;
           el.setAttribute('aria-label', BROWSER_LABELS[browser]?.label || 'Install');
+
           if (/^https?:\/\//i.test(url)) {
             el.target = '_blank';
             el.rel = 'noopener noreferrer';
@@ -4469,6 +4311,7 @@
             el.removeAttribute('rel');
           }
         });
+
         // Hide the current browser icon (main CTA already matches it)
         const currentId = linkMap[b];
         if (currentId) {
@@ -4476,9 +4319,9 @@
           if (currentEl) currentEl.style.display = 'none';
         }
       }
+
       // Run after DOM is ready (works whether script is in head or body)
       document.addEventListener('DOMContentLoaded', updateInstallUI);
-      window.addEventListener('resize', updateInstallUI);
     </script>
   </body>
 </html>
