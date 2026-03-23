@@ -405,6 +405,103 @@
         transform: translateY(-1px);
         box-shadow: 0 0 28px rgba(0, 229, 188, 0.45);
       }
+      .n-menu-toggle {
+        width: 42px;
+        height: 42px;
+        border: 1px solid var(--b0);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--t1);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        transition: all 0.18s;
+      }
+      .n-menu-toggle:hover {
+        background: var(--surface);
+        border-color: rgba(255, 255, 255, 0.16);
+      }
+      .n-menu-toggle span,
+      .n-menu-toggle::before,
+      .n-menu-toggle::after {
+        content: '';
+        position: absolute;
+        width: 18px;
+        height: 1.5px;
+        background: currentColor;
+        border-radius: 999px;
+        transition:
+          transform 0.18s ease,
+          opacity 0.18s ease,
+          top 0.18s ease;
+      }
+      .n-menu-toggle::before {
+        top: 14px;
+      }
+      .n-menu-toggle span {
+        top: 20px;
+      }
+      .n-menu-toggle::after {
+        top: 26px;
+      }
+      nav.menu-open .n-menu-toggle::before {
+        top: 20px;
+        transform: rotate(45deg);
+      }
+      nav.menu-open .n-menu-toggle span {
+        opacity: 0;
+      }
+      nav.menu-open .n-menu-toggle::after {
+        top: 20px;
+        transform: rotate(-45deg);
+      }
+      .n-mobile-menu {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 20px;
+        right: 20px;
+        padding: 14px;
+        border: 1px solid var(--b0);
+        border-radius: 14px;
+        background: rgba(10, 10, 22, 0.96);
+        backdrop-filter: blur(18px);
+        box-shadow: 0 18px 36px rgba(0, 0, 0, 0.42);
+        display: none;
+        opacity: 0;
+        transform: translateY(-8px);
+        pointer-events: none;
+        transition:
+          opacity 0.18s ease,
+          transform 0.18s ease;
+      }
+      nav.menu-open .n-mobile-menu {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+      .n-mobile-links {
+        display: grid;
+        gap: 6px;
+        margin-bottom: 12px;
+      }
+      .n-mobile-links a {
+        display: block;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--t2);
+        padding: 10px 12px;
+        border-radius: 8px;
+        transition: all 0.15s;
+      }
+      .n-mobile-links a:hover {
+        color: var(--t1);
+        background: var(--surface);
+      }
+      .n-mobile-install {
+        width: 100%;
+        justify-content: center;
+      }
 
       /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    HERO  — FULL MAXIMALIST CENTERED
@@ -2135,11 +2232,25 @@
         nav .n-links {
           display: none;
         }
+        .n-right .n-install {
+          display: none;
+        }
+        .n-menu-toggle {
+          display: inline-flex;
+        }
+        .n-mobile-menu {
+          display: block;
+        }
         nav {
           padding: 0;
         }
         .nav-inner {
           padding: 0 20px;
+          gap: 16px;
+          justify-content: space-between;
+        }
+        .n-right {
+          margin-left: auto;
         }
         .pricing-coffee {
           flex-direction: column;
@@ -2147,6 +2258,11 @@
         }
       }
       @media (max-width: 600px) {
+        .n-mobile-menu {
+          left: 12px;
+          right: 12px;
+          top: calc(100% + 8px);
+        }
         .hero-h1 {
           font-size: clamp(36px, 11vw, 56px);
           line-height: 0.96;
@@ -2199,7 +2315,7 @@
     <!-- ██ NAV ████████████████████████████████████████████████ -->
     <nav>
       <div class="nav-inner">
-        <div class="n-logo">TraceBrief <span class="n-logo-k">バグ</span></div>
+        <div class="n-logo">TraceBrief <span class="n-logo-k">&#12496;&#12464;</span></div>
         <div class="n-links">
           <a href="#who">Who It's For</a>
           <a href="#how">How It Works</a>
@@ -2209,8 +2325,30 @@
           <a href="#faq">FAQ</a>
         </div>
         <div class="n-right">
-          <button class="n-install" onclick="installClick()">Install Free →</button>
+          <button class="n-install" onclick="installClick()">Install Free &rarr;</button>
+          <button
+            class="n-menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="mobile-nav-menu"
+            aria-label="Open navigation menu"
+          >
+            <span></span>
+          </button>
         </div>
+      </div>
+      <div class="n-mobile-menu" id="mobile-nav-menu">
+        <div class="n-mobile-links">
+          <a href="#who">Who It's For</a>
+          <a href="#how">How It Works</a>
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="/docs/">Docs</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <button class="n-install n-mobile-install" type="button" onclick="installClick()">
+          Install Free &rarr;
+        </button>
       </div>
     </nav>
 
@@ -4316,6 +4454,44 @@
         openInstallUrl(detectBrowser());
       }
 
+      function setMobileMenuOpen(isOpen) {
+        const nav = document.querySelector('nav');
+        const toggle = document.querySelector('.n-menu-toggle');
+        if (!nav || !toggle) return;
+
+        nav.classList.toggle('menu-open', isOpen);
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      }
+
+      function setupMobileMenu() {
+        const nav = document.querySelector('nav');
+        const toggle = document.querySelector('.n-menu-toggle');
+        const menu = document.getElementById('mobile-nav-menu');
+        if (!nav || !toggle || !menu) return;
+
+        toggle.addEventListener('click', (event) => {
+          event.stopPropagation();
+          setMobileMenuOpen(!nav.classList.contains('menu-open'));
+        });
+
+        menu.querySelectorAll('a, button').forEach((item) => {
+          item.addEventListener('click', () => setMobileMenuOpen(false));
+        });
+
+        document.addEventListener('click', (event) => {
+          if (window.innerWidth > 960) return;
+          if (!nav.contains(event.target)) setMobileMenuOpen(false);
+        });
+
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') setMobileMenuOpen(false);
+        });
+
+        window.addEventListener('resize', () => {
+          if (window.innerWidth > 960) setMobileMenuOpen(false);
+        });
+      }
+
       function updateInstallUI() {
         const b = detectBrowser();
         const label = BROWSER_LABELS[b]?.label || "Install — It's Free";
@@ -4323,8 +4499,10 @@
         const heroLabel = document.getElementById('install-label');
         if (heroLabel) heroLabel.textContent = label;
 
-        const navBtn = document.querySelector('.n-install');
-        if (navBtn) navBtn.textContent = label.replace(' — Free', '') + ' →';
+        const navButtons = document.querySelectorAll('.n-install');
+        navButtons.forEach((btn) => {
+          btn.textContent = label.replace(/ \u2014 Free/g, '') + ' \u2192';
+        });
 
         // Wire browser icon links
         const linkMap = { edge: 'link-edge', chrome: 'link-chrome' };
@@ -4355,7 +4533,10 @@
       }
 
       // Run after DOM is ready (works whether script is in head or body)
-      document.addEventListener('DOMContentLoaded', updateInstallUI);
+      document.addEventListener('DOMContentLoaded', () => {
+        setupMobileMenu();
+        updateInstallUI();
+      });
     </script>
   </body>
 </html>
